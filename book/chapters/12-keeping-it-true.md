@@ -20,7 +20,7 @@ I know the look you get when you propose a document like the one this book has b
 Back in chapter 01 I insisted that the four types describe roles, not products: a store is a **role with constraints**, and a product is just one thing that happens to be sufficient to play that role today. I could see it read as pedantry at the time. Now, behold — here is what the pedantry buys you.
 
 ::: figure
-![A store described as a role with three constraints, unchanged across three successive implementations beneath it: PostgreSQL with one primary, then PostgreSQL with read replicas, then distributed SQL. Each implementation names the condition that would end its sufficiency.](../figures/12-keeping-it-true.svg)
+![A store described as a role with three constraints, unchanged across three candidate implementations beneath it, each sufficient under its own condition: PostgreSQL with one primary while reads and writes fit it, PostgreSQL with read replicas while writes still fit one primary, and distributed SQL once they do not. Each implementation names the condition that would end its sufficiency.](../figures/12-keeping-it-true.svg)
 
 And this is why the method never lets a product name stand in for a role. The separation is not tidiness for its own sake — it is the thing that lets the description outlive its own implementation.
 :::
@@ -38,7 +38,7 @@ Write down what needs re-checking and why each preserved claim remains sufficien
 | **A volume moves 10×** | The demand arithmetic and everything citing it — node counts, partition counts, the recorded ratios, the hottest key's among them, since a tenfold there can change the rung an invariant is enforced on | Tolerances, invariants, acknowledgement semantics |
 | **A term or its meaning changes** | Affected requirements, operations, schemas, diagrams, observations, retained history and consumers; classify spelling change versus behavioural change | Meanings and mechanisms whose equivalence is demonstrated; preserve old contracts for their supported lifetime |
 | **An invariant is added** | Its enforcer, the isolation its scope needs, its rung on the enforcement ladder, the serialisation point for its contended unit, acknowledgement semantics on that write path | Everything not touching that invariant |
-| **The envelope shrinks** | Store choices, placement, granularity, buy-versus-build; run the subtraction test for real — if the budget halved, what comes out and what breaks | **Client tolerances** — they do not move because you got poorer. That is a finding to escalate with numbers |
+| **The envelope shrinks** — budget cut · team halved · new jurisdiction | Store choices, placement, granularity, buy-versus-build; run the subtraction test for real — if the budget halved, what comes out and what breaks | **Client tolerances** — they do not move because you got poorer. That is a finding to escalate with numbers |
 
 Table: The second column saves the time. The third is what stops a nervous team from reopening everything — without it, every amendment is a full re-derivation performed nervously. {cols="23% 39%"}
 
@@ -58,7 +58,7 @@ There are three categories. And their boundaries are not the chapter boundaries 
 
 {cols="22% 45%"}
 
-**And the map from chapter 11 is joint column by column**, which is the neatest proof I have that the split is real and not just a way of talking. *Requirement* is signed by both. *Mechanism* is engineering's alone. *Verified by* is signed by both again — it is the evidence that the promise holds, and a promise nobody can check was never a promise to begin with.
+**And the map from chapter 11 is joint column by column**, which is the neatest proof I have that the split is real and not just a way of talking. *Requirement* is signed by both. *Mechanism* is engineering's alone. *Evidence required* is signed by both again — it names what shows that the promise holds, and a promise nobody can check was never a promise to begin with.
 
 **And the categories decide how an amendment is processed.** Amend something engineering owns and nobody has to counter-sign: swap the database, change the partition count, move the placement, and nobody outside engineering needs to be told. Amend anything both halves signed and the amendment is **void until it is signed again**, because it is a promise and it has a price. Tightening a staleness bound from sixty seconds to five is not a technical adjustment. It is a new commitment with a new bill, and the person who pays should hear about it before it ships and not from the invoice.
 
@@ -70,11 +70,11 @@ Vocabulary follows those same ownership boundaries. Changing an internal compone
 
 ## When a genuine re-derivation is bought
 
-Amendment covers nearly everything. **One thing does not amend**, and it sends you back into the chapters instead of into the table:
+Amendment covers nearly everything. It stops covering a part when the ground under that part gives way, and then it sends you back into the chapters instead of into the table:
 
 **Re-derive the affected part when its assumptions or proof no longer hold.** A repeated failure warrants diagnosis, but does not prove that truth was misplaced, and there is no two-fix prerequisite. A counterexample before production is enough. Follow dependencies to set the scope; preserve the parts whose claims still hold.
 
-Two other changes look as though they belong next to it, and they do not. A figure from chapters 02 or 04 moving by a power of ten re-runs the arithmetic and everything that cited it — that is the third row of the table, and it leaves the tolerances and the invariants exactly where they were. A new client class gets its quota, its place in the shed order and its row on the ladder — the first row — and a new reader does not change what is true. Treat either of them as a re-derivation and you have found the reason teams end up never amending anything: redoing the lot is an afternoon, so nobody does it.
+Two other changes look as though they belong under that rule, and they do not. A figure from chapters 02 or 04 moving by a power of ten re-runs the arithmetic and everything that cited it — that is the third row of the table, and it leaves the tolerances and the invariants exactly where they were. A new client class gets its quota, its place in the shed order and its row on the ladder — the first row — and a new reader changes what is true only if it needs history that was never retained; check that before you treat it as an amendment. Treat either of them as a re-derivation and you have found the reason teams end up never amending anything: redoing the lot is an afternoon, so nobody does it.
 
 Everything else is an amendment too — and it goes where the original decision lives, with the date on it and the name of the claim that expired.
 
@@ -115,7 +115,7 @@ And keep the two halves' signatures separate. The business supplies the envelope
 That closes the discipline, and with it the argument. What is left is to watch the whole thing run at once, on systems that were not picked to make the method look good — **Part V**, where it is worked end to end rather than one chapter at a time.
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - Specification [§06 · Amendment](../method.html#amend) — the living description, the expired sufficiency claim, and the re-check table whose third column is preserved only after dependency checks
 - Specification [§05 · Discipline](../method.html#disc) — who signs which artifact, three categories, and the map read joint column by column
 - Specification [step 10 · Trace](../method.html#s10) — repeated violations trigger diagnosis and re-checking of the earliest affected decisions and their dependencies, without a fixed count of failed repairs

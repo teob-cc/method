@@ -20,7 +20,7 @@ This is the shortest step in the method, and the one I see skipped most often �
 There are two quite different arithmetic exercises hiding inside any system design, and mixing them up is exactly why people come to believe this step is optional.
 
 ::: figure
-![Two panels separated by a vertical barrier. The left panel, demand arithmetic, contains peak request rate, data volume and growth, working-set size and the cost envelope, and is computed before any technology is named. The right panel, capacity arithmetic, contains write amplification, read amplification, node counts, replica counts, headroom and egress, and can only be computed after the design exists.](../figures/04-arithmetic.svg)
+![Two panels separated by a vertical barrier. The left panel, demand arithmetic, contains peak request rate, data volume and growth, working-set size and the cost envelope, and is computed before any technology is named. The right panel, capacity arithmetic, contains write amplification, read amplification, node counts, replica counts, headroom, egress and cost per request, and can only be computed after the design exists.](../figures/04-arithmetic.svg)
 
 Pass 1 is this chapter. Pass 2 waits for chapter 07, when there is finally a graph whose amplification can be counted — and it has to be run then, while the choice is still cheap to reverse.
 :::
@@ -71,11 +71,11 @@ If it does, say so out loud and stop right there. The cheapest distributed syste
 
 Table: Feasibility anchors, per node, deliberately conservative. These answer one question — does this need to be distributed? — and they are not sizing figures. {cols="40%"}
 
-Take your peak figure, put it against the relevant row, and read off the ratio. Twelve writes a second against a store that manages thousands is a single node with three orders of magnitude to spare — and saying so out loud spares the next several chapters from designing a cluster nobody needs.
+Take your peak figure, put it against the relevant row, and read off the headroom. Twelve writes a second against a store that manages thousands is a single node with two to three orders of magnitude to spare — and saying so out loud spares the next several chapters from designing a cluster nobody needs.
 
 **And there is a third direction: the hot key.** Divide its peak demand by measured throughput for the protocol enforcing its invariant. An unbatched writer that waits for each commit has an approximate ceiling of one over commit latency: [5 ms → 200/s]{.num}. Pipelining, batching, contention and the operation itself change that estimate. Record skew and burst duration; a cluster-wide average conceals both.
 
-A ratio near one says the candidate protocol needs measurement or a different design. More unrelated nodes do not remove its coordination bottleneck, but the estimate does not prove that every serial protocol is impossible. Chapter 05 compares enforcement choices only after their assumptions are stated.
+A load ratio (demand ÷ capacity) near one says the candidate protocol needs measurement or a different design. More unrelated nodes do not remove its coordination bottleneck, but the estimate does not prove that every serial protocol is impossible. Chapter 05 compares enforcement choices only after their assumptions are stated.
 
 ::: primer
 #### Latency arithmetic beats latency intuition
@@ -91,7 +91,7 @@ The second division worth doing here is against the clock. A latency budget gets
   </table>
   </div>
 
-The gaps are what matter. Memory to SSD is roughly [500×]{.num}; same datacentre to cross-region is roughly [200×]{.num}. So a budget of [100 ms]{.num} allows **one** cross-region hop and no more — not three, and certainly not three with a retry on top. A design with a p99 target of 100 ms and a synchronous call chain that crosses an ocean twice has failed already, and the arithmetic that shows it takes five seconds and no tooling at all.
+The gaps are what matter. Memory to SSD is roughly [500×]{.num}; same datacentre to cross-region is roughly [200×]{.num}. So a budget of [100 ms]{.num} allows **at most one** cross-region hop, and on the longer routes not even that — not three, and certainly not three with a retry on top. A design with a p99 target of 100 ms and a synchronous call chain that crosses an ocean twice has failed already, and the arithmetic that shows it takes five seconds and no tooling at all.
 :::
 
 ## Growth has two drivers, and they are sized separately
@@ -130,13 +130,13 @@ A B2B product. Around [2 000]{.num} customer organisations, [50 000]{.num} daily
 
 **Working set.** People look at recent things. The last thirty days is about [12 GB]{.num} — which fits in the memory of a quite ordinary machine, with room to spare.
 
-**Now divide against one node.** A relational node handles somewhere between 5 000 and 20 000 simple transactions a second. The peak is 100. That is a utilisation of about [2%]{.num} at the conservative end of the anchor — a ratio of roughly [50×]{.num}, and more if the anchor is generous.
+**Now divide against one node.** A relational node handles somewhere between 5 000 and 20 000 simple transactions a second. The peak is 100. That is a utilisation of about [2%]{.num} at peak, at the conservative end of the anchor — [50×]{.num} headroom, and more if the anchor is generous. (Taken against the [20 rps]{.num} average, the way chapter 07 takes its proportionality ratio, it is [250×]{.num}.)
 
 **And against the clock.** A 300 ms budget, with users and data in one region, spends about 0.5 ms per internal round trip. Physics is not the constraint here — nothing in this system comes anywhere near it.
 
 **The conclusion is one machine, and it is not a close call.** A second machine does appear in this design, but for a completely different reason: the business will not accept the outage a single-node failure causes, so the replica is bought by an *availability* promise, not by a capacity figure. Writing down *which* constraint bought it is the point — two nodes for availability and two nodes for throughput look like the same picture and are entirely different designs, and only one of them tells you what to do when the numbers change.
 
-**What the reference architecture would have produced.** An API gateway, three services split by domain noun, a message broker between them, a cache, a search index and the relational store — I have seen this diagram so many times I could draw it with my eyes closed, and so, I suspect, could you. Count what it costs before you price a single instance: **five runnable units** — the gateway, the three services and the broker — with five deployment pipelines and five on-call surfaces; **five channels** that did not exist before, each owing the eight answers chapter 07 will ask of it, from a delivery guarantee and an ordering key to what happens to work in flight when one end goes away; and **three stores** whose consistency relationship somebody now has to specify and monitor.
+**What the reference architecture would have produced.** An API gateway, three services split by domain noun, a message broker between them, a cache, a search index and the relational store — I have seen this diagram so many times I could draw it with my eyes closed, and so, I suspect, could you. Count what it costs before you price a single instance: **five runnable units** — the gateway, the three services and the broker — with five deployment pipelines and five on-call surfaces; **five channels** that did not exist before, each owing the eight answers chapter 07 will ask of it, from a delivery guarantee and an ordering key to what happens to work in flight when one end goes away; and **four stores**, counting the broker's log, whose consistency relationship somebody now has to specify and monitor. And the channel count is conservative: by chapter 01's rule a broker is a producer channel, a store and one consumer channel per reader, so every producer and every consumer it gains adds a channel.
 
 The monthly bill would be the smaller half of that cost, and I am not going to invent it here — computing it needs the provider's price list, which is exactly the kind of number the previous section forbids you to fabricate. The structural cost alone settles the question, and it was available after four divisions on the back of an envelope.
 :::
@@ -177,6 +177,6 @@ And that completes the outside. Two kinds of outsider, five tolerances, an opera
 
 ::: owes
 - Specification [step 02 · Load](../method.html#s02) — the four demand figures, the arithmetic and feasibility anchors, the three directions of division — per cluster, per node and per key — the two growth drivers, provenance labels, and the check that every figure from step 01 is divided or carried
-- The exit condition on unconsumed figures is [step 01](../method.html#s01)'s own; step 02 checks it a second time. The hot-key profile divided per key is recorded at [step 03](../method.html#s03), where its ratio picks the enforcement rung
+- The exit condition on unconsumed figures is [step 01](../method.html#s01)'s own; step 02 checks it a second time. The hot-key profile divided per key is recorded at [step 03](../method.html#s03), where its load ratio picks the enforcement rung
 - The capacity pass named in the figure is [step 04](../method.html#s04)'s sizing pass, and arrives in chapter 07
 :::

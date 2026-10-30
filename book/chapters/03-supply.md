@@ -29,7 +29,7 @@ Eight things, and none of them is a deployment detail. Every one of them constra
 | **Cost envelope** | A ceiling *and* a unit — per request, per tenant, or per month — plus which line it defends: infrastructure, egress, licence, or headcount. And beside the cost lines, **loss lines**: what one unit of violation costs the business | the fourth figure in ch 04 · the capacity pass in ch 07 · the ladder's price in ch 08 |
 | **Team topology** | How many teams, owning what, on which release cadence. Boundaries get cut where ownership is cut, so this is the input that decides how many runnable units are defensible | boundaries in ch 07 |
 | **Expected lifecycle** | Spike · one-off product · prototype becoming a platform · established platform. A different question from scale, and usually known on day one | seams · delivery machinery |
-| **Published interfaces** | Who holds an artifact of this system that you cannot rebuild for them. One question, and it decides most of the delivery machinery | repo topology · versioning |
+| **Published interfaces** | Who holds an artifact of this system that you cannot rebuild for them. One question, and it decides the compatibility promises | compatibility promise · version scheme · deprecation window |
 | **Procurement reality** | What can be bought this quarter, what needs a review board, what data may leave the building — and which jurisdiction it has to stay in. A design that assumes frictionless procurement has an implementation date it will not meet | every technology choice |
 
 Table: The operating envelope. Written once, cited repeatedly. A row with no named consumer is a question that should not have been asked. {cols="24% * 16%"}
@@ -77,7 +77,7 @@ That question is the line between an interface that is merely *public* and one t
 
 The answer determines the compatibility promise, supported versions and deprecation window. Repository topology is a separate decision about source access, ownership and coordination: a public SDK can live in a monorepo. Company ownership also does not update an old mobile build already on a device.
 
-Answer it here, with names, and those four decisions stop being defaults you inherited from whichever template the repository happened to be created from.
+Answer it here, with names, and those three decisions stop being defaults you inherited from whichever template the repository happened to be created from.
 
 ## Teams, and the boundaries they buy
 
@@ -137,5 +137,5 @@ With both halves of the outside on paper, the next chapter does the one thing th
 ::: owes
 - Specification [step 01 · Outside](../method.html#s01), supply half — operating capability, hosting posture, contracts held, cost envelope with its loss lines, team topology, the four lifecycles, consumers you cannot rebuild for, procurement
 - Specification [§01 · Claim](../method.html#claim) — operations and delivery as areas derived from the same outside rather than bolted on
-- The published-interface line is consumed at [step 04](../method.html#s04) for repo topology and at [step 09](../method.html#s09) for the version scheme
+- The published-interface line is consumed at [step 04](../method.html#s04) for the version and deprecation contract, and at [step 09](../method.html#s09) for the version scheme
 :::

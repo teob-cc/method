@@ -4,7 +4,7 @@ number: "11"
 kind: chapter
 part: IV
 description: "Checking the work, chapter 11 of Systems, from the outside in — one table read three ways: forward for gaps, backward for furniture, and by column count for the mechanism carrying three promises at once. The book form of The Outside-In Method."
-summary: One map, read three ways — forward finds gaps, backward finds furniture, counting finds the mechanism that takes three promises down at once. Citation chains, provenance labels, and why a five-deep chain is one finding
+summary: One map, read three ways — forward finds gaps, backward finds furniture, counting finds the mechanism three promises depend on. Citation chains, provenance labels, and why a five-deep chain is one finding
 ---
 
 ::: standfirst
@@ -20,7 +20,7 @@ What makes the check mechanical is a single table. It is short, it is rather bor
 The table has three columns: the requirement, the mechanism that satisfies it, and the evidence that it is still being satisfied. Every row is a claim, and every claim can be checked by anyone who can read — no seniority required.
 
 ::: figure
-![A four-row traceability map with columns for requirement, mechanism and verified by. Three arrows show the three readings: left to right checks that every requirement names a mechanism, right to left checks that every mechanism names a requirement, and a count down the mechanism column finds that three rows name the same replicated log.](../figures/11-checking-the-work.svg)
+![A four-row traceability map with columns for requirement, mechanism and evidence required. Three arrows show the three readings: left to right checks that every requirement names a mechanism, right to left checks that every mechanism names a requirement, and a count down the mechanism column finds that three rows depend on the same replicated log — directly for durability, through a stream processor and its age gate for search, and through erasure markers beside key destruction for erasure.](../figures/11-checking-the-work.svg)
 
 Reads 1 and 2 are the two sentences the contents page opened with — and the second has been with us since chapter 01, as the deletion test. Read 3 is just a column count on a table you already have — no new notation, no second document.
 :::
@@ -39,14 +39,14 @@ Now walk back the other way. Remove a mechanism in the model and name the promis
 
 When a mechanism cannot name a constraint from outside — a client's, or a row of the operating envelope — there are exactly three things you can do with it — and they are a **search order**, not a menu. Take the first one that applies.
 
-1. **Delete it.** There is nothing above it. It entered by habit, and habit is a recurring charge.
-2. **Surface a missing requirement.** You trace it and land on a constraint that was true all along and simply never got written down. **This is the common case and the valuable one** — and quite often it is a *different* constraint from the one that bought the parent: a fencing token traces to the invariant the leader protects, not to the availability figure that bought the leader in the first place.
-3. **Declare it self-derived, naming the parent decision** — and the parent is now subject to this same test.
+1. **Surface a missing requirement.** You trace it and land on a constraint that was true all along and simply never got written down. **This is the common case and the valuable one** — and quite often it is a *different* constraint from the one that bought the parent: a fencing token traces to the invariant the leader protects, not to the availability figure that bought the leader in the first place.
+2. **Declare it self-derived, naming the parent decision** — and the parent is now subject to this same test.
+3. **Delete it** — but only when both searches have found nothing above it. Then it entered by habit, and habit is a recurring charge. On a running system even that verdict is worded differently, as the end of this chapter explains.
 
 ::: primer
 #### Citations chain — and no, the recursion is not a loophole
 
-The third disposition looks like an escape hatch, and I have seen it used as one. It is not — because **naming a parent moves the obligation up a level rather than discharging it.**
+The second disposition looks like an escape hatch, and I have seen it used as one. It is not — because **naming a parent moves the obligation up a level rather than discharging it.**
 
 The resharding path exists because the store is partitioned. Fine — so why is the store partitioned? Nothing partitions itself. Either a volume that did not fit on one machine bought it, or nobody bought it at all. The fencing token goes the same way: it exists because there is a leader, and a leader with elections was bought by clients who will not tolerate a maintenance window — or it was not bought either.
 
@@ -63,12 +63,12 @@ The map keeps quiet about this, because a matrix has no column for it — and th
 
 **A count above one is not automatically a defect.** Shared mechanisms are how a design stays small — a log serving three consumers is just a log doing its job. What the count buys you is three obligations, and all three are cheap:
 
-- **Carry it onto the ladder as *n* entries, not one.** Chapter 08 priced each rung, and a mechanism holding three promises has three degraded outcomes — and they may well land on different rungs. The log going down is a hard failure for durability and only a staleness breach for search.
+- **Carry it onto the ladder as *n* entries, not one.** Chapter 08 priced each rung, and a mechanism holding three promises has three degraded outcomes — and they may well land on different rungs. And keep the failure modes apart: a log that loses committed data breaches durability, while a log that refuses appends or stalls delivery loses nothing already acknowledged — it stops new acceptance, or lets search go stale.
 - **Check whether the signatories agree.** When the promises sharing one mechanism were signed off by different parts of the business, the strictest of them now sets the operating floor for all the others — so somebody is either paying for a guarantee they never asked for, or is about to lose one they did.
 - **Use counts to find scenarios, then rank the scenarios.** Consequence, affected clients, time to harm and recoverability determine priority. Record uncertainty, reversibility and shared dependencies alongside that judgement; one severe access-control failure can outrank ten minor display failures.
 
 ::: warn
-**Splitting a mechanism to bring its count down.** The count is a *measurement*, not a target. A second store that was derived from a coupling number rather than from a client constraint is an uncited mechanism, and read 2 deletes it on the spot — you have used the third reading to violate the second.
+**Splitting a mechanism to bring its count down.** The count is a *measurement*, not a target. A second store that was derived from a coupling number rather than from a client constraint is an uncited mechanism, and read 2 catches it: search above it and all you find is the count, so it comes out — you have used the third reading to violate the second.
 :::
 
 ::: primer
@@ -112,9 +112,9 @@ Take the four rows in the figure above and run all three readings on them proper
 
 A review that stopped here would sign the design off — and by the standards of almost every design review I have sat in, it would count as a competent one.
 
-**Read 3 returns a count of three.** Durability, search freshness and erasure all sit on the same replicated log. Now the three obligations kick in:
+**Read 3 finds three rows that depend on the same replicated log.** Durability rests on it directly, search freshness on the stream processor that reads it, and erasure on the erasure markers it carries beside key destruction. The count names a shared dependency, not a shared failure — so each failure mode gets looked at on its own. Now the three obligations kick in:
 
-- **Three ladder entries, not one.** If the log is unavailable, durability is a hard failure — writes cannot be accepted at all, and that is rung 5. Search freshness only degrades to rung 3, stale but complete, which the class already accepts. And erasure just quietly stops making progress, with nobody any the wiser, because a deletion job that does not run raises nothing at all. **Three different severities behind one component.**
+- **Three ladder entries, not one — and two failure modes.** If the log is *unavailable*, no acknowledged write is lost: new writes cannot be accepted, and that is rung 5 for acceptance. Search freshness only degrades to rung 3, stale but complete, which the class already accepts. And erasure just quietly stops making progress, with nobody any the wiser, because a deletion job that does not run raises nothing at all. If the log *loses committed data*, that is another scenario altogether: acknowledged writes are gone, and that is rung 6, the durability breach. **Different severities behind one component, and a different set for each way it fails.**
 - **The signatories differ.** Erasure within thirty days is a regulatory commitment, and search freshness is a product preference. Now the two are coupled to the same failure — so the regulatory clock is being kept by a mechanism whose operational priority was set by a product decision.
 - **The outage rehearsal is a candidate experiment.** Rank it against other scenarios by consequence, exposure and recovery, rather than by its three citations alone.
 
@@ -132,10 +132,10 @@ Eleven chapters of decisions boil down to a table with eight rows in it.
 | The viewer is handed an older album rather than an error — rung 3 | Existing sizes with an as-of marker and a signed maximum age; refuse when that age cannot be met | Age-gate and failure tests; maximum degraded age still required |
 | An upload is acknowledged within 5 s at p99 | One synchronous path that writes two things and resizes nothing; the thumbnailer split out behind the queue | The upload SLO, measured at the edge |
 | A new photo has its sizes within 60 s | Thumbnailer, retained recovery obligation and an end-to-end completion deadline; gate serving when freshness is unknown | Load, delayed-message and crash-recovery tests; declared |
-| *Your photo is safely stored* — never lost once acknowledged | The original in the object store and its **catalogue row**, both durable before the response | Acknowledged uploads reconciled against originals and rows, out of band |
+| *Your photo is safely stored* — never lost once acknowledged | The original in the object store and its **catalogue row**, both durable before the response | Acknowledged uploads reconciled against originals and rows, out of band; the same sweep removes originals that have no row |
 | The uploader sees their own upload at once | Read-your-writes on the **catalogue row** | A synthetic upload that reads its own row straight back |
 | *Pending, and you will be told* — rung 4 | The thumbnail state on the **catalogue row**, and the bounded queue that sheds to it | Uploads started against uploads that became viewable |
-| A photo is seen only by the people its owner allowed | Catalogue policy plus a CDN permission-version gate or acknowledged invalidation barrier; protocol unresolved | Revocation through every serving route, failure and cache tests; declared |
+| A photo is seen only by the people its owner allowed | Permission state on the **catalogue row**, plus a CDN permission-version gate or acknowledged invalidation barrier; protocol unresolved | Revocation through every serving route, failure and cache tests; declared |
 
 Table: The photo system's traceability map. Eight rows, and one mechanism in four of them. {cols="34% 34%"}
 
@@ -145,7 +145,7 @@ The trace covers the listed uploader and viewer promises, but coverage is not a 
 
 The count prompts scenario analysis. Catalogue loss, a stale permission read and a CDN serving an old signed address have different consequences and recovery paths. A fail-closed permission gate can preserve confidentiality while reducing availability; a catalogue row alone does not provide it. Prioritise these scenarios by harm and exposure, rather than putting the highest count first.
 
-**And one unconsumed figure.** Back in chapter 04 we asked for a working-set size for recent photos, and nothing in the design ever divided by it — the CDN made it irrelevant. By read 1's quieter form that is a finding against the asking, not against the arithmetic that never used it: the question should not have been put, and the number should come off the page rather than sit there looking like evidence.
+**And one unconsumed figure.** Back in chapter 04 we asked for a working-set size for recent photos, and nothing in the design ever divided by it — the CDN made it irrelevant. By read 1's quieter form that is a finding: nothing consumed it. Drop it, or name the decision it should have informed — the CDN's cache sizing is the obvious candidate — rather than leave it on the page looking like evidence.
 
 **The register starts with consequences.** Permission leakage and loss of an acknowledged original require explicit failure/recovery evidence. Assumed throughput and migration cost also justify probes, but neither a low coupling count nor a module seam discharges those correctness obligations.
 :::
@@ -157,9 +157,9 @@ And report a chain at its root. One ungrounded word beneath five correct derivat
 :::
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - Specification [§05 · Discipline](../method.html#disc) — the traceability map, both invariants, the third reading and its three obligations, and the anti-pattern of splitting to lower a count
 - Specification [step 10 · Trace](../method.html#s10) — the three dispositions as a search order, reading the chain rather than the link, the unconsumed figure, the stressors fired at the finished map, the risk register ranked by failure consequence and exposure, with provenance, reversibility and shared dependencies recorded, and the brownfield cutover
-- Specification [step 04](../method.html#s04) — the cost to reverse, one-way or two-way, recorded with every decision from there on
+- Specification [step 04](../method.html#s04) — the actual cost to reverse — rollback window, preserved data, deployed consumers, migration work — recorded beside each choice
 - Specification [§01 · Claim](../method.html#claim) — the deletion test stated as a count, and the recursive citation rule
 :::

@@ -43,16 +43,16 @@
   <text x="34" y="416" font-size="10.5" fill="#6C7780">who holds an artifact you cannot rebuild for them</text>
   <rect x="700" y="116" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
   <text x="714" y="138" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 05 &#183; STORED</text>
-  <text x="714" y="155" font-size="10" fill="#4A5560">which store family, and what it is answerable for</text>
+  <text x="714" y="155" font-size="10" fill="#4A5560">store family, and what it answers for</text>
   <rect x="700" y="220" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
   <text x="714" y="242" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 04 &#183; ARITHMETIC</text>
   <text x="714" y="259" font-size="10" fill="#4A5560">the ceiling, carried in as the fourth figure</text>
   <rect x="700" y="298" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
   <text x="714" y="320" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 07 &#183; TRANSMITTED</text>
-  <text x="714" y="337" font-size="10" fill="#4A5560">where the boundaries get cut, and what that buys</text>
+  <text x="714" y="337" font-size="10" fill="#4A5560">where boundaries are cut, and what it buys</text>
   <rect x="700" y="376" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
   <text x="714" y="398" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 10 &#183; CHANGING IT</text>
-  <text x="714" y="415" font-size="10" fill="#4A5560">repo topology, version scheme, rollout</text>
+  <text x="714" y="415" font-size="10" fill="#4A5560">compatibility, version scheme, rollout</text>
   <line x1="20" y1="444" x2="980" y2="444" stroke="#C9D2D4"/>
   <text x="20" y="464" font-size="11" fill="#4A5560"><tspan font-weight="600" fill="#101820">Procurement reality gates all four</tspan> &#8212; what can be bought this quarter, what needs a review board, what data may leave the building.</text>
   <text x="20" y="482" font-size="11" fill="#C21F2C" font-weight="600">A row with no named consumer is a question that should not have been asked.</text>

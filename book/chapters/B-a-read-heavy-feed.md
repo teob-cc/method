@@ -69,9 +69,9 @@ The authoritative inputs are **posts, follows and blocks**. Retain the follow ch
 
 Feed rows are keyed reads in a durable key-value store. Posts, follows and blocks are authoritative relational data. A block write returns a version; a read region must establish that version before serving. The latency and availability cost of that check belongs in the read-path sizing.
 
-**Then the sizing pass.** Total fan-out is the sum of each post’s eligible recipients. The account-weighted mean of 200 followers does not establish the post-weighted mean. **Conditionally**, if posts average 200 recipients, [2M × 200 = 400 million]{.num} rows/day, roughly [4 000/s]{.num}. The proposed [20 000/s]{.num} peak and [25 000/s]{.num} service capacity still need a measured burst envelope and load test. A 40-million-follower post plainly challenges that candidate; the ordinary-account distribution can challenge it too.
+**Then the sizing pass.** Total fan-out is the sum of each post’s eligible recipients. The account-weighted mean of 200 followers does not establish the post-weighted mean. **Conditionally**, if posts average 200 recipients, [2M × 200 = 400 million]{.num} rows/day, roughly [4 600/s]{.num} ([4 000]{.num} on the rounded [20]{.num} posts a second). The proposed [20 000/s]{.num} peak and [25 000/s]{.num} service capacity still need a measured burst envelope and load test. A 40-million-follower post plainly challenges that candidate; the ordinary-account distribution can challenge it too.
 
-**Stored bytes and nodes.** A feed row is a reader, a post id and a timestamp — call it [100 bytes]{.num}, **assumed** — so 400 million rows a day is [40 GB]{.num} a day, and at a week's retention and three replicas about [840 GB]{.num}. It is the writes that decide the node count, not the bytes: [25 000/s]{.num} provisioned, three copies of each, is [75 000]{.num} node-writes a second. Against a node taken at [10 000]{.num} writes a second — **assumed**, until a load test says otherwise — and run at half, that is fifteen nodes. Lose one and the other fourteen take [70 000]{.num}, against the [60 000]{.num} the peak needs: N−1, with a little to spare.
+**Stored bytes and nodes.** A feed row is a reader, a post id and a timestamp — call it [100 bytes]{.num}, **assumed** — so 400 million rows a day is [40 GB]{.num} a day, and at a week's retention and three replicas about [840 GB]{.num}. It is the writes that decide the node count, not the bytes: [25 000/s]{.num} provisioned, three copies of each, is [75 000]{.num} node-writes a second. Against a node taken at [10 000]{.num} writes a second — **assumed**, until a load test says otherwise — and run at half, that is fifteen nodes. Lose one and the other fourteen take [70 000]{.num}, against the [60 000]{.num} the peak needs: N−1, with a little to spare. And the working set step 02 left unsized gets its size here: one day of rows, [40 GB]{.num}, [120 GB]{.num} with its replicas, about [8 GB]{.num} on each of the fifteen nodes. Its consumer is node memory — the reader p99 rests on the day's rows being served from it, **assumed** until the same load test says otherwise.
 
 Cost per thousand reads falls out of the same sum — the feed store's provisioned write throughput is the largest line of it — and I do not compute it here: that needs a price list, and inventing one is exactly what chapter 04 forbade. It goes on the risk register as a missing input, with its consumer named.
 
@@ -85,7 +85,7 @@ A completion deadline contains **queue wait + processing time + publication dela
 
 **Channels.** The post transaction writes a durable outbox event; producer and each consumer have separate contracts. Delivery is at least once, ordered per author. A bounded work queue has an explicit overflow response: retain accepted events in the outbox and use only an agreed, capacity-tested fallback. Do not silently drop a published post. Expired materialization instructions trigger repair from retained inputs, with an owner and deadline. Readers support all writer schemas retained in the replay window. State group-resolution and rebalance bounds, drain behaviour, redelivery position and lag-based admission limits.
 
-**Granularity.** Two runnable units, and no more than two. The read path and the write path scale on different axes by a factor of 25 — the independent-scaling force at work, doing precisely what it is there to do — and it is the only split bought.
+**Granularity.** Two runnable units, and no more than two. The read path and the write path scale on different axes — [2 500]{.num} reads a second against [100]{.num} posts a second fanning out to [20 000]{.num} row writes — the independent-scaling force at work, doing precisely what it is there to do — and it is the only split bought.
 
 ## 05–06 · Trust and derivation
 
@@ -101,7 +101,7 @@ Readers are authenticated and authorized at the surface. Block checks enforce th
 
 ## 10 · Trace, read three ways
 
-| Requirement | Mechanism | Verified by |
+| Requirement | Mechanism | Evidence required |
 |---|---|---|
 | Reader p99 200 ms at 2 500/s | Precomputed feed rows, KV, replicated per region | Per-region read SLO + error budget |
 | A published post is never lost | **Post store**, quorum-acked before returning | Durability audit against acknowledgements |
@@ -114,7 +114,7 @@ Readers are authenticated and authorized at the surface. Block checks enforce th
 
 **Coverage is declared; sufficiency remains conditional.** The follow history, block-version protocol, admission envelope, scheduler, degraded-age allowance, recovery time and cost inputs must be resolved before this design can be called verified. The table names the tests; it does not report their results.
 
-**Read 3 returns a count of two on the post store**, and the two could hardly be less alike. It carries durability, whose failure is rung 5 for posters, and it carries large-account freshness, whose failure is rung 3 for readers. **One component, two rungs, two client classes** — so the operating floor is set by the stricter of the two, and the rehearsal covers both. That is the finding of this chapter, and a map read twice never shows it to you.
+**Read 3 returns a count of two on the post store**, and the two could hardly be less alike. It carries durability — post-store unavailability is rung 5 for posters, and loss of an acknowledged post would be rung 6, which the quorum acknowledgement and the durability audit are there to hold — and it carries large-account freshness, whose failure is rung 3 for readers. **One component, two client classes, and a different rung for each way it fails** — so the operating floor is set by the stricter of the two, and the rehearsal covers both. That is the finding of this chapter, and a map read twice never shows it to you.
 
 The follower distribution remains useful for workload validation, even though no single percentile decides the cutoff. Obtain the post-weighted distribution and concurrent-post bursts before turning a candidate threshold into a capacity commitment.
 
@@ -125,7 +125,7 @@ Change the freshness bound and re-evaluate the whole completion budget, includin
 :::
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - The ten steps in order, on a system chosen to break differently from [ticket booking](../worked-example.html) (contention) and the photo thread running through chapters 01–12 (derivation)
 - Specification [the ten steps](../method.html#steps) · [§05 · Discipline](../method.html#disc) for the three readings of the map
 :::
