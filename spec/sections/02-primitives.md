@@ -68,7 +68,7 @@ Naming a technology once is how a design smuggles in unexamined decisions. The l
 
 ### Where the boundaries are — and what each crossing costs {style="color:var(--ink2);font-size:12px;margin:16px 0 2px"}
 
-An edge is not a fixed thing. The very same arrow between the very same two responsibilities carries nothing, eight properties, or twelve, depending only on *which boundary it crosses* — and that is decided when storage and transport are chosen, not here. This is why granularity is a phase change rather than a refinement: it decides how many of the edges on your graph are channels at all.
+An edge is not a fixed thing. The very same arrow between the very same two responsibilities carries local contracts, eight properties, or twelve, depending only on *which boundary it crosses* — and that is decided when storage and transport are chosen, not here. This is why granularity is a phase change rather than a refinement: it decides how many of the edges on your graph are channels at all.
 
 ::: figure
 ![Two panels. The first shows an edge crossing three kinds of boundary: inside one runnable unit it is a function call that still needs explicit local contracts; between runnable units it is a channel acquiring eight properties, two of which are the failure mode; across the system boundary it is a surface, acquiring identity origination, quota policy, an external contract and invariant enforcement. The second panel explodes a surface into its channel part, its processor part, and the four properties neither can express.](../figures/02-boundaries.svg)

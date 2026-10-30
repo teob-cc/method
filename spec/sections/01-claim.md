@@ -36,7 +36,7 @@ The complementary test runs the other way. Change the inputs — traffic a hundr
 :::
 
 ::: say
-“The system is a consequence; the clients are the cause. A review should be able to walk any box on the board back to a sentence about a client, or about the organisation that has to run it — and delete any box that can't make the walk.”
+“The system is a consequence; the clients are the cause. A review should be able to walk any box on the board back to a sentence about a client, or about the organisation that has to run it — and investigate any box with no recorded reason.”
 :::
 
 ### Why this model can be shared, and a component diagram cannot
@@ -51,13 +51,13 @@ Separating the *role* from the *implementation* is also what lets the descriptio
 
 The genre stops at the runtime picture: boxes, arrows, a datastore, sometimes a cache. This method carries the same derivation four steps further — into observability, operations, delivery and the codebase lifecycle — because those are where the business half of the organisation actually experiences the system. A design that specifies the topology and leaves the rest to “ops later” has specified the easy half and quietly handed over the expensive one.
 
-None of the four is a separate discipline bolted on afterwards — each is **derived from the same outside**, by the same rule, and each cites a constraint or is deleted:
+None of the four is a separate discipline bolted on afterwards — each is **derived from the same outside**, by the same rule, and each cites a constraint or is reported as uncited:
 
 <table style="margin-top:8px">
 <tr><th style="width:20%">Adjacent area</th><th>Derived from</th><th style="width:19%">Derived at</th></tr>
 <tr><td><b>Observability</b></td><td>Consequence, not convention. What is watched — and how hard, and who is woken — is proportioned to how badly a client is hurt when this aspect breaks, and to where on the degradation ladder that lands. An SLO is a client tolerance with a measurement attached; a zero-tolerance count is a promise that has no acceptable rate at all</td><td>Operations</td></tr>
 <tr><td><b>Operations</b></td><td>The organisation that has to run it: hosting posture, contracts already held, on-call reality, and the cost envelope. Cost is a first-class outside constraint that shapes the store as firmly as data volume does, and it is the one most often left out of the model entirely</td><td>Outside · Operations</td></tr>
-<tr><td><b>Delivery</b></td><td>Source access, ownership and coordination determine repository layout. Deployed and retained versions determine compatibility, upgrade and deprecation contracts. Rollout, rollback and drift handling follow the actual failure and recovery obligations.</td></tr>
+<tr><td><b>Delivery</b></td><td>Source access, ownership and coordination determine repository layout. Deployed and retained versions determine compatibility, upgrade and deprecation contracts. Rollout, rollback and drift handling follow the actual failure and recovery obligations.</td><td>Outside · Storage &amp; transport · Runtime &amp; placement · Operations</td></tr>
 <tr><td><b>Codebase lifecycle</b></td><td>Expected evolution: spike · one-off product · prototype becoming platform · platform. The lifecycle shapes repo topology and runtime granularity <em>before</em> anything is written — a modular monolith with explicit internal contracts is the right answer to “platform, eventually” and the wrong answer to “spike”</td><td>Outside · Storage &amp; transport</td></tr>
 </table>
 
