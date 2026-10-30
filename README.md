@@ -42,7 +42,7 @@ A mistake in a source stops the build with the file and what is wrong.
 ## Versions, stamps and releases
 
 Every piece carries its own stamp in its front matter (the specification's `version` and `stamp` in `spec/spec.yaml`;
-the book's in `book/book.yaml`; the foreword's, the worked example's and each derivation's in their `stamp`). Bump the
+the book's in `book/book.yaml`; the foreword's, the worked example's and each derivation's in their `stamp`; the evidence note's in its first line). Bump the
 stamp of what changed, and the "applies V4.x" lines of the pieces that track it.
 
 A git tag of the form `2026.10.30` (a date, no `v`) makes a GitHub release carrying the built site,
