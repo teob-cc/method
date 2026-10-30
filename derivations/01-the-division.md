@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The division"
-stamp: "DERIVATION 01 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 01 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 number: "01"
 subtitle: "**A rate limiter, twice.** Two published treatments of the same system. One asserts a range of host counts and never divides, the other states no volume at all — and neither reaches the one decision that actually matters."
 html_title: "The division · Outside-In Derivations"
@@ -112,8 +112,8 @@ Likewise, record whether a `client` is an account, device, tenant or credential,
 :::
 
 ::: footer
-DERIVATION 01 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATION 01 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 Source locator: Zhiyong Tan, *Acing the System Design Interview* (Manning, 2024), ch. 8, pp. 171–195; Alex Xu, *System Design Interview — An Insider’s Guide*, 2nd ed., ch. 4, pp. 50–69. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §6.2.2. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

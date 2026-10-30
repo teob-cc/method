@@ -4,7 +4,7 @@ html_title: "Stress-pass evidence · The Outside-In Method"
 meta:
 ---
 
-THE OUTSIDE-IN METHOD V4.12 · EVIDENCE NOTE V1 · 2026-10-11
+THE OUTSIDE-IN METHOD V4.14 · EVIDENCE NOTE V2 · 2026-10-30
 
 # What the stress demonstration establishes
 

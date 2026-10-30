@@ -69,7 +69,7 @@ Doing capacity first is how a design ends up with a coordination protocol betwee
 
 **Do the division per node, cluster and hot scope.** Divide each hot scope’s peak demand by the measured sustainable throughput of its actual enforcement protocol. 1 ÷ commit latency is only a one-at-a-time, stop-and-wait estimate; batching, pipelining and transaction shape can change it. Saturation rejects that implementation under those assumptions, not every serial protocol.
 
-**Divide at the moment you choose, not in review.** Citing a constraint is not enough. Record what the constraint demands, what the mechanism supplies, and the ratio between them — supplied over demanded, with the demand taken at its average. Near 1 is sized to the job. In the tens is headroom, and you must name the factor — growth, peak, or failover. In the hundreds means the citation is decorative and the shape came from a reference architecture; the mechanism is not wrong so much as unjustified at that size. The ratio costs one line at the moment of choice, and a re-derivation to recover afterwards. The fourth field is **what the mechanism introduces** — a cache, a stale window; a conditional write, a per-key ceiling; two sources of truth, a reconciliation. Each introduced item is cited by the mechanism that answers it, carried onto the degradation ladder or the risk register, or accepted in writing.
+**Divide at the moment you choose, not in review.** Citing a constraint is not enough. Record what the constraint demands, what the mechanism supplies, and the ratio between them — supplied over demanded, with the demand taken at its average. Near 1 is sized to the job. In the tens is headroom, and you must name the factor — growth, peak, or failover. In the hundreds means the requirement cannot discriminate the choice, and the shape came from somewhere other than this derivation; the mechanism is not wrong so much as unjustified at that size. The ratio costs one line at the moment of choice, and a re-derivation to recover afterwards. The fourth field is **what the mechanism introduces** — a cache, a stale window; a conditional write, a per-key ceiling; two sources of truth, a reconciliation. Each introduced item is cited by the mechanism that answers it, carried onto the degradation ladder or the risk register, or accepted in writing.
 
 ## Acknowledgements scope the expensive store
 
@@ -85,13 +85,13 @@ Ask of every write: **if this call returned "probably", would the next screen be
 
 ## Invariants have their own ladder
 
-**Scope sets the proof obligation.** A one-key conditional update may suffice. Multi-key invariants need serializable transactions or a proved locking/constraint protocol; snapshot isolation alone can permit write skew. Across partitions, coordinate the full scope or revise the signed promise. Escrow is valid only for decomposable invariants with conserved rights, atomic local spending, fenced ownership and safe transfer/reclamation after failure. Rate × lag bounds require hard admission and lag limits, burst and in-flight allowances, and a defined response when those limits fail. Average rate and a lag alarm are not a hard bound; a saga alone is not E3.
+**Scope sets the proof obligation.** A one-key conditional update may suffice. Multi-key invariants need serializable transactions or a proved locking/constraint protocol; snapshot isolation alone can permit write skew. Across partitions, coordinate the full scope or revise the signed promise.
 
 **The enforcement ladder** — how strictly an invariant holds under concurrent writers; not **the degradation ladder**, which is what a client is handed.
 
 | Rung | How | Violation | Price |
 |---|---|---|---|
-| **E1 Serialised** | One serialisation point checks every change | None | Contention: the per-key ceiling |
+| **E1 Serialised** | One serialisation point checks every change | None | Contention and coordination; measure the enforcing protocol at the hot key |
 | **E2 Escrowed** | Writers spend local slices of the quantity, refilled from the serialisation point | None | Slack stranded in slices: undershoot |
 | **E3 Bounded** | Admission and propagation bounds, with reconciliation | A proved bound including bursts and in-flight work | Overshoot and reconciliation |
 | **E4 Detected** | No check on the path; an audit finds and compensates | Unbounded until the audit | Every violation, priced |
@@ -122,9 +122,9 @@ If one constraint changes in an existing design, begin with the affected claim a
 
 The full pass is an afternoon, and it earns that when there are several client classes, real scale questions or regulated data. A single-class CRUD service on one database deserves **Outside, Data and Trace** in fifteen minutes.
 
-Other stop rules: one node meets demand and failure requirements (stop capacity expansion) · shallow trust boundary (keep the explicit authentication and authorisation policy) · no contended resource (omit reservations if no other invariant requires coordination).
+Other stop rules, as the specification names them: one node suffices (stop capacity expansion once it meets demand and the failure requirements) · shallow trust (keep the explicit authentication and authorisation policy) · no contended resource, so no reservation and no strict store (unless another invariant requires coordination) · no pipeline stage that cannot fail the build.
 
-**Delivery stop rules:** Repository topology and consumer compatibility are separate decisions. A published SDK can live in a monorepo. Repo splits cite access, tooling, ownership or release constraints. Own mobile apps, rolling deployments, persisted data and queued messages can retain old versions; declare their compatibility windows even when every source file shares a commit. Keep one artifact per runnable unit; add build machinery and environments only for a recorded constraint.
+**Delivery stop rules:** keep one artifact per runnable unit; add build machinery and environments only for a recorded constraint. Repository topology is decided separately — see granularity below.
 
 Taking a stop rule is the method working. Running all ten steps on a trivial system is the method being performed.
 
@@ -146,7 +146,7 @@ Each runtime split must cite one of six forces: independent delivery (a differen
 
 Produce the artifacts in order, each small enough to fit on a screen. Close with the traceability map:
 
-| Requirement (testable) | Mechanism and assumptions | Evidence and status |
+| Requirement (testable) | Mechanism and assumptions | Evidence required |
 |---|---|---|
 
 Then check for unmapped requirements, mechanisms with no recorded obligation, and shared dependencies. A trace row records the requirement, mechanism, assumptions, argument, evidence and status (declared / argued / tested / violated). A planned test is not a passing test; a zero violation counter is not a correctness proof. Count shared citations to prompt failure-mode analysis, then rank risk by consequence, exposure, uncertainty and reversibility, not the count alone.

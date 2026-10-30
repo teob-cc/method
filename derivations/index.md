@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "Eight derivations"
-stamp: "DERIVATIONS · INDEX · V1.5 · 2026-10-12 · EIGHT DEVICES · APPLIES THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATIONS · INDEX · V1.6 · 2026-10-30 · EIGHT DEVICES · APPLIES THE OUTSIDE-IN METHOD V4.14"
 subtitle: "**Eight devices, each illustrated on the systems where it bites.** Organised by what the method does, not by whichever system it happens to be doing it to — the device is the transferable part, and the system is only the evidence."
 html_title: "Eight derivations · Outside-In Derivations"
 meta:
@@ -26,7 +26,7 @@ meta:
 
 ::: mod {tab="THE EIGHT"}
 ::: kick
-Outside-In · derivations · applies the method V4.13 · each piece includes a scoped naming application
+Outside-In · derivations · applies the method V4.14 · each piece includes a scoped naming application
 :::
 
 ## Eight derivations
@@ -41,11 +41,11 @@ The problems here are the standard ones — a rate limiter, a feed, a booking sy
 | {.num} 01 | [**The division**](01-the-division.html) | a rate limiter, in two published treatments | Compute what one node serves before deciding you need many — and record the ratio between demanded and supplied |
 | {.num} 02 | [**The stop rule**](02-the-stop-rule.html) | a classifieds marketplace · a social feed | If one node does it, say so out loud and stop. A cluster sized for a dozen writes a second is evidence the store was chosen wrongly |
 | {.num} 03 | [**The missing root**](03-the-missing-root.html) | a key-value store · a friend-graph feed | Follow every chain of mechanisms to its root. If the root is an adjective, the chain is unanchored — and every figure you collect must name the step that consumes it |
-| {.num} 04 | [**The invariant**](04-the-invariant.html)<br><span style="font-size:11.5px;color:var(--ink2)">and the organisation behind it</span> | a room-reservation system | One enforcer and one serialisation point per contended unit; every zero-tolerance promise owes a counter; the people who clean up after it are design inputs |
-| {.num} 05 | [**The acknowledgement**](05-the-acknowledgement.html)<br><span style="font-size:11.5px;color:var(--ink2)">and where the code runs</span> | a photo-sharing service | Receipt, reservation or completion — the weakest one the client can live with decides whether you need the expensive store. Placement is an organisation question as often as a performance one |
-| {.num} 06 | [**The projection**](06-the-projection.html) | prefix autocomplete · a CDN · a ranking board | Every derived store declares its source, its staleness bound and its rebuild path; every approximation owes an error bound; not every aggregate can be merged |
-| {.num} 07 | [**The client classes**](07-the-client-classes.html) | a notification service · <span style="font-size:11.5px">a batch auditor, as a sidebar</span> | Enumerate the callers with quotas, tolerances and a shed order. Adversaries are a class; your dependencies are client relationships reversed |
-| {.num} 08 | [**The channel**](08-the-channel.html) | a messaging app under end-to-end encryption | Eight properties per edge, and a ninth it inherits. Exactly-once is three properties in three places, not a product feature — and a connection tier is a membership problem before it is a capacity one |
+| {.num} 04 | [**The invariant**](04-the-invariant.html)<br><span style="font-size:11.5px;color:var(--ink2)">and the organisation behind it</span> | a room-reservation system | An enforcement protocol over each invariant's whole contended scope; every zero-tolerance promise owes a counter; the people who clean up after it are design inputs |
+| {.num} 05 | [**The acknowledgement**](05-the-acknowledgement.html)<br><span style="font-size:11.5px;color:var(--ink2)">and where the code runs</span> | a photo-sharing service | Receipt, reservation or completion — the weakest one the client can live with scopes strict coordination; authority is decided separately. Placement is an organisation question as often as a performance one |
+| {.num} 06 | [**The projection**](06-the-projection.html)<br><span style="font-size:11.5px;color:var(--ink2)">and its contract</span> | prefix autocomplete · a CDN · a ranking board | Every derived store declares its source, its staleness bound and its rebuild path; every approximation owes an error bound; not every aggregate can be merged |
+| {.num} 07 | [**The clients you did not name**](07-the-client-classes.html) | a notification service · <span style="font-size:11.5px">a batch auditor, as a sidebar</span> | Enumerate the callers with quotas, tolerances and a shed order. Adversaries are a class; your dependencies are client relationships reversed |
+| {.num} 08 | [**The channel**](08-the-channel.html)<br><span style="font-size:11.5px;color:var(--ink2)">and what it may be trusted with</span> | a messaging app under end-to-end encryption | Eight properties per edge, and a ninth it inherits. Effectively-once is a consumer protocol — key, effect and saved result committed atomically, or an idempotent effect — not a broker feature; and a connection tier is a membership problem before it is a capacity one |
 
 {cols="5% 24% 26%"}
 :::
@@ -86,7 +86,7 @@ Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publicati
 :::
 
 ::: footer
-DERIVATIONS · INDEX · V1.5 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATIONS · INDEX · V1.6 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 These are worked arguments, not empirical validation of the method. Each piece identifies its reported source and the limits of verification. A trace or a plausible calculation is an obligation to test, not evidence of a running system.
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

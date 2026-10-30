@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The clients you did not name"
-stamp: "DERIVATION 07 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 07 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 short: "The client classes"
 number: "07"
 subtitle: "**A notification service.** Designed for one imagined caller, it melts. Designed for the four callers that actually exist — each with a quota, its tolerances, the views it reads, the outcomes it accepts and a position in the shed order — it becomes almost obvious. And the org chart turns up right inside the request path — which is not a smell."
@@ -106,8 +106,8 @@ Within that boundary, a transactional sender is a kind of sender; a recipient is
 :::
 
 ::: footer
-DERIVATION 07 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
-Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 9, pp. 196–223. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
+DERIVATION 07 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
+Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 9, pp. 196–223, and for the batch-auditor sidebar ch. 10. Locators and descriptions are inherited from the original reading notes, except ch. 10's, which is taken from the published table of contents with its pages not re-checked; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§5.3.5, 6.2.1, 6.6.1, 8.3–8.4 and 11.2. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

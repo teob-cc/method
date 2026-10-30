@@ -2,7 +2,7 @@
 kind: "companion"
 css: "foreword"
 title: "Where this came from"
-stamp: "FOREWORD · V11 · NAMES AND THEIR CONTRACTS · 2026-10-12 · WHERE THIS CAME FROM · 15 DEBTS · WHAT THE OBJECTIONS CHANGED"
+stamp: "FOREWORD · V12 · THE WORDING OF V4.12, CARRIED THROUGH · 2026-10-30 · WHERE THIS CAME FROM · 15 DEBTS · WHAT THE OBJECTIONS CHANGED"
 subtitle: "**I did not get this method out of a book. I got it out of design reviews — and only then went and read the books.** Years of watching design documents being written backwards grew into a reflex: point at a box and ask what would delete it. The reading came afterwards, as a check — and most of what the reflex had arrived at was already there, some of it fifty years old. This page is the reconciliation: the company the method keeps, the combinations not found in the sources reviewed, and the six best arguments against the whole idea. One of them removed the paper's headline claim. The newest one I answered by adopting it."
 html_title: "Where This Came From · Foreword to the Outside-In Method"
 meta:
@@ -40,7 +40,7 @@ Everything here follows from one move, and the move is old: **draw the boundary,
 
 **Structured analysis made it a drawing procedure.** A context diagram is drawn literally outside-in: find the flows, find the **external entities** — the sources and recipients that sit outside the system — draw the system as a single box, and arrange those entities around it. Nothing inside the box gets drawn until the outside is done. Gane & Sarson had this worked out in 1977. [→ debt 2]{.meta}
 
-**Kessler and Sweitzer made it a development discipline, and gave it this exact name.** *Outside-in Software Development* (IBM Press, 2007) says: find the stakeholders who determine what the project is really worth, and shape every decision around what they need. Its chapter 2 is *Understanding stakeholders*; its chapter 3 is *Understanding organizational context*. That is this method's first step — both halves of it, the two outsides — separated a full nineteen years before I treated the separation as a contribution. [→ debt 3]{.meta}
+**Kessler and Sweitzer made it a development discipline, and gave it this exact name.** *Outside-in Software Development* (IBM Press, 2007) says: find the stakeholders who determine what the project is really worth, and shape every decision around what they need. Its chapter 2 is *Understanding Your Stakeholders*; its chapter 3 is *Understanding Organizational Context*. That is this method's first step — both halves of it, the two outsides — separated a full nineteen years before I treated the separation as a contribution. [→ debt 3]{.meta}
 
 **Evans, and Fowler after him, made it a rule about models.** Once a domain grows large enough, one unified model stops working, because different parts of an organisation use subtly different vocabularies for the same words. So a model is only true *inside* a declared boundary, and integrating two of them means mapping, not merging. Bounded Context is the point where the entities around the system stop being scenery and become the thing that fixes what your words mean. [→ debt 4]{.meta}
 
@@ -77,7 +77,7 @@ And one naming problem, best stated plainly because someone will raise it sooner
 ## The company it keeps
 
 ::: lede
-Fifteen debts, roughly in order of size. They are not an apology. This is the neighbourhood the method lives in, and a method with no neighbours is a method nobody has checked. For each one: what the ancestor says, in its own words where the wording matters, and exactly where Outside-In differs. The original reading notes report primary-source checks; this revision has not independently reverified every quotation or absence claim. The named readings bound the comparison, and absence from them does not establish absence from the literature. **Two of these were conceded late; others were adopted explicitly.** The stress pass arrived at V4.6, and the vocabulary discipline at V4.13. And one thing I learned writing a page like this: the reading never stops finding parents.
+Fifteen debts, not ranked by size — the largest is the twelfth. They are not an apology. This is the neighbourhood the method lives in, and a method with no neighbours is a method nobody has checked. For each one: what the ancestor says, in its own words where the wording matters, and exactly where Outside-In differs. The original reading notes report primary-source checks; this revision has not independently reverified every quotation or absence claim. The named readings bound the comparison, and absence from them does not establish absence from the literature. **Two of these were conceded late; others were adopted explicitly.** The stress pass arrived at V4.6, and the vocabulary discipline at V4.13. And one thing I learned writing a page like this: the reading never stops finding parents.
 :::
 
 ### 1 · Michael Jackson — the problem is in the world
@@ -112,9 +112,9 @@ Processor ≈ process. Channel ≈ data flow. Store ≈ data store. Three near-r
 
 | Kessler & Sweitzer, 2007 | Outside-In |
 |---|---|
-| Ch. 2 · *Understanding stakeholders* | Step 01, demand half — client classes, and what each is promised |
-| Ch. 3 · *Understanding organizational context* | Step 01, supply half — the operating envelope: capability, hosting posture, contracts already held, cost |
-| Ch. 6 · *Defining success in stakeholders' terms* | Step 09 outcome KPIs — derived from clients rather than from whatever is easy to emit |
+| Ch. 2 · *Understanding Your Stakeholders* | Step 01, demand half — client classes, and what each is promised |
+| Ch. 3 · *Understanding Organizational Context* | Step 01, supply half — the operating envelope: capability, hosting posture, contracts already held, cost |
+| Ch. 6 · *Defining Success in Your Stakeholders' Terms* | Step 09 outcome KPIs — derived from clients rather than from whatever is easy to emit |
 
 {cols="44%" style="margin-top:8px"}
 
@@ -131,7 +131,7 @@ That is this method's instinct, aimed at meaning rather than at volume. A **surf
 **Differs:** Evans bounds *meaning*. This method bounds *load, failure and cost*. A bounded context has no throughput, no tolerance and no bill. The two are orthogonal enough to compose — and that is worth saying plainly, because a reader arriving from DDD will quite reasonably ask which of the two boundaries the primitives draw. The second one.
 
 ::: meta
-**DEBT PAID LATE** the worked example's “one aggregate per map, each seat in exactly one of free → held(expiry) → sold” uses **aggregate** in Evans's sense — the unit inside which an invariant holds and writes serialise. It carried no citation until the third draft of this page.
+**DEBT PAID LATE** the worked example's seat-hold scope is an **aggregate** in Evans's sense — the unit inside which an invariant holds and writes serialise, there one seat–show pair — and its “whole-map aggregate” uses the word the same way. Its first wording, “one aggregate per map, each seat in exactly one of free → held(expiry) → sold” (worked example V1.6), carried no citation until the third draft of this page.
 :::
 
 ### 5 · The regulated-industry traceability standards
@@ -152,7 +152,7 @@ The two-direction check is not new. What is unusual is the *severity* — and no
 
 ### 6 · Suh's Axiomatic Design, QFD, and the systematic-design tradition
 
-Suh (1990) maps functional requirements to design parameters through a design matrix, requires FRs to be established in what he calls a **“solution-neutral environment”** — his own term — and has a name for a design parameter with no functional requirement: **redundant design**. QFD's House of Quality (Akao 1966; Kobe 1972) is a weighted requirement × characteristic matrix whose empty rows and columns are read exactly as gaps and unjustified mechanisms, and whose four-phase cascade is literally “each step consumes the output of the step before.” Pahl & Beitz and VDI 2221 standardised the ordered-artifact pipeline in Germany in the 1980s. Crawley has taught solution-neutral function and beneficiary-first derivation at MIT since 2007.
+Suh (1990) maps functional requirements to design parameters through a design matrix, requires FRs to be established in what he calls a **“solution-neutral environment”** — his own term — and has a name for a design parameter with no functional requirement: **redundant design**. QFD's House of Quality (Akao 1966; Kobe 1972) is a weighted requirement × characteristic matrix whose empty rows and columns are read exactly as gaps and unjustified mechanisms, and whose four-phase cascade is, literally, each step consuming the output of the step before. Pahl & Beitz and VDI 2221 standardised the ordered-artifact pipeline in Germany in the 1980s. Crawley has taught solution-neutral function and beneficiary-first derivation at MIT since 2007.
 
 ::: concede
 QFD owns the traceability matrix. Suh owns the formal version and the solution-neutral requirement. VDI 2221 owns the ordered pipeline of written artifacts. All of them predate this method by decades, and none of them was cited in the method paper's lineage section until V4.9.
@@ -208,13 +208,13 @@ Two changes make it a method rather than an observation, and they are the whole 
 Found while sorting the pattern literature, long after §01 had been written and rewritten around the shared model. Finding its parent did not weaken the claim. It located it.
 :::
 
-### 13 · martinfowler.com — the delivery half, and three attributions corrected
+### 13 · martinfowler.com — the delivery half, and four attributions corrected
 
-The fourth thread, delivery, is almost entirely other people's work. **Published Interface** (2003) is the parent of two separate rules here: the finding that an async channel's schema is an API nobody declared, and the repo-topology test — a second repository is bought at the moment a caller exists whom your commit cannot reach. **MonolithFirst** (2015) supplies the evidence for defaulting to one runnable unit — the evidence, not the rule: the method reaches that default by its own stop rule and says outright that it is not a monolith-first preference. **CQRS** (2011) and the four event-driven patterns (2017) are owed alongside it, CQRS with Fowler's own caution attached. The method paper names none of the three; this page is where they are cited.
+The fourth thread, delivery, is almost entirely other people's work. **Published Interface** (2003) is the parent of two separate rules here: the finding that an async channel's schema is an API nobody declared, and the compatibility test — a caller your release cannot reach is owed an explicit version and a deprecation contract, while repository layout is decided separately. **MonolithFirst** (2015) supplies the evidence for defaulting to one runnable unit — the evidence, not the rule: the method reaches that default by its own stop rule and says outright that it is not a monolith-first preference. **CQRS** (2011) and the four event-driven patterns (2017) are owed alongside it, CQRS with Fowler's own caution attached. The method paper names none of the three; this page is where they are cited.
 
 Adopted whole as named deliverables: the **strangler fig**, **branch by abstraction**, **parallel change**, **canary**, **blue-green**, and a four-category feature-flag taxonomy whose *ops toggle* closed a real gap — it is what gives the degradation ladder an actuator.
 
-**Three attributions had to be corrected, and they are commonly got wrong.** Parallel change and canary release are **Danilo Sato's**; the flag taxonomy is **Pete Hodgson's**; consumer-driven contracts is **Ian Robinson's**. All three are hosted on martinfowler.com, and none of them was written by Fowler. Citing the domain rather than the author is exactly the kind of error this page exists to catch — and I had made it three times.
+**Four attributions had to be corrected, and they are commonly got wrong.** Parallel change and canary release are **Danilo Sato's**; the flag taxonomy is **Pete Hodgson's**; consumer-driven contracts is **Ian Robinson's**; and branch by abstraction, though Fowler wrote it up in 2014, is credited there to **Paul Hammant** for the name and **Stacy Curl** for the technique. All four are hosted on martinfowler.com: three were not written by Fowler at all, and the fourth is his write-up of other people's work. Citing the domain rather than the author is exactly the kind of error this page exists to catch — and I had made it four times.
 
 And one boundary worth stating: most of *Patterns of Enterprise Application Architecture* sits **below** this method's floor. Those patterns implement a processor or a store; they do not decide whether you need one.
 
@@ -237,7 +237,7 @@ And one boundary worth stating: most of *Patterns of Enterprise Application Arch
 ### Also owed, briefly
 
 ::: meta
-**KAOS** (van Lamsweerde) — the system boundary as an *output* of responsibility assignment; anti-models giving the attacker its own machine, which is the formal version of “adversaries are clients too”; and the split of assumptions from domain properties, which is the provenance idea<br> **ZAVE & JACKSON** — `S, K ⊨ R`, the formal ancestor of the trace step<br> **FIELDING** ch. 5 — REST derived from the null style one constraint at a time, each with its induced property *and* its cost. The best-known worked example of constraint-first derivation in the field<br> **IMPACT MAPPING** (Adzic 2012) — actors first, and a deletion rule in nearly the method's words: a deliverable that supports no impact “should be treated as a problem, enhanced or removed”<br> **TYREE & AKERMAN** (2005) — the ADR template's *related requirements* field, with the rule “if a decision doesn't contribute to meeting a requirement, don't make the decision”<br> **GSN** (Kelly & Weaver) — first-class Assumption and Justification nodes, and the line the trace step exists to prevent: “it is possible to possess a document called the Safety Case and for there to be no safety case”<br> **COCKBURN, C4, GLOBAL ANALYSIS, ISO 42010** — boundary-and-actors first, in four more traditions<br> **KLEPPMANN, KREPS** — the truth store with rebuildable derived views around it: *Designing Data-Intensive Applications*, “Turning the Database Inside Out”, and “The Log”. The method paper's lineage opens with them, and this page had never said so<br> **THE SRE WORKBOOK** — the service-level objective and its error budget, which turn reliability from an argument into arithmetic. What the method adds is where the objective comes from: a client's tolerance, promoted
+**KAOS** (van Lamsweerde) — the system boundary as an *output* of responsibility assignment; anti-models giving the attacker its own machine, which is the formal version of “adversaries are clients too”; and the split of assumptions from domain properties, which is the provenance idea<br> **ZAVE & JACKSON** — `S, K ⊢ R`, the formal ancestor of the trace step<br> **FIELDING** ch. 5 — REST derived from the null style one constraint at a time, each with its induced property *and* its cost. The best-known worked example of constraint-first derivation in the field<br> **IMPACT MAPPING** (Adzic 2012) — actors first, and a deletion rule in nearly the method's words: a deliverable that supports no impact “should be treated as a problem, enhanced or removed”<br> **TYREE & AKERMAN** (2005) — the ADR template's *related requirements* field, with the rule “if a decision doesn't contribute to meeting a requirement, don't make the decision”<br> **GSN** (Kelly & Weaver) — first-class Assumption and Justification nodes, and the line the trace step exists to prevent: “it is possible to possess a document called the Safety Case and for there to be no safety case”<br> **COCKBURN, C4, GLOBAL ANALYSIS, ISO 42010** — boundary-and-actors first, in four more traditions<br> **KLEPPMANN, KREPS** — the truth store with rebuildable derived views around it: *Designing Data-Intensive Applications*, “Turning the Database Inside Out”, and “The Log”. The method paper's lineage opens with them, and this page had never said so<br> **THE SRE WORKBOOK** — the service-level objective and its error budget, which turn reliability from an argument into arithmetic. What the method adds is where the objective comes from: a client's tolerance, promoted
 :::
 :::
 
@@ -256,7 +256,7 @@ Seven signature devices. Two are owned outright by prior art, three are refineme
 | **Provenance labels**<br>[measured / contractual / assumed]{.meta} | <span class="grade g-part">refinement</span> | KAOS's domain property vs. hypothesis, GSN Assumption nodes, ATAM non-risks, NASA TBD/TBR-with-rationale, AACE estimate classification, AIAA mass-growth-allowance-by-maturity. **Left:** a three-label scheme cheap enough to actually use, with automatic promotion of *assumed* into the risk register. |
 | **The coupling read**<br>[count the requirements naming one mechanism]{.meta} | <span class="grade g-part">refinement</span> | Suh’s design matrix precedes this use of shared dependencies. A trace-column count is a cheap prompt to inspect failure modes. It neither predicts which promises fail together nor ranks severity; one life-critical obligation can dominate many low-impact ones. |
 | **Degradation ladder**<br>[six client-visible rungs, per class]{.meta} | <span class="grade g-new">largely new</span> | Google SRE has four criticality levels and names degraded responses; aviation has a five-level externally-defined severity ladder; Shelton & Koopman formalised graceful degradation as utility across configurations. **No six-rung, client-visible, per-client-class ladder found.** Two rules appear original: a rung is a client-visible *outcome*, not an internal action — “circuit breaker opens” is a mechanism, not a rung — and the last rung must still be a correct, diminished answer. [Note: Nygard supplies the mechanisms and no ladder; the method paper previously mis-credited him.]{.meta} |
-| **Acknowledgement taxonomy**<br>[receipt / reservation / completion]{.meta} | <span class="grade g-new">the use is new</span> | The *taxonomy* is Helland's tentative/cancelling/confirming. **The use is not.** See §04 — this is the strongest thing in the method. |
+| **Acknowledgement taxonomy**<br>[receipt / reservation / completion]{.meta} | <span class="grade g-new">the use is new</span> | The *taxonomy* is Helland's tentative/cancelling/confirming. **The use is not.** See §04 — the least owned of the three. |
 
 {cols="22% 13%"}
 :::
@@ -272,7 +272,7 @@ None of them is the one you would expect, and the asymmetry is worth noticing. T
 
 Helland's triad is a transaction-protocol construct: it describes how a distributed operation is staged. Outside-In uses it for something else entirely — as the **sizing rule for the strictly-consistent store**:
 
-<blockquote>Retain every irreducible input needed to reconstruct the promised state. Choose consistency and coordination from the write acknowledgements, view contracts and invariants. Authority and strictness are separate properties.<cite>The Outside-In Method, step 03, V4.12</cite></blockquote>
+<blockquote>Retain every authoritative input needed to reconstruct the promised state; choose consistency and coordination separately from authority.<cite>The Outside-In Method, step 03, V4.14</cite></blockquote>
 
 The earlier formulation wrongly made authoritative storage depend only on acknowledgement kind. Follows, ownership and policy inputs remain truth even if their writes need only a receipt. The useful question is narrower: which operation actually needs strict coordination, over which scope?
 
@@ -303,7 +303,7 @@ The contribution proposed here is a compact working discipline: boundary-first e
 ## The six best arguments against all of this
 
 ::: lede
-Not the usual objections — the strong ones, each with a citation, collected because a method that cannot state them has not been reviewed, only admired. Three of them narrowed the claim. One removed it. One described what the method actually maintains better than the method did. And the sixth arrived in 2026 carrying a full method of its own, and I answered it by adoption rather than by defence. What each one *changed* is in §06; what each one *is* is here, in the proponent's own words wherever the wording matters.
+Not the usual objections — the strong ones, each with a citation, collected because a method that cannot state them has not been reviewed, only admired. Three of them narrowed the claim. One removed it. One described what the method actually maintains better than the method did. And the sixth arrived in 2026 carrying a full method of its own, and I answered it by adoption rather than by defence. What objections 4 and 5 *changed* is in §06, beside one objection that is not among these six — the self-derived requirement, raised under debt 5; the others are answered where they stand. What each one *is* is here, in the proponent's own words wherever the wording matters.
 :::
 
 #### 1 · Nobody has ever derived a system, and the people who claim otherwise are faking it
@@ -386,9 +386,9 @@ What replaced it is not a repair but a different claim: **a system is governed b
 
 ### The self-derived requirement was adopted — as a search order, not a menu
 
-Franke's boiler-feed-pump cascade is the concrete problem: choosing a multi-stage centrifugal pump *creates* the subfunction “prevent axial thrust,” which creates “provide lubrication,” which creates “control the closed cooling cycle.” None of them traces to a client requirement; every one is induced by the solution. Gero states it formally — there is no direct transformation between function and structure. Suh concedes it: essential functional requirements can be solution-neutral, derived ones cannot.
+Franke's boiler-feed-pump cascade is the concrete problem, and it branches. Choosing a multi-stage centrifugal pump *creates* the subfunction “prevent axial shear”; its solution, a plunger discharge, leaves “prevent remaining shear”, whose ball bearing creates “provide lubrication”. The pump also needs “provide shaft sealing”, and that branch ends at “control the closed cooling cycle” (Franke 1985, p. 920, via Motte 2008, Fig. 2). None of them traces to a client requirement; every one is induced by the solution. Gero states it formally — there is no direct transformation between function and structure. Suh concedes it: essential functional requirements can be solution-neutral, derived ones cannot.
 
-The resolution, landed at V4.2, was not a new rule but an admission: **the citation rule had always been recursive and had never said so.** A mechanism may cite a decision rather than a constraint, and the decision it names is itself a mechanism facing the same test. Three dispositions, worked as a **search order** and not a menu — delete · surface a missing requirement · declare self-derived, naming the parent. It is not a loophole, because nothing partitions itself: naming a parent moves the obligation up a level rather than discharging it, and the recursion ends at a sentence about somebody outside the system — a client, or the organisation that has to run it — or it ends nowhere.
+The resolution, landed at V4.2, was not a new rule but an admission: **the citation rule had always been recursive and had never said so.** A mechanism may cite a decision rather than a constraint, and the decision it names is itself a mechanism facing the same test. Three dispositions, worked as a **search order** and not a menu — since V4.14 in the order the search actually runs: surface a missing requirement · declare self-derived, naming the parent · delete, once neither search has found anything above the mechanism. It is not a loophole, because nothing partitions itself: naming a parent moves the obligation up a level rather than discharging it, and the recursion ends at a sentence about somebody outside the system — a client, or the organisation that has to run it — or it ends nowhere.
 
 The consequence for reviews is the part worth keeping. **A five-deep chain standing on one ungrounded adjective is a single finding at the root** — not five findings against mechanisms that were each derived perfectly well from the one above them.
 
@@ -396,7 +396,7 @@ The consequence for reviews is the part worth keeping. **A five-deep chain stand
 
 Objection 5 needed designing around rather than answering, and the design is now in the paper. Because the record is a description of *roles and attributes* rather than an archive of decisions, a change in the world does not invalidate it — it expires a **sufficiency claim**. The store was never wrong. The claim that *this particular product* suffices to play it is what died.
 
-Method §06 states the rule as *amend, do not re-derive*, and the table there has a third column that is the actual saving: what the change explicitly does **not** touch. Forty years of abandoned rationale-capture tools failed because the person paying the capture cost was never the person reaping the retrieval benefit. Here they are the same person, in the same week, because the artifact is what you reason against before you touch code.
+Method §06 states the rule as *amend, do not re-derive*, and the table there has a third column: what may be preserved once its dependencies are checked. Forty years of abandoned rationale-capture tools failed because the person paying the capture cost was never the person reaping the retrieval benefit. Here they are the same person, in the same week, because the artifact is what you reason against before you touch code.
 
 ::: own
 V4.12 corrects the deletion test, separates authoritative inputs from strict consistency, and narrows the coupling and evidence claims. The readings here remain a lineage account with stated verification limits; they do not certify the method’s completeness.
@@ -452,5 +452,5 @@ Many thanks to everyone in §02 — most of them will never know they are on thi
 :::
 
 ::: meta {style="margin-top:22px"}
-FOREWORD · V11 · NAMES AND THEIR CONTRACTS · 2026-10-12 · derived from three prior-art research passes (software architecture & RE · engineering design methodology · design-fixation evidence) and one adoption gate run twice, read against **The Outside-In Method V4.13**.<br> The NISO addition was checked against the supplied 2010-reaffirmed edition. Other source comparisons inherit the original reading notes. This revision narrows universal absence and novelty claims; it does not independently reverify the entire bibliography. The stress demonstration has the limits recorded in the linked evidence summary.<br> Published by Lambda House under the [MIT licence](LICENSE).
+FOREWORD · V12 · THE WORDING OF V4.12, CARRIED THROUGH · 2026-10-30 · derived from three prior-art research passes (software architecture & RE · engineering design methodology · design-fixation evidence) and one adoption gate run twice, read against **The Outside-In Method V4.14**.<br> The NISO addition was checked against the supplied 2010-reaffirmed edition. Other source comparisons inherit the original reading notes. This revision narrows universal absence and novelty claims; it does not independently reverify the entire bibliography. The stress demonstration has the limits recorded in the linked evidence summary.<br> Published by Lambda House under the [MIT licence](LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

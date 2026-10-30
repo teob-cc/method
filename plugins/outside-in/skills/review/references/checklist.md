@@ -31,7 +31,7 @@ Check the vocabulary where a distinction affects a promise, using the artifact's
 
 Report a naming finding with the cited usages or contract clause, declared scope, ambiguity or mismatch, affected consumer and consequence. If the meaning is unrecorded, report the unresolved obligation and who can settle it; do not supply the missing definition. Rank by the demonstrated consequence. A misleading completion result that triggers an unsafe next action can be a correctness finding; a preferred spelling alone cannot. Do not demand cosmetic renames or a full ontology. An absence of consumer testing is an evidence gap, not proof that a name is misunderstood.
 
-**Source and adaptation.** [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*: usage (§§5.3.5, 6.6.1); ambiguity, scope and history (§§6.2.1–6.2.3); term form and abbreviations (§§6.3.1, 6.6.3); compounds (§§7.4–7.5, 7.8); equivalence and relationship types (§§8.2–8.4); evaluation and maintenance (§§11.2–11.3). The standard addresses indexing and retrieval. These checks adapt it to executable contracts; near-synonym and generic-posting equivalence (§§8.2.3–8.2.4) cannot erase behavioural distinctions. This is not a claim of API compliance with the standard. Method reference: <https://teob.cc/method/method.html#naming>.
+**Source and adaptation.** [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*: usage (§§5.3.5, 6.6.1); one term per concept within a scope (§§5.3, 6.2, 8.2); ambiguity, scope and history (§§6.2.1–6.2.3); term form and abbreviations (§§6.3.1, 6.6.2–6.6.4); compounds (§§7.4–7.5, 7.8); equivalence and relationship types (§§8.2–8.4); evaluation and maintenance (§§11.2–11.3). The standard addresses indexing and retrieval. These checks adapt it to executable contracts; near-synonym and generic-posting equivalence (§§8.2.3–8.2.4) cannot erase behavioural distinctions. This is not a claim of API compliance with the standard. Method reference: <https://teob.cc/method/method.html#naming>.
 
 ## Supply question set
 
@@ -101,6 +101,7 @@ Rank findings by cost, not by how easy they were to spot:
 - Do not propose a redesign. Report the findings; the human decides the response.
 - Do not fill a gap from a reference architecture — the gap is the finding.
 - Do not report a finding you cannot demonstrate with a quote or an arithmetic step.
+- Do not treat an uncited mechanism in a **design not yet built** as a deletion instruction before the search is done. It is a finding to investigate: work the dispositions in order — surface a missing requirement · declare it self-derived, naming the parent · delete, only when no obligation is found after both searches.
 - Do not treat an uncited mechanism in a **running** system as a deletion instruction. Chesterton's fence: report it as "no recorded reason — confirm before removing".
 - Do not treat an oversized mechanism in a **didactic** artifact as a deletion instruction either. The finding is that the stated requirement cannot discriminate it.
 - Do not rule on a self-derived chain. Record root, depth, weakest link and the root's kind — demand, supply, self-derived or unrecorded; the human decides what it is worth.
@@ -147,7 +148,7 @@ Delivery is the one adjacent area whose decisions all get made by default, so th
 - Desired-state store: is it treated as truth, with its own restore path?
 - Pull channel: all eight — sync or async, guarantee, ordering key, backpressure, message TTL, schema and compatibility mode, far side, departure — and its owner.
 - Commit-to-live staleness bound: stated, or only observed afterwards?
-- Is drift a zero-tolerance count or a dashboard?
+- Is divergence beyond the commit-to-live and recovery bounds measured, separately from unauthorised mutation?
 
 **Flags**
 - Does each flag carry a category and an expected lifespan?

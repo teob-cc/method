@@ -1,10 +1,11 @@
 ---
 kind: "companion"
 title: "Ticket booking, derived and re-derived"
-stamp: "WORKED EXAMPLE · V1.8 · 2026-10 · COMPANION TO THE OUTSIDE-IN METHOD V4.13"
+stamp: "WORKED EXAMPLE · V1.9 · 2026-10 · COMPANION TO THE OUTSIDE-IN METHOD V4.14"
 subtitle: "**A constructed case: an initial design, a failure diagnosis and an amended contract.** The historical first pass exposes a read–commit gap. The correction reserves atomically at selection. Later LLM stress reviews add findings, with the evidence limits stated below."
 notes:
   - "**Update · V1.7, method V4.12.** The first pass below is a historical teaching snapshot with known gaps, not a validated implementation. The elapsed year is the example’s narrative, not a production experiment. The corrected contract and evidence obligations are stated after the re-run; a filled trace cell alone proves nothing."
+  - "**Update · V1.9, method V4.14.** Two more first-pass gaps are marked where they stand: the coupling count read as shared failure, and the risk register ranked by it. The re-run and the stress pass now name the hold authority rather than a whole-map aggregate, a lost reply is *outcome unknown*, and the map’s third column is the evidence required."
 html_title: "Ticket Booking, Derived and Re-Derived · Outside-In"
 meta:
   - "og:type": "website"
@@ -52,7 +53,7 @@ A ticket-booking service, compressed to one line per step. The answers themselve
 **The same design as a traceability map** — each promise above walked to the mechanism that keeps it and the metric that would show it broken. Nothing in it is new; it is the table read sideways.
 :::
 
-| Requirement (testable) | Mechanism | Verified by |
+| Requirement (testable) | Mechanism | Evidence required |
 |---|---|---|
 | Buyers browse at [p99 200 ms]{.num} | The two projections — search for listings, seat availability for maps | The buyers' SLO |
 | Listings and seat maps are never more than [60 s]{.num} stale | The log and the two stream processors that feed both projections from it | Projection lag, alarmed at half the bound |
@@ -68,7 +69,7 @@ A ticket-booking service, compressed to one line per step. The answers themselve
 {cols="32% 38%" style="margin-top:6px"}
 
 ::: p {style="margin-top:8px"}
-**Count the middle column.** The booking store is named four times — own bookings, the invariant, the hold and the checkout that is never wrong — the seat-availability projection three, the log and the search projection twice each, everything else once. Four promises on one store fail together, so it goes onto the ladder as four entries rather than one and heads the risk register — which is why the first experiment runs through the write path, and it is what the three nodes at 04 are protecting. The projection's three include the zero-tolerance one, resting on a 60 s bound: that is where the re-run trigger is pointed.
+**Count the middle column.** The booking store is named four times — own bookings, the invariant, the hold and the checkout that is never wrong — the seat-availability projection three, the log and the search projection twice each, everything else once. This pass read the four as promises that fail together and ranked its register by the count; that is historical — V4.12 treats the count as a screening aid, not a ranking. Read that way, it calls for a failure-mode review of the booking store, which is what the three nodes at 04 are protecting. The register's head is the edge step 10 names — seat-map lag during on-sale spikes — and the 10× replay through the write path is what retires it, because the on-sale writes are what the seat-map projection has to keep up with. The projection's three include the zero-tolerance one, resting on a 60 s bound: that is where the re-run trigger is pointed.
 :::
 
 ::: say
@@ -82,19 +83,19 @@ In the case narrative, twelve months on, the design above is running and the ari
 The diagnosis sits at step 03: the seat map is a view clients *commit* against, and it was modelled as an ordinary projection. The error was never in the lag. It lives in **the interval between reading and committing** — and no staleness bound closes an interval, it only makes it shorter.
 
 ::: figure
-![Two panels. Before: the seat map is a projection with a sixty-second bound, the user picks a seat, then a gap of seconds passes before checkout, and the booking is refused. After: the seat map is pushed sub-second from strict truth, the click is itself the hold attempt, the aggregate decides immediately, and the user is either holding the seat or told at once that it has just gone.](./figures/read-commit-interval.svg)
+![Two panels. Before: the seat map is a projection with a sixty-second bound, the user picks a seat, then a gap of seconds passes before checkout, and the booking is refused. After: the seat map is pushed sub-second, and the click is itself an atomic hold attempt at the seat–show scope: the hold is acknowledged with an identifier, pinned price and expiry, or refused at once. Push improves the display; the atomic hold carries the guarantee.](./figures/read-commit-interval.svg)
 
 THE GUARANTEE BEGINS WHEN THE ATOMIC HOLD IS ACKNOWLEDGED
 :::
 
 <table>
 <tr><th style="width:12%">Step</th><th style="width:46%">What the re-run changed</th><th>What it cost, said out loud</th></tr>
-<tr><td><b>01 · Outside</b></td><td>A tolerance that did not exist before: buyers at an on-sale must see seat state <b>as it changes</b>, not within a minute — so the browse surface acquires a push direction for the duration of a sale. And a new adversary is named: <b>squatters</b>, holding seats they will not buy. Two accepted outcomes are promised with it: a map <b>marked as possibly stale</b> when push degrades, and a waiting room with a position and an estimate when the aggregate saturates</td><td>A poll became a push surface, with its own signing, redelivery and ordering story — and a marked-stale state the interface has to be designed for</td></tr>
+<tr><td><b>01 · Outside</b></td><td>A tolerance that did not exist before: buyers at an on-sale must see seat state <b>as it changes</b>, not within a minute — so the browse surface acquires a push direction for the duration of a sale. And a new adversary is named: <b>squatters</b>, holding seats they will not buy. Two accepted outcomes are promised with it: a map <b>marked as possibly stale</b> when push degrades, and a waiting room with a position and an estimate when the hold authority saturates</td><td>A poll became a push surface, with its own signing, redelivery and ordering story — and a marked-stale state the interface has to be designed for</td></tr>
 <tr><td><b>02 · Load</b></td><td>The on-sale becomes the design point, not the daily average. The figure that now sizes everything is the <b>fan-out</b>: seat-state updates per second × concurrent viewers of that map. A few hundred updates against twenty thousand open maps — both figures <i>assumed</i> until the next on-sale is measured — is millions of messages a second before any coalescing</td><td>The old <span class="num">0.1</span> writes/s was never wrong — it was answering a question nobody was asking during the only ninety seconds that matter</td></tr>
 <tr><td><b>03 · Data</b></td><td>The promise changes at selection: <b>the click attempts an atomic hold</b>, returning a hold identifier, pinned price and authoritative expiry. Browsing remains a projection and can show a seat that has just gone. Checkout may promise availability only after a hold was acknowledged and while it remains valid</td><td>Linearizable reads alone do not prevent two buyers seeing the same free seat. The correction is the reservation protocol and point of promise, not promoting a whole map to truth</td></tr>
 <tr><td><b>04 · Storage</b></td><td>Choose the smallest atomic scope the booking invariant requires: one seat–show pair for independent seats. An all-or-nothing group hold requires a transaction or demonstrated protocol across that group. A whole-map aggregate is an option only if its wider invariant justifies it. Measure the hottest scope under the actual transaction protocol, including batching and contention</td><td>A stop-and-wait estimate of 1/commit latency is not a universal throughput ceiling. Partitioning must preserve the invariant; twenty sections do not by themselves prove capacity or correctness</td></tr>
-<tr><td><b>05 · Trust</b></td><td>The squatter meets mechanisms: a cap on concurrent holds per buyer, a cooldown after a release, a rate limit on hold attempts, and a waiting room when the aggregate saturates</td><td>Friction for honest buyers at precisely the moment they are least patient — which is a product decision wearing an engineering hat, and belongs to whoever owns the conversion number</td></tr>
-<tr><td><b>07 · Failure</b></td><td>A stale browse view may still be served within its agreed bound; every selection is rechecked by the atomic hold protocol. Saturation refuses new holds or admits them to a real waiting room with identity, position semantics and bounded wait. A lost response is pending/unknown with an operation handle and reconciliation. Push or polling does not change an acknowledged hold.</td></tr>
+<tr><td><b>05 · Trust</b></td><td>The squatter meets mechanisms: a cap on concurrent holds per buyer, a cooldown after a release, a rate limit on hold attempts, and a waiting room when the hold authority saturates</td><td>Friction for honest buyers at precisely the moment they are least patient — which is a product decision wearing an engineering hat, and belongs to whoever owns the conversion number</td></tr>
+<tr><td><b>07 · Failure</b></td><td>A stale browse view may still be served within its agreed bound; every selection is rechecked by the atomic hold protocol. Saturation refuses new holds or admits them to a real waiting room with identity, position semantics and bounded wait. A lost response is outcome unknown, with an operation handle and reconciliation. Push or polling does not change an acknowledged hold.</td><td>A real waiting room — identity, position and a bounded wait — is a product to build, not a spinner; and <i>outcome unknown</i> is a third answer every client has to render, with a reconciliation path behind it</td></tr>
 <tr><td><b>09 · Operations</b></td><td>The zero-tolerance count is now the acceptance test for the whole change. New alongside it: <b>hold-to-purchase ratio</b> — the squatting signal — and time from a seat changing to the last client seeing it</td><td>—</td></tr>
 </table>
 
@@ -112,19 +113,19 @@ Not a new feature, not a scaling milestone, not a technology somebody wanted to 
 :::
 :::
 
-### The stress pass — fired at this design, twice {#stressed style="color:var(--ink2);font-size:12px;margin:18px 0 2px"}
+### The stress pass — fired at this design in runs A and B, then replicated {#stressed style="color:var(--ink2);font-size:12px;margin:18px 0 2px"}
 
-The stress pass was demonstrated on this example in several analyst reviews. The first retained an advance re-run trigger that tipped the seat-map diagnosis. A contaminated replication was voided; a fresh headless LLM session outside the project reproduced the reversal gap and hold-abuse adversary, but **did not reproduce the registered seat-map read/commit diagnosis**. These are limited demonstrations of finding defects, not evidence of a year of production discovery saved or superiority over ordinary lifecycle review. The [protocol and result summary](evidence/stress-demonstration.html) records these limits.
+The stress pass was demonstrated on this example in the four sessions the evidence note records. In the initial runs A and B the first-pass text still carried an advance re-run trigger that tipped the seat-map diagnosis. A first replication attempt was voided for inherited context; the isolated replication, a fresh headless LLM session outside the project, reproduced the reversal gap and hold-abuse adversary, but **did not reproduce the registered seat-map read/commit diagnosis**. These are limited demonstrations of finding defects, not evidence of a year of production discovery saved or superiority over ordinary lifecycle review. The [protocol and result summary](evidence/stress-demonstration.html) records these limits.
 
 **There is no reversal path.** Refund, cancellation, revocation, transfer — every step above models the purchase and its contention completely, and the *undoing* of a purchase not at all. An event cancelled thirty minutes before doors has nowhere to go in this design. And no amount of reading the traceability map could have said so, because no reversal requirement was ever stated: **there was no row to be empty.** The pass manufactures the missing row, and the map then adjudicates it.
 
 | Amendment | What changes | Whose call |
 |---|---|---|
-| **Reversal flows** | Cancel, refund and revoke become commands through the same aggregate surface the re-run built, each with a stated clock and a seat policy — a chargeback releases or retains the seat *by decision, not by accident* | the clock and the policy: business · the commands: engineering |
-| **The expiry, twice** | Both runs converged on the 10-minute hold expiry as the most under-specified noun, finding different undeclared dependencies. It now expires **on the aggregate's own clock** (a skewed timer was quietly a second writer), and it **consults payment-path health** — holds must not die unpaid at the exact moment buyers cannot pay | engineering |
+| **Reversal flows** | Cancel, refund and revoke become commands through the same hold surface the re-run built, each with a stated clock and a seat policy — a chargeback releases or retains the seat *by decision, not by accident* | the clock and the policy: business · the commands: engineering |
+| **The expiry, twice** | Runs A and B both converged on the 10-minute hold expiry as the most under-specified noun, finding different undeclared dependencies (from the internal run records; the public evidence note does not report it). It now expires **on the hold authority's own clock** (a skewed timer was quietly a second writer), and it **consults payment-path health** — holds must not die unpaid at the exact moment buyers cannot pay | engineering |
 | **Price is captured into the hold** | The re-run closed the read–commit interval for seat state and left it open for price. A hold now pins its price for its lifetime | both |
 | **Two scope decisions, made in daylight** | Group orders: atomically up to a stated N, or explicitly declined via partners. Chargeback seat policy: retain until dispute closes. Both are lifecycle questions the stress pass helped surface; an ordinary requirements review can ask them too | business |
-| **Five recorded options** | Seat-map versioning · partner allocation carve-outs · ticket transfer · a second inventory source · multi-currency — each designed, primed by the single command surface, unbuilt, with its trigger written beside it. **None may be built until its trigger fires** | the triggers: business |
+| **Five recorded options** | Seat-map versioning · partner allocation carve-outs · ticket transfer · a second inventory source · multi-currency — each designed, primed by the hold authority's single command surface, unbuilt, with its trigger written beside it. **None may be built until its trigger fires** | the triggers: business |
 
 {cols="16% 52%"}
 
@@ -136,7 +137,7 @@ The stress pass was demonstrated on this example in several analyst reviews. The
 “The stress pass found missing reversal flows. That is useful evidence about this example, not proof that interviews cannot discover cancellations. The amended trace must still show how each new promise is kept.”
 :::
 
-### The corrected contract · V4.13 {#corrected-contract}
+### The corrected contract · V4.12, checked against V4.14 {#corrected-contract}
 
 The historical trace above contains proposed mechanisms that do not satisfy their rows. This is the current replacement contract; its tests are obligations, not reported passing results.
 
@@ -177,5 +178,5 @@ A whole-map aggregate or push channel may still earn its place from a group inva
 :::
 
 ::: meta {style="margin-top:22px;font-family:var(--mono);font-size:11px;color:var(--ink2);line-height:1.9"}
-Extracted from The Outside-In Method at V3.7 — from what was then §08 and is now §09, so the method paper stays readable in one sitting. Method: [The Outside-In Method](method.html). Published by Lambda House under the [MIT licence](LICENSE).
+Extracted from The Outside-In Method at V3.7 — from what was then §08 and is now §09, so the method paper stays readable in one sitting. Method: [The Outside-In Method](method.html). Published by Lambda House under the [MIT licence](LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::
