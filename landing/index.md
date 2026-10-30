@@ -28,7 +28,7 @@ the outside-in method · free & open
 :::
 
 ::: eyebrow
-Content revision V4.13 · 2026-10-12
+Content revision V4.14 · 2026-10-30
 :::
 
 # The end of [*[*human-coded*]*]{.hc} backend
@@ -289,8 +289,8 @@ Read a row across and one primitive is carried from a sentence about a client to
 <td class="p">Runtime layout<small>not a fifth primitive</small></td>
 <td colspan="2" style="color:var(--faint)">No technology is named until the demand arithmetic has been divided.</td>
 <td><i class="st">08</i>One sentence on runtime, the environment list, the placement map. <i class="st">09</i>A release procedure with its rollout strategy and abort metric.</td>
-<td>Drift from the desired state is a zero-tolerance count.</td>
-<td class="v"><b>curated hosting</b> <span class="tag t-int">internal</span><br/>K3s / Helm: placement, rollout, desired state and drift, decomposed into the same four primitives.</td>
+<td>Drift is divergence beyond the commit-to-live and recovery bounds, measured separately from unauthorised mutation.</td>
+<td class="v"><b>curated hosting</b> <span class="tag t-live">public</span><br/>K3s / Helm: placement, rollout, desired state and drift, decomposed into the same four primitives.</td>
 </tr>
 </table>
 :::
@@ -404,7 +404,7 @@ Most system-design material stops at the runtime picture — boxes, arrows, a da
 ### And one pass that asks what the world might do next {style="margin-top:48px;font-size:17px"}
 
 ::: body
-Elicitation can miss a workflow such as refunds after a show is cancelled. So the method ends by stress-testing its own description, gently and on purpose: list the surprises together, product and engineering in the same room, no probabilities, nothing too unlikely to say out loud — then watch what the design does with each one. Most surprises bounce off things already built. The ones that do not become **new requirements, findings, or options recorded for later** — designed, priced at a paragraph, and built only when their moment arrives.
+Elicitation can miss a workflow such as refunds after a show is cancelled. So the method stress-tests its own description, at steps 01, 07 and 10, gently and on purpose: list the surprises together, product and engineering in the same room, no probabilities, nothing too unlikely to say out loud — then watch what the design does with each one. Most surprises bounce off things already built. The ones that do not become **new requirements, findings, or options recorded for later** — designed, priced at a paragraph, and built only when their moment arrives.
 :::
 
 ::: body
@@ -434,7 +434,7 @@ So there is a second axis. For **a curated set of components and runtime layouts
 |---|---|---|---|
 | **Surface** + its channel | **wsgrpc** <span class="tag t-soon">in the set</span> | {.mono} Rust | Edge termination for long-lived client connections. Occupies the door in the boundary and the transfer behind it, so identity, quota and the streaming contract land in one place |
 | **Processor** + **store** | [**teob-ts**](https://github.com/teob-cc/teob-ts) <span class="tag t-live">public</span> | {.mono} TypeScript | Event-sourced behaviours. The log is the truth store, each projection is a derived store with a stated staleness bound, and every behaviour is a processor that is replayable by construction — which is the rebuild path the model demands, rather than one bolted on |
-| **Runtime layout** | curated hosting <span class="tag t-int">internal</span> | {.mono} K3s / Helm | Placement, rollout strategy, desired state and drift — decomposed into the same primitives rather than adopted wholesale, so drift is a zero-tolerance count and the pull is a channel owing an ordering key |
+| **Runtime layout** | [**curated hosting**](https://github.com/teob-cc/infra-skills) <span class="tag t-live">public</span> | {.mono} K3s / Helm | Placement, rollout strategy, desired state and drift — decomposed into the same primitives rather than adopted wholesale, so drift is divergence beyond the commit-to-live and recovery bounds, measured separately from unauthorised mutation, and the pull is a channel owing an ordering key |
 
 {cols="24% 26% 12%"}
 :::
@@ -461,7 +461,7 @@ Because every mechanism is typed and every figure is quantified, the description
 </ul>
 
 ::: body
-**Status, stated plainly.** The horizontal axis is complete and published — the method, the book, eight derivations, and two agent skills that run against a system you already have. The vertical axis is where the work is: <span class="mono" style="color:var(--dim)">teob-ts</span> is public today, the rest of the set and the generation path are being built. This page describes a whole promise and marks which half is delivered, because a page that does not is the same furniture it is warning you about.
+**Status, stated plainly.** The horizontal axis is complete and published — the method, the book, eight derivations, and two agent skills that run against a system you already have. The vertical axis is where the work is: <span class="mono" style="color:var(--dim)">teob-ts</span> and the hosting layer are public today, the rest of the set and the generation path are being built. This page describes a whole promise and marks which half is delivered, because a page that does not is the same furniture it is warning you about.
 :::
 :::
 :::
@@ -475,7 +475,7 @@ rooted, not invented
 ## Almost none of this is new. What is new is that it is ordered, quantified and checked.
 
 ::: body
-Three of the four primitives are structured analysis relabelled. Bidirectional traceability and the rule that an unparented requirement is gold plating belong to systems engineering. The deletion test has a parent in TRIZ trimming, and the traceability matrix has one in quality function deployment, 1972. The method's foreword names every one of these on the page rather than in a footnote — it concedes fifteen debts and grades the method's own devices against them.
+Three of the four primitives are structured analysis relabelled. Bidirectional traceability and the rule that an unparented requirement is either a flaw in the trace or gold plating belong to systems engineering. The deletion test has a parent in TRIZ trimming, and the traceability matrix has one in quality function deployment, 1972. The method's foreword names every one of these on the page rather than in a footnote — it concedes fifteen debts and grades the method's own devices against them.
 :::
 
 ::: body
@@ -483,11 +483,11 @@ The [naming discipline](method.html#naming) carries scoped meanings from client 
 :::
 
 ::: heritage
-<span>Jackson <i>1995</i></span><span>Gane &amp; Sarson <i>1977</i></span><span>DeMarco <i>1978</i></span> <span>QFD <i>1972</i></span><span>TRIZ <i>trimming</i></span><span>NASA systems engineering</span> <span>Kessler &amp; Sweitzer <i>2007</i></span><span>Evans <i>2003</i></span> <span>Fowler <i>published interface, 2003</i></span><span>Robinson <i>2006</i></span> <span>Nygard <i>2018</i></span><span>Sato <i>2014</i></span><span>Hodgson <i>2017</i></span> <span>Johnson, via Fowler</span>
+<span>Jackson <i>1995</i></span><span>Gane &amp; Sarson <i>1977</i></span><span>DeMarco <i>1978</i></span> <span>QFD <i>1972</i></span><span>TRIZ <i>trimming</i></span><span>NASA systems engineering</span> <span>Kessler &amp; Sweitzer <i>2007</i></span><span>Evans <i>2003</i></span> <span>Fowler <i>published interface, 2003</i></span><span>Robinson <i>2006</i></span> <span>Nygard <i>2018</i></span><span>Sato <i>2014</i></span><span>Hodgson <i>2016</i></span> <span>Johnson, via Fowler</span>
 :::
 
 ::: body {style="margin-top:26px"}
-Every claim about a source on these pages was checked against the source before it was written. **Seven false claims were found that way and corrected**, and three attributions commonly given to Fowler were returned to the people who actually made them.
+Every claim about a source on these pages was checked against the source before it was written. **False claims were found that way and corrected**, and four attributions commonly given to Fowler were returned to the people who actually made them.
 :::
 :::
 :::
@@ -506,12 +506,16 @@ A method you have to remember is a method you skip at four o'clock on a Thursday
 
 ::: code
 <pre><span class="c"># add the marketplace, once</span>
-<span class="k">/plugin marketplace add</span> teob-cc/teob-method
+<span class="k">/plugin marketplace add</span> teob-cc/method
 <span class="c"># install the method</span>
-<span class="k">/plugin install</span> outside-in@teob-method
+<span class="k">/plugin install</span> outside-in@method
 <span class="c"># then, in any repository</span>
 <span class="k">/outside-in:review</span>     <span class="c">— audit what exists</span>
 <span class="k">/outside-in:derive</span>     <span class="c">— derive what doesn't yet</span></pre>
+:::
+
+::: xmcap
+Existing installs from teob-cc/teob-method keep working and update from there.
 :::
 
 ::: two

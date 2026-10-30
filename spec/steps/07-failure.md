@@ -84,7 +84,7 @@ Everything above prices the failures somebody predicted. This pass hunts the one
 Buying a mechanism from a stressor. The matrix total is a measurement, not a target — the same rule as the coupling count, from the other side. A split or a store justified only by a stressor row, with no promise traced, is furniture with a scary story; and where cost filters anything, it filters *implementation*, never exploration. You never build for Godzilla — you record the cheap decoupling point and the trigger, and the option costs a paragraph.
 :::
 
-The pass has a second firing at step [10]{.num}, as the audit's reverse direction — and production is where stressors actually fire, which is why a zero-tolerance count that will not stay at zero is read at §06 as an attractor report.
+The pass has a second firing at step [10]{.num}, as the audit's reverse direction — and production is where stressors actually fire, which is why a zero-tolerance count that will not stay at zero is diagnosed at §06.
 
 ::: fb
 FEEDBACK — this is the step that most often reopens earlier ones. A consistency promise that cannot be honoured during a partition, or a channel guarantee that evaporates on broker loss, must be corrected at the data and storage steps, not papered over here.

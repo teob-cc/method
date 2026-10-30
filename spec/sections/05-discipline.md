@@ -8,7 +8,7 @@ tab: "05 · DISCIPLINE"
 <p class="note"><b>Coverage is not verification.</b> Each row states the promise and its operating/failure conditions, mechanism, assumptions, evidence and status: <i>declared, argued, tested, or violated</i>. A metric name is a proposed observation, not a passing result. Tests establish only the cases they exercise; safety arguments still need their assumptions. A blank mechanism is a gap, and a filled cell can still contain an incorrect mechanism.</p>
 
 ::: lede
-Two invariants and a third reading, all taken off one artifact. **Every mechanism cites a requirement** — an uncited mechanism is speculation, and speculation gets deleted. **Every requirement maps to at least one mechanism** — an unmapped requirement is a gap, and gaps get designed. The second rule has a quieter form worth naming: a *figure* that maps to no mechanism was never a requirement at all, only a number somebody asked for. **And citations chain.** A mechanism may cite a decision rather than a constraint — the resharding path cites the partitioning — which is not a loophole, because the decision it names is itself a mechanism and faces the same rule. The recursion terminates at a constraint from outside — a client's, or a row of the operating envelope — or the finding sits at the root. That is not an amendment to the two invariants — it is the first one being honest about what "cites" means when the citation points at another box. The map below is the artifact that survives the meeting — and in an interview, it is the closing statement.
+Two invariants and a third reading, all taken off one artifact. **Every mechanism cites a requirement** — an uncited mechanism is a finding to investigate, and it is removed only when no obligation is found. **Every requirement maps to at least one mechanism** — an unmapped requirement is a gap, and gaps get designed. The second rule has a quieter form worth naming: a *figure* that maps to no mechanism was never a requirement at all, only a number somebody asked for. **And citations chain.** A mechanism may cite a decision rather than a constraint — the resharding path cites the partitioning — which is not a loophole, because the decision it names is itself a mechanism and faces the same rule. The recursion terminates at a constraint from outside — a client's, or a row of the operating envelope — or the finding sits at the root. That is not an amendment to the two invariants — it is the first one being honest about what "cites" means when the citation points at another box. The map below is the artifact that survives the meeting — and in an interview, it is the closing statement.
 :::
 
 | Requirement (testable) | Mechanism | Evidence required |
@@ -57,7 +57,7 @@ A count above one is *not* automatically a defect. Shared mechanisms are how a d
 - **Use the count to find scenarios, then rank those scenarios.** Severity, affected clients, time to harm and recovery matter more than the number of rows. Record uncertainty and reversibility; do not let a low count hide a severe failure.
 
 ::: warn
-Splitting a mechanism to bring its count down. The count is a *measurement*, not a target. A second store derived from a coupling number rather than from a constraint outside the system is an uncited mechanism, and the first invariant deletes it — which is the third reading being used to violate the first.
+Splitting a mechanism to bring its count down. The count is a *measurement*, not a target. A second store derived from a coupling number rather than from a constraint outside the system is an uncited mechanism, and the first invariant reports it as uncited — which is the third reading being used to violate the first.
 :::
 
 ### Who signs which artifact {style="margin-top:20px"}
@@ -73,7 +73,7 @@ If the model is the description both halves hold, then some of what the ten step
 {cols="20% 44%"}
 
 ::: p {style="margin-top:8px"}
-**The map itself is joint column by column** — which is the tidiest evidence that the split is real. *Requirement* is signed by both. *Mechanism* is engineering's alone. *Verified by* is signed by both again, because it is the evidence the promise holds and a promise nobody can check was never a promise. That is a better argument for putting the map at the front of a design document than calling it the proof.
+**The map itself is joint column by column** — which is the tidiest evidence that the split is real. *Requirement* is signed by both. *Mechanism* is engineering's alone. *Evidence required* is signed by both again, because it is the evidence the promise holds and a promise nobody can check was never a promise. That is a better argument for putting the map at the front of a design document than calling it the proof.
 :::
 
 ::: warn

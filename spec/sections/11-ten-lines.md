@@ -16,7 +16,7 @@ four primitives: **surface · channel · processor · store**<br>requirements li
 :::
 
 ::: cell
-arithmetic runs **twice** — demand before the choice, capacity after it<br>uncited mechanism = **delete** · unmapped requirement = **gap** · named twice = **coupling**<br>citations **chain** — follow to the root, and the finding sits there<br>assumed figure = **risk-register entry**
+arithmetic runs **twice** — demand before the choice, capacity after it<br>uncited mechanism = **investigate** · unmapped requirement = **gap** · named twice = **coupling**<br>citations **chain** — follow to the root, and the finding sits there<br>assumed figure = **risk-register entry**
 :::
 :::
 :::

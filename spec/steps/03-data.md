@@ -105,7 +105,7 @@ What is not legitimate is the fourth option, which is what most designs do by de
 
 | Consistency class | Means | Costs | Typical fit |
 |---|---|---|---|
-| **Linearizable** | Every read sees the latest committed write | Consensus per write; latency floor rises with distance | Balances, uniqueness, locks |
+| **Linearizable** | Every read sees the latest committed write | One authoritative ordering point per operation — a fenced leader, or consensus; the latency floor rises with distance | Balances, uniqueness, locks |
 | **Sequential** | Every reader sees the writes in one agreed order, though not necessarily the latest | One ordering point — a leader or a totally ordered log — without a real-time read path | Coordination and configuration data read from followers |
 | **Causal** | Effects are never visible before their causes | Session tokens or version tracking on the read path | Comments, collaboration, conversation-shaped data |
 | **Read-your-writes** | A client always sees its own effects | Session pinning or read-from-leader for that class — and a pin names one replica, so it does not survive that replica leaving | “I edited it and it looks unchanged” |

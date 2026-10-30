@@ -1,12 +1,13 @@
 # The specification: what the sections share, and their order. Prose lives in sections/*.md and steps/*.md.
 
 kind: "spec"
-version: "V4.13"
-date: "2026-10"
+version: "V4.14"
+date: "2026-10-30"
 title: "The Outside-In Method"
-stamp: "METHOD PAPER · V4.13 (NAMES AND THEIR CONTRACTS) · 2026-10 · TALK · ARTICLE · DESIGN-DOC TEMPLATE · INTERVIEW SCRIPT"
-subtitle: "**Four primitives. Ten steps. One discipline.** A design method in which every internal choice is derived from an external constraint — and can be deleted the moment it can't name one."
+stamp: "METHOD PAPER · V4.14 (THE WORDING OF V4.12, CARRIED THROUGH) · 2026-10 · TALK · ARTICLE · DESIGN-DOC TEMPLATE · INTERVIEW SCRIPT"
+subtitle: "**Four primitives. Ten steps. One discipline.** A design method in which every internal choice is derived from an external constraint — and is questioned the moment it can't name one."
 notes:
+  - "**Update · V4.14.** The corrections of V4.12 reach every sentence that still said *delete*: an uncited mechanism is investigated, and removed only when no obligation is found; the three dispositions are searched in that order. Two dangling cross-references repaired, the lineage's Fowler entries dated and credited as their pages have them, the NASA rule given both its alternatives. Read against its companions by four independent reviews at the move to github.com/teob-cc/method."
   - "**Update · V4.13.** Names now carry their scope from client language through data, APIs, components and change history. The naming discipline adapts [ANSI/NISO Z39.19-2005 (R2010)](#naming); it does not turn a descriptive name into evidence that a guarantee holds."
   - "**Update · V4.12.** A mechanism in a trace row is a claim of coverage, not proof. This revision separates authority from consistency, reservations from observations, and operation state from what a caller knows; it states the conditions behind delivery, erasure and numerical bounds. The examples and companion skills carry the same corrections."
 html_title: "The Outside-In Method · 4 Primitives · 10 Steps · 1 Discipline"
@@ -26,7 +27,7 @@ meta:
   - "twitter:image": "https://teob.cc/method/og.png"
 toc: "01 [Claim](#claim) · 02 [Primitives](#prim) / [Names](#naming) · 03 [Map](#map) · 04 [Steps](#steps) · 05 [Discipline](#disc) · 06 [Amendment](#amend) · 07 [Anti](#anti) · 08 [Run it](#run) · 09 [Example](#example) · 10 [Lineage](#lineage)"
 licence_line_style: "margin-top:18px;font-family:var(--mono);font-size:11px;color:var(--ink2);line-height:1.9"
-licence_line: "The Outside-In Method is published by Lambda House under the [MIT licence](LICENSE)."
+licence_line: "The Outside-In Method is published by Lambda House under the [MIT licence](LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method)."
 
 tail: [11-ten-lines]
 sections: [01-claim, 02-primitives, 03-map, 04-steps, 05-discipline, 06-amendment, 07-anti-patterns, 08-run-it, 09-example, 10-lineage]
