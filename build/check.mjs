@@ -57,7 +57,7 @@ for (const page of pages) {
     for (const t of svg[2].matchAll(/<text([^>]*)>([^<]*)</g)) {
       const x = Number(/\bx="([\d.-]+)"/.exec(t[1])?.[1] ?? 0)
       const size = Number(/font-size="([\d.]+)"/.exec(t[1])?.[1] ?? base)
-      const anchor = /text-anchor="(middle|end)"/.exec(t[1])?.[1]
+      const anchor = (/text-anchor="(middle|end)"/.exec(t[1]) ?? /text-anchor:\s*(middle|end)/.exec(t[1]))?.[1]
       const text = decode(t[2])
       const est = text.length * size * 0.6
       const right = anchor === 'middle' ? x + est / 2 : anchor === 'end' ? x : x + est
