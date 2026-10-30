@@ -3,23 +3,23 @@ title: Changing it
 number: "10"
 kind: chapter
 part: III
-description: "Changing it, chapter 10 of Systems, from the outside in — delivery derived rather than adopted: one question from chapter 03 decides the repositories, the version scheme, the environments and the flags. The book form of The Outside-In Method."
-summary: "The published-interface question spent at last; repo topology, version schemes, artifacts and environments; rollout, the four flag lifespans, drift as a zero-tolerance count, and the three shapes for changing a running system"
+description: "Changing it, chapter 10 of Systems, from the outside in — delivery derived rather than adopted: one question from chapter 03 decides the compatibility windows and the version promises, source access and coordination decide the repositories, and every environment and flag names what it is for. The book form of The Outside-In Method."
+summary: "The published-interface question spent at last; repo topology, version schemes, artifacts and environments; rollout, the four flag lifespans, drift as divergence beyond the commit-to-live and recovery bounds, measured separately from unauthorised mutation, and the three shapes for changing a running system"
 ---
 
 ::: standfirst
-**A system that cannot be changed safely is not finished, it is finished with.** Most of what we call delivery machinery is never actually decided — a second repository, a version scheme, four environments, a flag framework, they just arrive with the template. And almost all of it can be derived instead, from one question I asked back in chapter 03 and have been carrying around unspent ever since.
+**A system that cannot be changed safely is not finished, it is finished with.** Most of what we call delivery machinery is never actually decided — a second repository, a version scheme, four environments, a flag framework, they just arrive with the template. And almost all of it can be derived instead. The compatibility windows and the version promises come from one question I asked back in chapter 03 and have been carrying around unspent ever since; the repositories come from another, about source access and coordination; and every environment and flag has to name what it is for.
 :::
 
 ::: lead
 Delivery is what the specification calls its fourth thread — after security, arithmetic and the operating context, the other three concerns that cross every step — and I want to be clear about one thing up front: it is not a phase that starts once the design is done. Half of it was settled in chapter 07, when we cut the boundaries, and its single most important input went on record in chapter 03 — before a single internal component existed.
 :::
 
-## One question, and most of the machinery follows
+## One question, and the compatibility promises follow
 
 Chapter 03 asked it, and I deliberately left it unspent: **who holds an artifact of this system that you cannot change and redeploy on their behalf?** A client library, an SDK, a schema, an image, a public API version. Anyone at all.
 
-That is the line between an interface that is merely [public]{.term} and one that is [published]{.term}. The distinction is Martin Fowler's, and nearly everything in this chapter descends from it. A public interface you can change, and update every caller in the same commit. A published one you cannot touch that way at all: the calling code is out of your reach, and somebody else decides when to move — or indeed whether to move.
+That is the line between an interface that is merely [public]{.term} and one that is [published]{.term}. The distinction is Martin Fowler's, and every compatibility promise in this chapter descends from it. A public interface you can change, and update every caller in the same commit. A published one you cannot touch that way at all: the calling code is out of your reach, and somebody else decides when to move — or indeed whether to move.
 
 ::: figure
 ![Deployed consumers determine compatibility windows and version promises. Source access and coordination determine repository topology independently.](../figures/10-changing-it.svg)
@@ -93,17 +93,17 @@ The taxonomy is Pete Hodgson's, and the useful part of it is that each category 
 
 - **Release toggles** — hide unfinished work. Lifespan: days to weeks. **Removal is part of the work**, not a follow-up ticket.
 - **Experiment toggles** — split traffic to measure something. Lifespan: exactly as long as the experiment, and not a day longer, because a stale experiment sits there quietly biasing your data.
-- **Ops toggles** — switch expensive behaviour off under load. Lifespan: long, and deliberately so.
-- **Permission toggles** — who sees what. Lifespan: permanent. This is a product feature that just happens to be implemented as a flag.
+- **Ops toggles** — switch expensive behaviour off under load. Lifespan: mostly short, by Hodgson's account; the kill switches that actuate a rung are the long-lived exception, and deliberately so.
+- **Permissioning toggles** — who sees what. Lifespan: very long — often years. This is a product feature that just happens to be implemented as a flag.
 
-**The ops toggle is the one that closes a gap in this book.** Chapter 08 said every rung must be reachable on purpose — by a flag, a breaker or a shed rule. That flag is an ops toggle, and this is exactly what the kind is for: *it gives the degradation ladder an actuator.* Without one, a rung is a paragraph in a design document, and the only way to reach it is to have somebody write code — during the incident.
+**The ops toggle is the one that closes a gap in this book.** Chapter 08 said every rung must be reachable on purpose — by a flag, a breaker or a shed rule. That flag is an ops toggle of the long-lived kind, a kill switch, and this is exactly what the kind is for: *it gives the degradation ladder an actuator.* Without one, a rung is a paragraph in a design document, and the only way to reach it is to have somebody write code — during the incident.
 
 A codebase where all four kinds are the same kind of object, with no expiry and no owner, ends up with hundreds of them and no way to reason about any single one. The taxonomy is the fix, and it costs you exactly one field.
 :::
 
 ## Desired state, and the drift from it
 
-There is a popular arrangement where the deployed state of a system is described in a repository and a reconciler keeps bending reality to match it. It comes with a name and a set of principles. **This method does not adopt it; it decomposes it** — and I find the decomposition more useful than the name, because it produces three things such setups routinely lack: an ordering rule for the pull, a stated commit-to-live bound, and a count of drift that targets zero.
+There is a popular arrangement where the deployed state of a system is described in a repository and a reconciler keeps bending reality to match it. It comes with a name and a set of principles. **This method does not adopt it; it decomposes it** — and I find the decomposition more useful than the name, because it produces three things such setups routinely lack: an ordering rule for the pull, stated commit-to-live and recovery bounds, and drift measured as divergence beyond those bounds, separately from unauthorised mutation.
 
 | The part | Is a | And therefore owes |
 |---|---|---|
@@ -111,11 +111,11 @@ There is a popular arrangement where the deployed state of a system is described
 | **The pull** | **channel** | Eight properties, and the one that matters is the **ordering key** — two commits applied out of order is a real failure mode with a real blast radius |
 | **The reconciler** | **processor** | Idempotence under replay, like any other processor — and a declared behaviour for when the desired state and the running one conflict |
 | **The running system** | a **projection** | A **staleness bound**. How long between commit and live? That is a number, it is promised to whoever is waiting on a deploy, and almost nobody states it |
-| **Drift** | divergence with a scope and deadline | Measure unauthorized mutation separately from failed convergence after the allowed transition interval |
+| **Drift** | divergence with a scope and deadline | Measure unauthorised mutation separately from failed convergence after the allowed transition interval |
 
-Table: Four primitives, one more time — a store, a channel, a processor and a projection — and one count. Nothing here is new machinery; it is the same questions asked of a delivery arrangement. {cols="26% 20%"}
+Table: Three of the four primitives, one more time — a store, a channel and a processor — and a projection, which is a derived store; and drift, the divergence beyond the commit-to-live and recovery bounds, measured separately from unauthorised mutation. Nothing here is new machinery; it is the same questions asked of a delivery arrangement. {cols="26% 20%"}
 
-The reconciler cites a convergence or recovery obligation. Even the only deployment writer can crash after a partial apply, and a running resource can fail later. Distinguish unauthorized mutation, expected rollout transitions and divergence beyond the agreed commit-to-live or recovery bound.
+The reconciler cites a convergence or recovery obligation. Even the only deployment writer can crash after a partial apply, and a running resource can fail later. Distinguish unauthorised mutation, expected rollout transitions and divergence beyond the agreed commit-to-live or recovery bound.
 
 ## Changing something that is already running
 
@@ -128,7 +128,7 @@ Three named shapes, and between them they cover most of what a live system will 
 What all three share is the one property that makes them usable at all: **the system stays releasable throughout.** A migration that needs a window in which nothing can ship is not a migration strategy, it is a deadline.
 
 ::: warn
-**Delivery machinery arriving by default.** The pipeline template, the four environments, the flag service, the second repository, the semver scheme — every one of these is a mechanism, and every mechanism cites a requirement or gets deleted. This is where that rule gets applied least of all, because the machinery never shows up in the architecture diagram; it shows up as a slow build, a coordinated release and somebody's Thursday.
+**Delivery machinery arriving by default.** The pipeline template, the four environments, the flag service, the second repository, the semver scheme — every one of these is a mechanism, and every mechanism cites a requirement — or, where it already runs and nobody can name one, it is reported as *no recorded reason* and confirmed before removal. This is where that rule gets applied least of all, because the machinery never shows up in the architecture diagram; it shows up as a slow build, a coordinated release and somebody's Thursday.
 :::
 
 ::: thread
@@ -149,14 +149,14 @@ The mobile app is owned here but installed elsewhere. An old or offline build ca
 ::: rule
 Delivery is derived, not adopted. Every repository, version scheme, environment and flag cites a constraint from outside — and where the answer is nobody, the honest move is to buy none of it.
 
-The one question that decides most of it was asked before any of this existed: who holds something of yours that you cannot rebuild for them?
+The question that decides the compatibility windows and the version promises was asked before any of this existed: who holds something of yours that you cannot rebuild for them? The repositories answer a different one — who needs the source, and who has to coordinate on it.
 :::
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
-- Specification [step 04](../method.html#s04) — repo topology and the published-interface test
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification [step 04](../method.html#s04) — repo topology and the published-interface test as separate decisions, and the cost to reverse, where parallel change keeps a way back only while the old representation and readers remain usable
 - Specification [step 08](../method.html#s08) — the artifact, one per runnable unit, and environments that must name what they verify that production cannot
-- Specification [step 09](../method.html#s09) — version scheme, rollout strategy, the three shapes of evolution and parallel change as a conditional rollback window, desired state and drift, and the four flag lifespans
+- Specification [step 09](../method.html#s09) — version scheme, rollout strategy, the three shapes of evolution, desired state and drift, and the four flag lifespans
 - Not carried here, and governed by the specification alone: the build system beyond the ecosystem default (step 04); runtime by organisational constraint, the polyglot price and the placement map (step 08); the release row with its rehearsal dates, graceful shutdown as the channel's departure property, migration ordering, configuration as a release and the delivery metrics (step 09)
 - The published-interface line was recorded at [step 01](../method.html#s01) and carried unspent from chapter 03 to this one; the cutover shapes are named at [step 09](../method.html#s09), and two of them again at [step 10](../method.html#s10)
 - Published Interface is Martin Fowler's own (2003); parallel change and canary release are **Danilo Sato's**; the flag taxonomy is **Pete Hodgson's**. All of it is hosted on martinfowler.com, and those last three were not written by Fowler — see the [foreword](../foreword.html)

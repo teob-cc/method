@@ -54,7 +54,7 @@ The curve is flat where most of your requests live and steep where your complain
 
 **Tails compound across calls.** Take a page that makes twenty independent backend calls: about [18%]{.num} of the time — one minus [0.99²⁰]{.num} — at least one of those calls comes in slower than p99 for the service it hit. So the p99 of a single service is not the p99 of a page built out of twenty of them, and a service-level p99 that looks perfectly comfortable can still mean that nearly one page load in five feels slow.
 
-**A percentile without a population is not a number.** p99 of what, and measured where? Per endpoint, or across all of them? At the edge, where the client's network is part of the figure, or at the service, where it is not? Each of those choices moves the number by an order of magnitude, and a target that does not name them will be quoted back at you against whichever population makes it look met.
+**A percentile without a population is not a number.** p99 of what, and measured where? Per endpoint, or across all of them? At the edge, where the client's network is part of the figure, or at the service, where it is not? Each of those choices can move the number a long way — sometimes by an order of magnitude — and a target that does not name them will be quoted back at you against whichever population makes it look met.
 
 So a latency tolerance you can actually use has four parts: **the operation, the percentile, the number, and the measurement point.** “p99 under 200 ms for the feed read, measured at the edge” can be tested. “Fast” cannot be violated — and a thing that cannot be violated cannot justify a single mechanism in the design.
 :::
@@ -88,7 +88,7 @@ The answer is usually narrower than your gut says, and the narrowness is worth r
 ::: primer
 #### 5 · Accuracy — how wrong an answer may be and still be an answer
 
-This is the tolerance most often left unsaid, and the one that most often changes the whole design. A rate limiter that tolerates [±20%]{.num} of counter drift and a ledger that tolerates none are two different systems, and that difference is worth more than any technology choice you make afterwards.
+This is the tolerance most often left unsaid, and the one that opens or closes whole families of mechanism. A rate limiter that tolerates [±20%]{.num} of counter drift and a ledger that tolerates none are two different systems, and that difference is worth more than any technology choice you make afterwards.
 
 Once a class has said it accepts an error bound, whole families of mechanism open up: approximate counting, sampling, sketches, a cached aggregate recomputed hourly. Every one of them is cheaper than being exactly right, and not one of them is permitted until somebody outside the system has agreed to the bound. That is why accuracy gets asked about here, and is not decided later by an engineer who just needed the query to be faster.
 :::

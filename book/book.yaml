@@ -6,11 +6,11 @@ title: Systems, from the outside in
 tagline: The Outside-In Method · the book
 
 # The stamp at the foot of the contents page. `spec_version` is also what {{spec_version}} in index.md prints.
-version: V1.8
-version_note: NAMING CONCEPTS AND CONTRACTS, FROM V4.13
-date: 2026-10-12
-extent: all five parts · fourteen pieces · ~49 000 words
-spec_version: V4.13
+version: V1.9
+version_note: THE WORDING OF V4.12, CARRIED THROUGH · FROM V4.14
+date: 2026-10-30
+extent: all five parts · fourteen pieces · ~47 000 words
+spec_version: V4.14
 
 # The contents table. A chapter is the name of a file in chapters/ (without .md); its number, title and
 # summary come from that file's front matter. `external` is a piece that lives outside the book.

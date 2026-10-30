@@ -204,7 +204,7 @@ The inside is a consequence. If you cannot yet say who is out there and what the
 The next three chapters are that inventory, in full: who needs something from the system, what the organisation can actually run, and the arithmetic that turns the two into numbers a design can be held to.
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - Specification [§01 · Claim](../method.html#claim) — the deletion test stated as a count, and the recursive citation rule
 - Specification [§02 · Primitives](../method.html#prim) — the four types, the 1977 correspondence, and roles rather than products
 - Specification [step 01 · Outside](../method.html#s01) — dependencies as reversed client relationships, adversaries as classes

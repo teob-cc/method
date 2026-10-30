@@ -22,7 +22,7 @@
     <text x="696" y="214">Distributed SQL</text>
   </g>
   <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#6C7780">
-    <text x="36" y="232">today</text><text x="366" y="232">after that</text><text x="696" y="232">and after that</text>
+    <text x="36" y="232">while reads and writes fit one primary</text><text x="366" y="232">while writes fit one primary</text><text x="696" y="232">once writes outgrow one primary</text>
   </g>
   <g font-size="10.5" fill="#C21F2C">
     <text x="36" y="254">claim dies when: reads outgrow the primary</text>

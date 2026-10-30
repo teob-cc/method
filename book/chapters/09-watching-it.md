@@ -17,7 +17,7 @@ Most observability work starts from the emitting side: here is a service, what c
 
 ## Every number names the promise that demanded it
 
-So run it the other way round. Take the promises — by now they are all written down, which was rather the point of the first eight chapters — and ask of each one what number would show it holding, and what number would show it breaking. Done honestly, the list comes out as plain questions: how long did this class wait, measured at the edge? (the SLO) how old was the view it has just been served? (staleness) which rung is it on, and since when? (the rung distribution) has something happened that must never happen? (the audit) how far behind is the channel, and how much has fallen off the end of it? (lag and dead letters) what did serving this class cost us? (attributed spend) and did the class get what it came for? (the outcome KPI). Every one of those is a row in the figure, and every row points back at a chapter.
+So run it the other way round. Take the promises — by now they are all written down, which was rather the point of the first eight chapters — and ask of each one what number would show it holding, and what number would show it breaking. Done honestly, the list comes out as plain questions: how long did this class wait, measured at the edge? (the SLO) how old was the view it has just been served? (staleness) which rung is it on, and since when? (the rung distribution) how far off is the approximate answer it was given? (the approximation's measured error) has something happened that must never happen? (the audit) how far behind is the channel, and how much has fallen off the end of it? (lag and dead letters) what did serving this class cost us? (attributed spend) and did the class get what it came for? (the outcome KPI). Every one of those is a row in the figure, and every row points back at a chapter.
 
 ::: figure
 ![Eight promises made in earlier chapters, each paired with the number that proves it: latency tolerances become SLOs with error budgets, freshness bounds become monitored staleness, the degradation ladder becomes a rung distribution, accuracy tolerances become the approximation's measured error, invariants become continuous audits, channels become lag and dead-letter counts, the cost envelope becomes attributed spend, and the reason a class calls at all becomes an outcome KPI.](../figures/09-watching-it.svg)
@@ -48,7 +48,7 @@ The test is whether the system **made a promise and broke it at the moment of co
 
 So count them as events, target **zero**, and write down what each one costs. That last part matters more than it looks, because the cost is never just the one transaction. A user burned at the moment of payment does not retry — they leave, and then they tell people. What it does to your perceived reliability runs far past the one booking you lost.
 
-And the sharpest consequence: **a sustained non-zero count here is a design finding, not an operational one.** Check the bound before you blame the implementation: if the projection was inside its promised staleness and users were hurt all the same, nothing is broken — the bound itself was wrong, and the choice is between renegotiating the tolerance from chapter 02 and no longer making the promise in the interface. And if it keeps happening after two fixes, the model is wrong — something an invariant needed to be truth is being treated as a projection. That is the re-run trigger, or in the vocabulary of the stress pass, an *attractor report*: the system keeps falling back into a state nobody designed, and production is running chapter 08's stress pass for you, minus the courtesy of a matrix. It sends you back to chapter 05, not to the on-call rota.
+And the sharpest consequence: **a sustained non-zero count here triggers a diagnosis, not just a fix.** Check the requirement, the observation, the protocol, the implementation and the failure assumptions before you settle on any one of them. If the projection was inside its promised staleness and users were hurt all the same, look first at the read–commit protocol, at the point where the promise is made: meeting a freshness bound does not prove that a workflow which reads a view and then commits is correct, and no staleness bound closes the interval between the read and the commit. Renegotiating the tolerance from chapter 02, or no longer making the promise in the interface, is one of the ways a diagnosis can end, not the conclusion it starts from. And a count that comes back after a fix is evidence to widen the investigation, not proof that the model is wrong — there is no two-fix threshold. Sometimes the wider investigation does find something an invariant needed to be truth being treated as a projection, and then it sends you back to chapter 05, not to the on-call rota. Either way, production is running chapter 08's stress pass for you, minus the courtesy of a matrix: the system keeps falling back into a state nobody designed.
 :::
 
 ## The rung is a metric
@@ -78,7 +78,7 @@ The exception is the last row of the figure, and it needs a channel of its own.
 ::: example
 #### Every component healthy, and nobody could buy anything
 
-A Tuesday deploy changes how the response from a payment provider gets parsed. The provider has added a field, the parsing was stricter than it had any need to be, and the checkout page now renders with the pay button disabled for about a fifth of the users.
+A Tuesday deploy changes how the response from a payment provider gets parsed. The provider has added a field, the parsing was stricter than it had any need to be, and the checkout page now renders with the pay button disabled for about a tenth of the users.
 
 **Watch what does not happen.** No service is down. No latency percentile moves — a disabled button is very fast. The error rate does not move either, because *nothing errors*: the page renders, returns 200, and is served comfortably inside its SLO. Every dashboard in the figure above is green, and every one of them is telling the truth.
 
@@ -92,7 +92,7 @@ That is why outcome KPIs get a channel of their own. They are slow, noisy and se
 :::
 
 ::: warn
-**The dashboard nobody can name a requirement for.** Run the deletion test on your monitoring: pick any panel and name the promise whose breach it would show you. If nobody has an answer, it is furniture — and monitoring furniture is not free either. It costs retention, it costs query load, it is one more screen somebody scans past, and — worst of all — it takes a slice of the attention that should have gone to the panel that mattered.
+**The dashboard nobody can name a requirement for.** Run the deletion test on your monitoring: pick any panel and name the promise whose breach it would show you. If nobody has an answer, that is a finding to investigate, not yet a verdict: record it as *no recorded reason* and look for the promise. If none turns up, it is furniture — confirm that before you remove it — and monitoring furniture is not free either. It costs retention, it costs query load, it is one more screen somebody scans past, and — worst of all — it takes a slice of the attention that should have gone to the panel that mattered.
 :::
 
 ## Diagnosis is a different job from detection
@@ -122,5 +122,5 @@ And the promises that have no acceptable failure rate are not SLOs. They are cou
 ::: owes
 - Specification [step 09 · Operations](../method.html#s09) — detection proportioned to consequence, the rung as a metric, outcome KPIs alerted on change, zero-tolerance counts, SLOs promoted from client tolerances, staleness and channel metrics, alerting that names a class, tracing, and audits that do not trust the system
 - Not carried here, and governed by the specification alone: the telemetry budget, the ownership map, security operations and model operations
-- Every tolerance measured here was elicited at [step 01](../method.html#s01); the markers that make the rung distribution free were mandated at [step 07](../method.html#s07); a sustained non-zero count is the re-run trigger at [step 10](../method.html#s10)
+- Every tolerance measured here was elicited at [step 01](../method.html#s01); the markers that make the rung distribution free were mandated at [step 07](../method.html#s07); a sustained non-zero count triggers the diagnosis of step 09, and what that finds can reopen earlier decisions through the re-run trigger at [step 10](../method.html#s10)
 :::

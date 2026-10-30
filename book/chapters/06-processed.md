@@ -4,7 +4,7 @@ number: "06"
 kind: chapter
 part: II
 description: Processed, chapter 06 of Systems, from the outside in — the book form of The Outside-In Method.
-summary: "Stateless, stateful and batch; idempotence; event time against processing time; approximation with a stated error bound; the rebuild path"
+summary: "Request-time, stateful stream and batch; idempotence; event time against processing time; approximation with a stated error bound; the rebuild path"
 ---
 
 ::: standfirst
@@ -19,8 +19,8 @@ Processors are the kind of component people worry about least and specify worst.
 
 | Kind | Holds | What it owes you |
 |---|---|---|
-| **Stateless** | Nothing between requests | Almost nothing, which is why it is the default. Scale it by adding copies; lose one and nothing is lost with it. **If a processor can be stateless, make it stateless** |
-| **Stateful** | Accumulated state — counters, windows, joins, sessions | State size, and how long recovery takes after a crash. The recovery time is the figure people skip, and it is the one that turns a thirty-second failover into forty minutes of rebuilding from a log |
+| **Request-time**, usually stateless | Usually nothing between requests | Almost nothing, which is why it is the default. Scale it by adding copies; lose one and nothing is lost with it. **If a processor can be stateless, make it stateless** |
+| **Stateful stream** | Accumulated state — counters, windows, joins, sessions | State size, and how long recovery takes after a crash. The recovery time is the figure people skip, and it is the one that turns a thirty-second failover into forty minutes of rebuilding from a log |
 | **Batch** | Nothing between runs; everything within one | A schedule, a window definition, and an answer to what happens when a run overlaps the next one. Also the easiest place to be non-idempotent without noticing, because failures are rare and partial failures are rarer |
 
 {cols="16% 30%"}
@@ -68,7 +68,7 @@ So the useful question is never “does this channel give me exactly-once?” Th
 Every event a processor handles carries two timestamps, and if you mix them up you get answers that are wrong in a way nobody notices for months.
 
 - **Event time** — when the thing actually happened.
-- **Processing time** — when your system finally got round to seeing it. (The specification calls this one *arrival time*; it is the same clock.)
+- **Processing time** — when your system finally got round to seeing it. (The specification calls this *arrival time*; here it means when the processor sees the event.)
 
 And they drift apart all the time: a phone was offline in a lift, a broker was backed up, a partition was being rebalanced, somebody is replaying a backfill from three years ago. Window by processing time and what you are measuring is your own pipeline's punctuality, not the world.
 
@@ -108,7 +108,7 @@ Every one of these is far cheaper than being exactly right, and every one of the
 And that is the whole reason we elicit accuracy from the outside instead of deciding it in here.
 :::
 
-One processor from chapter 05 deserves a paragraph here, because it is the easiest one to leave unspecified. An invariant held on the bounded or the detected rung of the enforcement ladder carries two promises — the bound, and the exact figure — and the exact figure is enforced by a **reconciler**: a processor that reads the truth after the fact, works out what really happened and compensates for the difference. It owes everything this chapter has asked so far — safe to run twice, rebuildable from retained truth — and one thing of its own: **a deadline**, the time to close, by which the exact figure is settled and stops moving. For anything that gets billed it is also the **enforcer of record**, which is to say the invoice comes from the reconciler, and never from the path that let the overshoot through.
+One processor from chapter 05 deserves a paragraph here, because it is the easiest one to leave unspecified. An invariant held on the bounded rung of the enforcement ladder carries two promises — the bound, and the exact figure — and the exact figure is enforced by a **reconciler**: a processor that reads the truth after the fact, works out what really happened and compensates for the difference. (On the detected rung there is no bound, and the audit is the only enforcer there is.) It owes everything this chapter has asked so far — safe to run twice, rebuildable from retained truth — and one thing of its own: **a deadline**, the time to close, by which the exact figure is settled and stops moving. For anything that gets billed it is also the **enforcer of record**, which is to say the invoice comes from the reconciler, and never from the path that let the overshoot through.
 
 ::: example
 #### The batch that must not double-count
@@ -151,7 +151,7 @@ A processor that cannot be replayed is a source of truth that nobody declared �
 :::
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - Specification [§02 · Primitives](../method.html#prim) — the processor's declarations: its kind, state size and recovery time, idempotence under replay, late and out-of-order handling, the rebuild path
 - Specification [step 06 · Derivation](../method.html#s06) — idempotence under replay, event time against arrival time, approximation as a stated tolerance with a monitored bound, signed per side where the two errors are priced differently, the reconciler as a processor with a deadline and the enforcer of record, and the rebuild path as a first-class feature
 - Not carried here, and governed by the specification alone: keying and parallelism as a processor's declaration (the key itself is chapter 07's), merge semantics wherever partial results are combined, and the fourth processor kind — the model

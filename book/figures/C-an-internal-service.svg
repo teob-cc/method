@@ -30,7 +30,7 @@
     <text x="20" y="176">2 requests a second &#8212; except one edge, opposite</text>
     <text x="20" y="216">2 a second against a store that does thousands</text>
     <text x="20" y="256">two indexed columns answer every query finance has</text>
-    <text x="20" y="296">reads are 0.02/s, and an overnight outage is an accepted rung</text>
+    <text x="20" y="296">reads are 0.02/s; an overnight outage is assumed acceptable</text>
     <text x="20" y="336">internal users, one office, one region</text>
     <text x="20" y="376">3.4 GB after seven years</text>
     <text x="20" y="416">no separate source-access or release constraint is stated</text>

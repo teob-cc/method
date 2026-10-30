@@ -17,7 +17,7 @@ A store holds state. That sounds like the simplest of the four types, and yet it
 
 ## What a store is answerable for
 
-Every store in a design owes six answers. A store that cannot give them has not been designed yet — it has just been named, and that is not the same thing.
+Every store in a design owes six answers, and a seventh wherever more than one process plays it. A store that cannot give them has not been designed yet — it has just been named, and that is not the same thing.
 
 | Declaration | Why it is not optional |
 |---|---|
@@ -27,6 +27,7 @@ Every store in a design owes six answers. A store that cannot give them has not 
 | **Query shapes served** | The access patterns it must satisfy. This, not the data model, is what selects the family |
 | **Lifecycle and retention** | When data leaves, and by what mechanism. “Never” is an answer, and an expensive one |
 | **Size, growth, and hot-key profile** | How big now, how fast growing, and whether the load is even across keys. The last one is what actually breaks things |
+| **The channels inside it** | Only where more than one process plays it: the replication and membership channels between them, from which its durability and the consistency it offers follow. Chapter 07 takes them apart |
 
 {cols="26%"}
 
@@ -53,7 +54,7 @@ Determine what is authoritative before choosing products. Then select durability
 This chapter runs outside-in as well. The views arrive from chapter 02 and we do not reopen them here — what gets decided here is the *consequence* of a bound, never the bound itself.
 :::
 
-Two of those three inputs need a word of explanation.
+Two of those inputs — acknowledgements and invariants — need a word of explanation.
 
 **An acknowledgement is a point where the client's flow stops until the system confirms.** Not every write is one. “Your profile photo has been updated” can be optimistic; “your payment has been captured” cannot. Every acknowledgement is a promise that something has been durably decided by the moment you return — and it is that promise, not the mere fact that data is being written somewhere, that demands an authoritative store.
 
@@ -75,7 +76,7 @@ Write them down carefully, kind included, because this answer travels further th
 
 **The invariant determines the transaction protocol.** A conditional write is sufficient if all relevant state and checks fit its atomic scope. For multiple records, serializable transactions or a demonstrated locking/constraint protocol can enforce the rule. Snapshot isolation alone permits write skew: two doctors each see the other on call and both leave. Record the store’s configured isolation. Across partitions, consider a distributed transaction, different placement, or a protocol that preserves the rule. A saga is permissible only when its intermediate states are acceptable; compensation does not itself bound their amount or duration.
 
-That ladder comes next, with a case that needs it, and after it the view a client is looking at when the collision happens.
+The enforcement ladder comes next, with a case that needs it, and after it the view a client is looking at when the collision happens.
 
 ::: primer
 #### The enforcement ladder — how strictly an invariant is held
@@ -103,9 +104,9 @@ For **E3**, rate × lag bounds unseen increments only when rate is a hard aggreg
 ::: example
 #### A budget that one key cannot hold
 
-Budget pacing in ad serving — and every figure here is **assumed**, because none of them is mine to measure. One dominant campaign spends at a peak of [20 000]{.num} events a second against one daily budget. A conditional write on one key serialises roughly [70–200]{.num} changes a second, from a [5–15 ms]{.num} commit. Divide, the way chapter 04 now insists: a ratio of about [100–300]{.num}. **E1 is off the table for that key whatever the node count** — the key lives on one node, and buying forty-nine more changes nothing about it.
+Budget pacing in ad serving — and every figure here is **assumed**, because none of them is mine to measure. One dominant campaign spends at a peak of [20 000]{.num} events a second against one daily budget. A conditional write on one key serialises roughly [70–200]{.num} changes a second, from a [5–15 ms]{.num} commit. Divide, the way chapter 04 now insists: a load ratio (demand ÷ capacity) of about [100–300]{.num}. **An unbatched writer that waits for each commit cannot hold that key, whatever the node count** — the key lives on one node, and buying forty-nine more changes nothing about it. Batching or pipelining might; that is measured, not assumed. Suppose the measurement fails: then E2.
 
-So E2. Fifty serving nodes each hold a slice of about one second of their own spend, and refill from the budget key when it runs dry — about [50]{.num} refills a second on the key, comfortably inside its ceiling. The overshoot is zero, exactly. The undershoot is at most the slices outstanding: about one second of the campaign's spend, which for a budget spent evenly over the day is about 1/86 400 of it.
+Fifty serving nodes each hold a slice of about one second of their own spend, and refill from the budget key when it runs dry — about [50]{.num} refills a second on the key, inside its ceiling — about a quarter of it at [5 ms]{.num} commits, about [70%]{.num} at [15 ms]{.num}; the slice size is the knob. The overshoot is zero, exactly. The undershoot is at most the slices outstanding: about one second of the campaign's spend, which for a budget spent evenly over the day is about 1/86 400 of it.
 
 **And the two errors are not the same price.** Over-delivery is impressions nobody can bill; under-delivery is revenue left on the table. Escrow moved the whole error onto the side the business would rather have it on — which is the signed error bound of chapter 06, turning up a chapter early.
 :::
@@ -173,7 +174,7 @@ Replication turns “what does a read see?” into a real question, and there is
 
 | Guarantee | Means | Costs | Buys you |
 |---|---|---|---|
-| **Linearizable** | Every read sees the latest committed write | Consensus per write; the latency floor rises with distance between replicas | Balances, uniqueness, locks |
+| **Linearizable** | Every read sees the latest committed write | One authoritative ordering point per operation — a fenced leader, or consensus; the latency floor rises with distance | Balances, uniqueness, locks |
 | **Sequential** | Every reader sees the writes in one agreed order, though not necessarily the latest | One ordering point — a leader or a totally ordered log — without a real-time read path | Coordination and configuration data read from followers |
 | **Causal** | Effects are never visible before their causes | Session tokens or version tracking on the read path | Comments, collaboration, anything conversation-shaped |
 | **Read-your-writes** | A client always sees its own effects | Read the authoritative write history, or carry a session version and wait/route to a replica that has applied it; preserve that requirement across failover | “I edited it and nothing changed” |
@@ -250,7 +251,7 @@ Which gives us the honest stop rule. If the buyer's search were a simple filter 
 ::: thread
 #### What is truth here, and what is merely expensive to lose
 
-Ask the three questions in order. The views are: an album page, a single photo, and the uploader's own recent uploads. The acknowledgement is *your photo is safely stored* — a receipt: the bytes are durable, and the sizes follow. The invariant is that a photo is only ever visible to the people its owner has allowed to see it.
+Take the inputs in order: views, acknowledgement, invariant, then the irreducible inputs. The views are: an album page, a single photo, and the uploader's own recent uploads. The acknowledgement is *your photo is safely stored* — a receipt: the bytes are durable, and the sizes follow. The invariant is that a photo is only ever visible to the people its owner has allowed to see it.
 
 - **Truth:** the original bytes, in the object store — and **a catalogue row** in a relational store, holding who owns what, when it arrived and who may see it. The catalogue is there because *listing is not querying*: the object store cannot answer *which photos did this user upload in March*, and the invariant needs an enforcer that can.
 - **Derived:** four thumbnail sizes. They are rebuildable from the original, so they may be lost, and they are bounded by the viewer's [60 s]{.num} from chapter 02.
@@ -271,10 +272,10 @@ A projection is rebuildable because its inputs survive, not because the client c
 :::
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - Specification [step 03 · Data](../method.html#s03) — views, acknowledgements in their three kinds, and invariants; truth against projection; the view a client commits against; the consistency menu as a ladder with a fork, and the read-your-writes fix order; one enforcer and a scope per invariant, the isolation the scope requires, and the enforcement ladder
 - Not carried here, and governed by the specification alone: the conflict policy a class with more than one writer owes, minimisation, and the two kinds of lifecycle
 - Specification [step 04 · Storage & transport](../method.html#s04), stores half — the family table and the access-pattern match, and the partition key as the scope key of the hardest invariant
-- Specification [§02 · Primitives](../method.html#prim) — the store's six declarations, and the cache as a derived store with an invalidation contract
+- Specification [§02 · Primitives](../method.html#prim) — the store's six declarations and the seventh where several processes play it, and the cache as a derived store with an invalidation contract
 - The session guarantees are Terry, Demers, Petersen, Spreitzer, Theimer and Welch's (PDIS 1994); write skew under snapshot isolation is Berenson, Bernstein, Gray, Melton and the O'Neils' (SIGMOD 1995); escrow is O'Neil's (*ACM TODS*, 1986), and the demarcation protocol Barbará and Garcia-Molina's (*The VLDB Journal*, 1994)
 :::

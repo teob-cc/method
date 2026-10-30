@@ -40,7 +40,7 @@ An internal expense-approval tool. Somebody submits a claim with receipts, someb
 
 These illustrative definitions expose the delivery question; they do not answer it. Keep *Approver notified* unresolved until the observable event and deadline are agreed. An API called *Approve claim* likewise requests an approval; its result may assert *Claim approved* only after the approval transaction commits successfully under its declared persistence contract, with both invariants checked atomically.
 
-**Supply.** Two engineers, and neither of them full-time on this. The company's existing cloud, the company's existing container platform. No dedicated on-call — business hours only, and an overnight outage is assumed acceptable, subject to agreement on notification deadlines. Lifecycle: **one-off product**, with a written trigger that would reopen it — onboard a second company and this becomes a different system. Published interfaces: **nobody**. Cost: nobody stated a ceiling, and I did not invent one — the whole footprint is one small database, one bucket and a share of a platform the company already runs, so the honest envelope is *it must not become a line of its own on anybody's bill*. **Assumed**, and worth one email to turn into a number.
+**Supply.** Two engineers, and neither of them full-time on this. The company's existing cloud, in one region, and the company's existing container platform; the users are all internal, in one office. No dedicated on-call — business hours only, and an overnight outage is assumed acceptable, subject to agreement on notification deadlines. Lifecycle: **one-off product**, with a written trigger that would reopen it — onboard a second company and this becomes a different system. Published interfaces: **nobody**. Cost: nobody stated a ceiling, and I did not invent one — the whole footprint is one small database, one bucket and a share of a platform the company already runs, so the honest envelope is *it must not become a line of its own on anybody's bill*. **Assumed**, and worth one email to turn into a number.
 
 ## 02 · Load, in three minutes
 
@@ -61,10 +61,10 @@ Three views to serve: my claims, the claims awaiting my approval, and the monthl
 ::: figure
 ![Two columns. On the left, nine mechanisms a standard template would supply, each struck through with the constraint that deleted it. On the right, the six mechanisms that survived, each with the requirement that bought it.](../figures/C-an-internal-service.svg)
 
-Nine deletions on the left, six survivors on the right. Not one of the deletions is a verdict on the technology itself — each one names a figure, or an answer somebody gave, and each one reverses the moment that figure or that answer moves.
+Nine deletions on the left, six survivors on the right. Not one of the deletions is a verdict on the technology itself — each one names a figure, an answer somebody gave, or the decision above it, and each one reverses the moment that figure, that answer or that decision moves.
 :::
 
-One relational store holds the claims, the approvals and the audit trail, and it enforces both invariants into the bargain — because that is where a uniqueness constraint and a check constraint actually live. One object store holds the receipts. And that is the whole storage design.
+One relational store holds the claims, the approvals and the audit trail, and it enforces both invariants into the bargain — because that is where a uniqueness constraint lives, and where the approval transaction can check the approver against the submitter. One object store holds the receipts. And that is the whole storage design.
 
 **One asynchronous notification path survives.** In the same transaction that accepts a claim, create a durable notification/outbox record. A worker sends through the external mail gateway, at least once, keyed by claim and notification version. Bound active sends and waiting work separately; refuse new acceptance before capacity is exhausted rather than discard accepted work. Do not expire pending notifications at one day: that is their target deadline. Track gateway acceptance, retries, bounces and overdue outcomes; a retry may duplicate mail. Cancel a superseded notification only after checking claim state and recording why it is no longer needed. Readers must understand every schema retained in the outbox. The gateway contract and overnight outage allowance must be reconciled with “notified within a day”; until then that delivery promise is unresolved.
 
@@ -78,10 +78,10 @@ One relational store holds the claims, the approvals and the audit trail, and it
 
 ## 10 · Trace
 
-| Requirement | Mechanism | Verified by |
+| Requirement | Mechanism | Evidence required |
 |---|---|---|
 | Acknowledged claims survive the agreed failure model | Commit before reply, retained records and tested backup/restore contract | Reconcile acknowledgements with retained claims after failure and restore |
-| A claim is approved at most once, never by its submitter | Uniqueness and check constraints, same transaction | Nightly reconciliation, zero-tolerance count |
+| A claim is approved at most once, never by its submitter | Unique constraint on the approval; approver ≠ submitter checked in the approval transaction (or a denormalised submitter column with a composite foreign key and a check constraint) | Nightly reconciliation, zero-tolerance count |
 | Submitter sees p99 2 s | One synchronous path; notification made async | Request duration at the surface |
 | Approver notified within a day, calendar/business semantics to agree | Durable outbox, gateway outcome tracking and overdue escalation | Delivered/failed/overdue reconciliation; gateway outage exercise. Contract unresolved |
 | Finance can pull a month by employee and status | Two indexes on the claims table | Measure export duration under peak interactive load; evidence required |
@@ -92,20 +92,20 @@ One relational store holds the claims, the approvals and the audit trail, and it
 **Six rows declare coverage; they do not certify it.** The role matrix, gateway deadline contract, acknowledgement reconciliation and restoration exercise remain evidence to supply. Sharing the relational store is reasonable, but assess loss of committed data, write unavailability and slow exports as distinct failure modes. No additional service is justified merely by the number of citations.
 
 ::: warn
-**Reading this as “the method was skipped”.** It was not skipped. It was run, and it stopped early on purpose. The stop rules it took — one node suffices, trust is small enough for an explicit role and object-access matrix — and the two defaults it never had to leave — no force buys a second unit, no view needs a projection — are part of the method, and **taking them is the method working.** What came out is nine deletions with a reason standing beside each one — six figures, and three answers to questions somebody actually asked — and that is a stronger artifact than a diagram of a system nobody needed.
+**Reading this as “the method was skipped”.** It was not skipped. It was run, and it stopped early on purpose. The stop rules it took — one node suffices, trust is small enough for an explicit role and object-access matrix — and the two defaults it never had to leave — no force buys a second unit, no view needs a projection — are part of the method, and **taking them is the method working.** What came out is nine deletions with a reason standing beside each one — four figures, three answers to questions somebody actually asked, one parent decision and one constraint nobody stated — and that is a stronger artifact than a diagram of a system nobody needed.
 :::
 
 ::: rule
 Most systems are this one. The method's job here was not to produce an architecture — it was to produce nine reasons not to.
 
-And every one of those reasons is a number, or an answer, that would reverse the decision if it moved — which is what makes this a design rather than a shrug.
+And every one of those reasons is a number, an answer or a parent decision that would reverse the deletion if it moved — which is what makes this a design rather than a shrug.
 :::
 
 And that closes the book as it currently stands. Ticket booking sits over at [worked example A](../worked-example.html), and it is the one to read if you want to watch the method being *re-run* — a failed promise forcing the reservation protocol and its observation point to be made explicit, a constructed case of the dependency review described in chapter 12.
 
 ::: owes
-- Specification [Naming concepts and contracts](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
+- Specification §02 · [Names carry a scope and a contract](../method.html#naming) — scoped terms, preserved behavioural distinctions and the ANSI/NISO Z39.19-2005 (R2010) adaptation
 - The ten steps on the case the genre never shows — where the stop rules fire and taking them is the method working
 - Specification [step 02 · Load](../method.html#s02) for dividing per cluster and per node, and [step 04](../method.html#s04) for the granularity default of one runnable unit
-- Specification [§01](../method.html#claim), *how much method to apply* — the stop rules exist to be taken. This is not the single-class service that paragraph gives fifteen minutes and three steps to: it has three classes and a regulatory retention, so all ten steps are walked, and it is short because the stop rules fire along the way
+- Specification [§01](../method.html#claim), *how much method to apply* — the stop rules exist to be taken. This is not the single-class service that paragraph gives fifteen minutes and three steps to: it has three classes and an assumed seven-year retention obligation, so all ten steps are walked, and it is short because the stop rules fire along the way
 :::
