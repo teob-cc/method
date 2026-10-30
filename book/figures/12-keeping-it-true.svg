@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1000 372" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="11">
+  <text x="20" y="20" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">THE ROLE PERSISTS. THE SUFFICIENCY CLAIM IS WHAT EXPIRES.</text>
+
+  <rect x="20" y="40" width="960" height="106" fill="#DCE6F0" stroke="#1B4F8A" stroke-width="2"/>
+  <text x="36" y="64" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="13.5" fill="#101820">THE CATALOGUE STORE &#8212; a role, with constraints</text>
+  <g fill="#101820" font-size="11">
+    <text x="36" y="88">holds who owns what, when it arrived, and who may see it</text>
+    <text x="36" y="108">read-your-writes for the owner &#183; eventual within 60 s for everyone else</text>
+    <text x="36" y="128">permission state lives here; every serving route must enforce its revocation contract</text>
+  </g>
+
+  <text x="20" y="176" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#6C7780" letter-spacing="1.4">SUFFICIENT TO PLAY IT</text>
+
+  <g stroke="#101820" stroke-width="1.5" fill="#FBFCFB">
+    <rect x="20"  y="190" width="300" height="76"/>
+    <rect x="350" y="190" width="300" height="76"/>
+    <rect x="680" y="190" width="300" height="76"/>
+  </g>
+  <g font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">
+    <text x="36" y="214">PostgreSQL, one primary</text>
+    <text x="366" y="214">PostgreSQL + read replicas</text>
+    <text x="696" y="214">Distributed SQL</text>
+  </g>
+  <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#6C7780">
+    <text x="36" y="232">today</text><text x="366" y="232">after that</text><text x="696" y="232">and after that</text>
+  </g>
+  <g font-size="10.5" fill="#C21F2C">
+    <text x="36" y="254">claim dies when: reads outgrow the primary</text>
+    <text x="366" y="254">claim dies when: writes outgrow one primary</text>
+    <text x="696" y="254" fill="#2E6B4F">holds until: commit latency breaks a tolerance</text>
+  </g>
+
+  <g stroke="#101820" stroke-width="1.5" fill="#101820">
+    <line x1="322" y1="228" x2="342" y2="228"/><path d="M342,224 L350,228 L342,232 z"/>
+    <line x1="652" y1="228" x2="672" y2="228"/><path d="M672,224 L680,228 L672,232 z"/>
+  </g>
+
+  <line x1="20" y1="292" x2="980" y2="292" stroke="#C9D2D4"/>
+  <text x="20" y="314" font-size="11" fill="#4A5560">In this example the role survives a capacity change. Check every affected dependency before preserving it.</text>
+  <text x="20" y="332" font-size="11" fill="#4A5560">A new client or invariant can change the role itself. These are candidate implementations, not an upgrade ladder.</text>
+  <text x="20" y="358" font-size="11" fill="#101820" font-weight="600">Write it the other way round &#8212; &#8220;the catalogue is Postgres&#8221; &#8212; and every one of those moves is a rewrite of the design.</text>
+</svg>

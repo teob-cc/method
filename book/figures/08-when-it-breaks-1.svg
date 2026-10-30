@@ -1,0 +1,40 @@
+<svg viewBox="0 0 1000 392" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="10.5">
+  <text x="20" y="22" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">EACH RUNG IS A PROMISE FROM CHAPTER 02 &#8212; HERE IS WHAT IT COSTS TO KEEP</text>
+
+  <g stroke="#101820" stroke-width="2" fill="#FBFCFB">
+    <rect x="20"  y="46"  width="230" height="40"/>
+    <rect x="46"  y="100" width="230" height="40"/>
+    <rect x="72"  y="154" width="230" height="40"/>
+    <rect x="98"  y="208" width="230" height="40"/>
+    <rect x="124" y="262" width="230" height="40"/>
+  </g>
+  <rect x="150" y="316" width="230" height="40" fill="#F7E6E7" stroke="#C21F2C" stroke-width="2"/>
+
+  <g font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">
+    <text x="34"  y="71">1 &#183; CORRECT, SLOWER</text>
+    <text x="60"  y="125">2 &#183; CORRECT, LESS</text>
+    <text x="86"  y="179">3 &#183; STALE, COMPLETE</text>
+    <text x="112" y="233">4 &#183; PENDING, SIGNALLED</text>
+    <text x="138" y="287">5 &#183; ABSENT, SIGNALLED</text>
+  </g>
+  <text x="164" y="341" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#C21F2C">6 &#183; WRONG</text>
+
+  <g fill="#4A5560" font-size="10.5">
+    <text x="400" y="63">requires a retry or a hedge that succeeded &#8212; and it is</text>
+    <text x="400" y="78">paid for out of the latency budget, not out of thin air</text>
+    <text x="400" y="117">requires a partial flag <tspan fill="#101820" font-weight="600">in the contract</tspan>, so the caller</text>
+    <text x="400" y="132">can tell this answer from a complete one</text>
+    <text x="400" y="171">requires something rebuildable to serve from, a stated</text>
+    <text x="400" y="186">bound, and an as-of timestamp on the response</text>
+    <text x="400" y="225">requires a handle, a deadline, and a way to reach the</text>
+    <text x="400" y="240">client later &#8212; which is a design obligation, not a message</text>
+    <text x="400" y="279">requires a typed error and a retry-after the caller can</text>
+    <text x="400" y="294">actually act on. Far better than it sounds</text>
+  </g>
+  <text x="400" y="333" fill="#C21F2C" font-weight="600" font-size="10.5">never a rung on any ladder, at any load, under any pressure.</text>
+  <text x="400" y="348" fill="#C21F2C" font-size="10.5">If a mechanism can produce this, that is a finding, not a trade-off.</text>
+
+  <line x1="10" y1="46" x2="10" y2="350" stroke="#C21F2C" stroke-width="1.5"/>
+  <path d="M6,344 L10,356 L14,344 z" fill="#C21F2C"/>
+  <text x="20" y="378" fill="#4A5560" font-size="10.5">Down the ladder is worse for the caller. The last rung you are permitted to reach must still be an answer they can use.</text>
+</svg>

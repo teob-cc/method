@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1000 372" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11">
+  <text x="20" y="22" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">ONE FEATURE — PHOTO UPLOAD — DRAWN WITH THREE DIFFERENT BOUNDARIES</text>
+
+  <!-- ROW A -->
+  <text x="20" y="80" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="13" fill="#101820">A · THE ENDPOINT ONLY</text>
+  <g>
+    <rect x="185" y="58" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="250" y="82" text-anchor="middle" fill="#4A5560">mobile app</text>
+    <rect x="329" y="58" width="130" height="38" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+    <text x="394" y="82" text-anchor="middle" fill="#FBFCFB" font-weight="600">upload endpoint</text>
+    <rect x="473" y="58" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="538" y="82" text-anchor="middle" fill="#4A5560">object store</text>
+    <rect x="617" y="58" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="682" y="82" text-anchor="middle" fill="#4A5560">CDN</text>
+    <rect x="761" y="58" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="826" y="82" text-anchor="middle" fill="#4A5560">browser</text>
+  </g>
+  <text x="185" y="116" fill="#C21F2C" font-weight="600" font-size="10.5">The store is a dependency. You inherit its durability and its quota; you cannot choose its replication.</text>
+
+  <line x1="20" y1="134" x2="980" y2="134" stroke="#C9D2D4" stroke-width="1"/>
+
+  <!-- ROW B -->
+  <text x="20" y="185" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="13" fill="#101820">B · ENDPOINT + STORE</text>
+  <g>
+    <rect x="185" y="163" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="250" y="187" text-anchor="middle" fill="#4A5560">mobile app</text>
+    <rect x="329" y="163" width="130" height="38" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+    <text x="394" y="187" text-anchor="middle" fill="#FBFCFB" font-weight="600">upload endpoint</text>
+    <rect x="473" y="163" width="130" height="38" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+    <text x="538" y="187" text-anchor="middle" fill="#FBFCFB" font-weight="600">object store</text>
+    <rect x="617" y="163" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="682" y="187" text-anchor="middle" fill="#4A5560">CDN</text>
+    <rect x="761" y="163" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="826" y="187" text-anchor="middle" fill="#4A5560">browser</text>
+  </g>
+  <text x="185" y="221" fill="#C21F2C" font-weight="600" font-size="10.5">Retention, replication and the storage bill are now yours to decide — and to defend.</text>
+
+  <line x1="20" y1="239" x2="980" y2="239" stroke="#C9D2D4" stroke-width="1"/>
+
+  <!-- ROW C -->
+  <text x="20" y="290" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="13" fill="#101820">C · + THE CDN</text>
+  <g>
+    <rect x="185" y="268" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="250" y="292" text-anchor="middle" fill="#4A5560">mobile app</text>
+    <rect x="329" y="268" width="130" height="38" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+    <text x="394" y="292" text-anchor="middle" fill="#FBFCFB" font-weight="600">upload endpoint</text>
+    <rect x="473" y="268" width="130" height="38" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+    <text x="538" y="292" text-anchor="middle" fill="#FBFCFB" font-weight="600">object store</text>
+    <rect x="617" y="268" width="130" height="38" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+    <text x="682" y="292" text-anchor="middle" fill="#FBFCFB" font-weight="600">CDN</text>
+    <rect x="761" y="268" width="130" height="38" fill="none" stroke="#6C7780" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="826" y="292" text-anchor="middle" fill="#4A5560">browser</text>
+  </g>
+  <text x="185" y="326" fill="#C21F2C" font-weight="600" font-size="10.5">Cache staleness stops being their behaviour and becomes your promise, with a number on it.</text>
+
+  <text x="20" y="360" fill="#4A5560" font-size="10.5">Filled = inside, you design it and answer for it.  ·  Dashed = outside, you characterise it and design around it.</text>
+</svg>

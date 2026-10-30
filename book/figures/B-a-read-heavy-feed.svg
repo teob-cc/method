@@ -1,0 +1,36 @@
+<svg viewBox="0 0 1000 372" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="11">
+  <text x="20" y="20" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">A CANDIDATE THRESHOLD NEEDS A QUEUE-WAIT AND SERVICE BOUND.</text>
+
+  <rect x="640" y="48" width="280" height="214" fill="#F7E6E7"/>
+  <g fill="#DCE6F0" stroke="#1B4F8A" stroke-width="1">
+    <rect x="80"  y="112" width="140" height="150"/>
+    <rect x="220" y="152" width="140" height="110"/>
+    <rect x="360" y="192" width="140" height="70"/>
+    <rect x="500" y="226" width="140" height="36"/>
+  </g>
+  <g fill="#F2C9CD" stroke="#C21F2C" stroke-width="1">
+    <rect x="640" y="250" width="140" height="12"/>
+    <rect x="780" y="257" width="140" height="5"/>
+  </g>
+
+  <line x1="80" y1="262" x2="920" y2="262" stroke="#101820" stroke-width="1.5"/>
+  <g text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4A5560">
+    <text x="80" y="280">10</text><text x="220" y="280">100</text><text x="360" y="280">1k</text>
+    <text x="500" y="280">10k</text><text x="640" y="280">100k</text><text x="780" y="280">1M</text><text x="920" y="280">10M</text>
+  </g>
+  <text x="500" y="298" text-anchor="middle" font-size="10.5" fill="#4A5560">followers per account &#183; log scale &#183; illustrative distribution, not telemetry</text>
+
+  <line x1="640" y1="42" x2="640" y2="268" stroke="#C21F2C" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="632" y="38" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C21F2C" font-weight="600">CANDIDATE &#183; 100 000</text>
+
+  <text x="300" y="90" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="13" fill="#1B4F8A">FAN-OUT ON WRITE</text>
+  <text x="300" y="106" text-anchor="middle" font-size="10.5" fill="#4A5560">200&#215; post-weighted mean &#183; assumed</text>
+  <text x="780" y="90" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="13" fill="#C21F2C">FAN-OUT ON READ</text>
+  <text x="780" y="106" text-anchor="middle" font-size="10.5" fill="#4A5560">1&#215; amplification &#183; merged at query time</text>
+  <text x="780" y="126" text-anchor="middle" font-size="10.5" fill="#4A5560">population above cutoff: not measured</text>
+
+  <line x1="20" y1="314" x2="980" y2="314" stroke="#101820" stroke-width="2"/>
+  <text x="20" y="334" font-size="11" fill="#101820">Assumed: 5 000 rows/s guaranteed per active post. A 100 000-row post needs 20 s of service.</text>
+  <text x="20" y="352" font-size="11" fill="#101820">The 90 s promise must also cover queue wait, retries and publication. Capacity averages do not bound those.</text>
+  <text x="20" y="368" font-size="10.5" fill="#C21F2C">Status: conditional. Measure burst admission and scheduler service before accepting this cutoff.</text>
+</svg>

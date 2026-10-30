@@ -1,0 +1,58 @@
+<svg aria-label="Two axes meeting at the four primitives. The horizontal axis runs across four phases of the model: Outside, Shape, Reality and Proof. The vertical axis runs down through roles, components, runtime layout and running system. Both connect to a central row of the four primitives: surface, channel, processor and store." font-family="ui-monospace, SFMono-Regular, Menlo, monospace" role="img" viewbox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg">
+<text fill="#7FD8C4" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" x="20" y="22">TWO AXES, MEETING AT THE FOUR PRIMITIVES</text>
+<!-- HORIZONTAL -->
+<text fill="#7FD8C4" font-size="11" letter-spacing="1.6" x="20" y="54">HORIZONTAL · ONE MODEL · ANY STATEFUL INFORMATION SYSTEM</text>
+<g fill="#0E1216" stroke="#7FD8C4" stroke-opacity=".45">
+<rect height="52" width="230" x="20" y="66"></rect><rect height="52" width="230" x="264" y="66"></rect>
+<rect height="52" width="212" x="508" y="66"></rect><rect height="52" width="246" x="734" y="66"></rect>
+</g>
+<g fill="#E9EEEC" font-size="12.5" font-weight="600">
+<text x="34" y="88">I · OUTSIDE</text><text x="278" y="88">II · SHAPE</text>
+<text x="522" y="88">III · REALITY</text><text x="748" y="88">IV · PROOF</text>
+</g>
+<g fill="#98A4A2" font-size="10">
+<text x="34" y="106">who is out there · what it costs</text>
+<text x="278" y="106">data · stores · channels · trust</text>
+<text x="522" y="106">failure · runtime · operations</text>
+<text x="748" y="106">the trace, read three ways</text>
+</g>
+<!-- connectors up -->
+<g stroke="#7FD8C4" stroke-opacity=".35" stroke-width="1">
+<line x1="221" x2="221" y1="118" y2="164"></line><line x1="407" x2="407" y1="118" y2="164"></line>
+<line x1="593" x2="593" y1="118" y2="164"></line><line x1="779" x2="779" y1="118" y2="164"></line>
+</g>
+<!-- PRIMITIVES -->
+<text fill="#5F6C6A" font-size="10.5" letter-spacing="1.8" text-anchor="middle" x="500" y="150">THE FOUR PRIMITIVES — WHERE THE AXES CROSS</text>
+<g fill="#121820" stroke="#E9EEEC" stroke-opacity=".55">
+<rect height="46" width="170" x="136" y="164"></rect><rect height="46" width="170" x="322" y="164"></rect>
+<rect height="46" width="170" x="508" y="164"></rect><rect height="46" width="170" x="694" y="164"></rect>
+</g>
+<g fill="#E9EEEC" font-size="12.5" font-weight="600" text-anchor="middle">
+<text x="221" y="192">SURFACE</text><text x="407" y="192">CHANNEL</text>
+<text x="593" y="192">PROCESSOR</text><text x="779" y="192">STORE</text>
+</g>
+<!-- connectors down -->
+<g stroke="#E0B978" stroke-opacity=".35" stroke-width="1">
+<line x1="221" x2="221" y1="210" y2="274"></line><line x1="407" x2="407" y1="210" y2="274"></line>
+<line x1="593" x2="593" y1="210" y2="274"></line><line x1="779" x2="779" y1="210" y2="274"></line>
+</g>
+<!-- VERTICAL -->
+<text fill="#E0B978" font-size="11" letter-spacing="1.6" x="20" y="262">VERTICAL · ONE CURATED STACK · VALIDATED AGAINST THE SAME MODEL</text>
+<g fill="#0E1216" stroke="#E0B978" stroke-opacity=".45">
+<rect height="52" width="230" x="20" y="274"></rect><rect height="52" width="230" x="264" y="274"></rect>
+<rect height="52" width="212" x="508" y="274"></rect><rect height="52" width="246" x="734" y="274"></rect>
+</g>
+<g fill="#E9EEEC" font-size="12.5" font-weight="600">
+<text x="34" y="296">ROLES</text><text x="278" y="296">COMPONENTS</text>
+<text x="522" y="296">RUNTIME LAYOUT</text><text x="748" y="296">RUNNING SYSTEM</text>
+</g>
+<g fill="#98A4A2" font-size="10">
+<text x="34" y="314">which primitives does this play</text>
+<text x="278" y="314">teob-ts · wsgrpc · the curated set</text>
+<text x="522" y="314">placement · hosting · rollout</text>
+<text x="748" y="314">checked back against the model</text>
+</g>
+<line stroke="#AAE1D4" stroke-opacity=".12" x1="20" x2="980" y1="350" y2="350"></line>
+<text fill="#98A4A2" font-size="11" x="20" y="372">The horizontal axis describes the system without ever naming a technology.</text>
+<text fill="#98A4A2" font-size="11" x="20" y="390">The vertical axis realises it on components already typed by the same four roles — so the model that specified it is also the test.</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1000 434" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="11">
+  <text x="20" y="20" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">FIFTEEN MINUTES OF ARITHMETIC, AND WHAT IT DELETED</text>
+
+  <text x="20" y="52" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#C21F2C" letter-spacing="1.3">WHAT THE TEMPLATE SUPPLIES</text>
+  <text x="520" y="52" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#2E6B4F" letter-spacing="1.3">WHAT SURVIVED, AND WHAT BOUGHT IT</text>
+  <line x1="20" y1="60" x2="470" y2="60" stroke="#C21F2C"/>
+  <line x1="520" y1="60" x2="980" y2="60" stroke="#2E6B4F"/>
+
+  <g fill="#6C7780">
+    <text x="20" y="82">API gateway</text>
+    <text x="20" y="122">Three microservices</text>
+    <text x="20" y="162">A message broker</text>
+    <text x="20" y="202">A cache</text>
+    <text x="20" y="242">A search index</text>
+    <text x="20" y="282">A read replica</text>
+    <text x="20" y="322">A CDN</text>
+    <text x="20" y="362">Sharding</text>
+    <text x="20" y="402">A second repository</text>
+  </g>
+  <g stroke="#6C7780" stroke-width="1">
+    <line x1="20" y1="78" x2="98" y2="78"/><line x1="20" y1="118" x2="152" y2="118"/>
+    <line x1="20" y1="158" x2="126" y2="158"/><line x1="20" y1="198" x2="66" y2="198"/>
+    <line x1="20" y1="238" x2="104" y2="238"/><line x1="20" y1="278" x2="106" y2="278"/>
+    <line x1="20" y1="318" x2="55" y2="318"/><line x1="20" y1="358" x2="70" y2="358"/>
+    <line x1="20" y1="398" x2="136" y2="398"/>
+  </g>
+  <g fill="#C21F2C" font-size="10">
+    <text x="20" y="96">one runnable unit &#8212; there is nothing to route between</text>
+    <text x="20" y="136">no force: not delivery, scaling, isolation, trust, ownership or runtime</text>
+    <text x="20" y="176">2 requests a second &#8212; except one edge, opposite</text>
+    <text x="20" y="216">2 a second against a store that does thousands</text>
+    <text x="20" y="256">two indexed columns answer every query finance has</text>
+    <text x="20" y="296">reads are 0.02/s, and an overnight outage is an accepted rung</text>
+    <text x="20" y="336">internal users, one office, one region</text>
+    <text x="20" y="376">3.4 GB after seven years</text>
+    <text x="20" y="416">no separate source-access or release constraint is stated</text>
+  </g>
+
+  <g fill="#101820" font-weight="600">
+    <text x="520" y="88">One relational store</text>
+    <text x="520" y="148">One object store</text>
+    <text x="520" y="208">One runnable unit</text>
+    <text x="520" y="268">One async channel</text>
+    <text x="520" y="328">Two indexes</text>
+    <text x="520" y="388">Seven-year retention</text>
+  </g>
+  <g fill="#2E6B4F" font-size="10">
+    <text x="520" y="104">cites the two invariants and the acknowledgement</text>
+    <text x="520" y="164">cites receipts: large, immutable, cheap to keep</text>
+    <text x="520" y="224">the default &#8212; nothing bought a second</text>
+    <text x="520" y="284">cites p99 2 s: do not make a submitter wait on a mail gateway</text>
+    <text x="520" y="344">cites finance&#8217;s two query shapes</text>
+    <text x="520" y="404">illustrative retention contract; verify the actual obligation</text>
+  </g>
+
+  <line x1="490" y1="66" x2="490" y2="420" stroke="#C9D2D4"/>
+</svg>

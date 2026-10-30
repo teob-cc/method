@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{title}} · {{tab_label}} · Outside-In</title>
+<meta name="description" content="{{description}}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101820'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' fill='%23EFF2F1' text-anchor='middle'%3E%CE%BB%3C/text%3E%3C/svg%3E">
+<style>
+{{fonts_css}}
+{{css}}</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="rh">
+  <div><span class="bk">{{book_title}}</span> &nbsp;·&nbsp; <a href="index.html">Contents</a></div>
+  <div>{{part}} &nbsp;·&nbsp; <a href="../method.html">The specification</a></div>
+</div>
+
+<div class="opener">
+  <div class="partline">{{part}}</div>
+  <span class="chno">{{opener_label}}</span>
+  <h1>{{title}}</h1>
+</div>
+
+{{body}}
+<nav class="pagenav">{{prev}}{{next}}</nav>
+</div>
+</body>
+</html>

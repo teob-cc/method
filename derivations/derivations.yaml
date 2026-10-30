@@ -1,0 +1,12 @@
+# The eight derivations in reading order. Each file's front matter carries its number, title and stamp;
+# the build makes the previous/next navigation of every page from this list.
+index: index
+pieces:
+  - 01-the-division
+  - 02-the-stop-rule
+  - 03-the-missing-root
+  - 04-the-invariant
+  - 05-the-acknowledgement
+  - 06-the-projection
+  - 07-the-client-classes
+  - 08-the-channel

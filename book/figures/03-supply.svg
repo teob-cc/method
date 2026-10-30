@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1000 492" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif">
+  <text x="20" y="22" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">EVERY ROW NAMES THE LATER CHAPTER THAT CONSUMES IT</text>
+  <text x="20" y="52" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#6C7780" letter-spacing="1.4">THE OPERATING ENVELOPE</text>
+  <text x="980" y="52" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#6C7780" letter-spacing="1.4">CONSUMED AT</text>
+  <g stroke="#1B4F8A" stroke-opacity=".45" stroke-width="1.4" fill="none">
+    <path d="M310,92 C470,92 540,144 700,144"/>
+    <path d="M310,144 C470,144 540,144 700,144"/>
+    <path d="M310,196 C470,196 540,144 700,144"/>
+    <path d="M310,248 C470,248 540,248 700,248"/>
+    <path d="M310,300 C470,300 540,326 700,326"/>
+    <path d="M310,352 C470,352 540,326 700,326"/>
+    <path d="M310,352 C470,352 540,404 700,404"/>
+    <path d="M310,404 C470,404 540,404 700,404"/>
+  </g>
+  <circle cx="700" cy="144" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="144" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="144" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="248" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="326" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="326" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="404" r="2.6" fill="#1B4F8A"/>
+  <circle cx="700" cy="404" r="2.6" fill="#1B4F8A"/>
+  <rect x="20" y="70" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="89" font-size="13" font-weight="600" fill="#101820">Operating capability</text>
+  <text x="34" y="104" font-size="10.5" fill="#6C7780">what this team runs well at three in the morning</text>
+  <rect x="20" y="122" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="141" font-size="13" font-weight="600" fill="#101820">Hosting posture</text>
+  <text x="34" y="156" font-size="10.5" fill="#6C7780">cloud &#183; on-premise &#183; hybrid &#183; sovereign region</text>
+  <rect x="20" y="174" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="193" font-size="13" font-weight="600" fill="#101820">Contracts already held</text>
+  <text x="34" y="208" font-size="10.5" fill="#6C7780">a CDN deal, an archive tier, a licence</text>
+  <rect x="20" y="226" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="245" font-size="13" font-weight="600" fill="#101820">Cost envelope</text>
+  <text x="34" y="260" font-size="10.5" fill="#6C7780">a ceiling and a unit &#8212; per request, tenant or month</text>
+  <rect x="20" y="278" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="297" font-size="13" font-weight="600" fill="#101820">Team topology</text>
+  <text x="34" y="312" font-size="10.5" fill="#6C7780">how many teams, owning what, on which cadence</text>
+  <rect x="20" y="330" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="349" font-size="13" font-weight="600" fill="#101820">Expected lifecycle</text>
+  <text x="34" y="364" font-size="10.5" fill="#6C7780">spike &#183; one-off &#183; prototype &#183; platform</text>
+  <rect x="20" y="382" width="290" height="44" fill="#FBFCFB" stroke="#C9D2D4"/>
+  <text x="34" y="401" font-size="13" font-weight="600" fill="#101820">Published interfaces</text>
+  <text x="34" y="416" font-size="10.5" fill="#6C7780">who holds an artifact you cannot rebuild for them</text>
+  <rect x="700" y="116" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
+  <text x="714" y="138" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 05 &#183; STORED</text>
+  <text x="714" y="155" font-size="10" fill="#4A5560">which store family, and what it is answerable for</text>
+  <rect x="700" y="220" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
+  <text x="714" y="242" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 04 &#183; ARITHMETIC</text>
+  <text x="714" y="259" font-size="10" fill="#4A5560">the ceiling, carried in as the fourth figure</text>
+  <rect x="700" y="298" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
+  <text x="714" y="320" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 07 &#183; TRANSMITTED</text>
+  <text x="714" y="337" font-size="10" fill="#4A5560">where the boundaries get cut, and what that buys</text>
+  <rect x="700" y="376" width="280" height="56" fill="#DCE6F0" stroke="#1B4F8A"/>
+  <text x="714" y="398" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#101820">CH 10 &#183; CHANGING IT</text>
+  <text x="714" y="415" font-size="10" fill="#4A5560">repo topology, version scheme, rollout</text>
+  <line x1="20" y1="444" x2="980" y2="444" stroke="#C9D2D4"/>
+  <text x="20" y="464" font-size="11" fill="#4A5560"><tspan font-weight="600" fill="#101820">Procurement reality gates all four</tspan> &#8212; what can be bought this quarter, what needs a review board, what data may leave the building.</text>
+  <text x="20" y="482" font-size="11" fill="#C21F2C" font-weight="600">A row with no named consumer is a question that should not have been asked.</text>
+</svg>

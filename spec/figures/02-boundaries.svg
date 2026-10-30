@@ -1,0 +1,68 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10" viewbox="0 0 1000 436" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arB" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#101820"></path></marker>
+<marker id="arG" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#7C8890"></path></marker>
+</defs>
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="16">A · THE SAME EDGE, THREE BOUNDARIES — EACH CROSSING ADDS PROPERTIES</text>
+<!-- 1 · inside one unit -->
+<rect fill="none" height="118" stroke="#C9D2D4" stroke-dasharray="4 3" stroke-width="1" width="290" x="20" y="36"></rect>
+<text fill="#4A5560" x="30" y="52">INSIDE ONE RUNNABLE UNIT</text>
+<g fill="#FBFCFB" stroke="#101820" stroke-width="2">
+<rect height="34" width="84" x="34" y="66"></rect><rect height="34" width="84" x="212" y="66"></rect>
+</g>
+<g fill="#101820" font-size="9.5" text-anchor="middle"><text x="76" y="87">MODULE</text><text x="254" y="87">MODULE</text></g>
+<line marker-end="url(#arB)" stroke="#101820" stroke-width="2" x1="118" x2="208" y1="83" y2="83"></line>
+<text fill="#4A5560" font-size="9" text-anchor="middle" x="163" y="79">function call</text>
+<text fill="#2E6B4F" font-weight="600" text-anchor="middle" x="165" y="122">local contracts still apply</text>
+<text fill="#4A5560" text-anchor="middle" x="165" y="136">consistency, latency and failure</text>
+<text fill="#4A5560" text-anchor="middle" x="165" y="147">need explicit local contracts</text>
+<!-- 2 · between units -->
+<rect fill="none" height="118" stroke="#C9D2D4" stroke-dasharray="4 3" stroke-width="1" width="290" x="330" y="36"></rect>
+<text fill="#4A5560" x="340" y="52">BETWEEN RUNNABLE UNITS</text>
+<g fill="#FBFCFB" stroke="#101820" stroke-width="2">
+<rect height="34" width="92" x="348" y="66"></rect><rect height="34" width="92" x="510" y="66"></rect>
+</g>
+<g fill="#101820" font-size="9.5" text-anchor="middle"><text x="394" y="87">PROCESSOR</text><text x="556" y="87">PROCESSOR</text></g>
+<line marker-end="url(#arB)" stroke="#1B4F8A" stroke-width="2.5" x1="440" x2="506" y1="83" y2="83"></line>
+<text fill="#1B4F8A" font-size="9" font-weight="600" text-anchor="middle" x="473" y="76">CHANNEL</text>
+<text fill="#1B4F8A" font-weight="600" text-anchor="middle" x="475" y="122">+ eight questions <tspan fill="#7C8890" font-weight="400">(* state sync semantics)</tspan></text>
+<text fill="#4A5560" text-anchor="middle" x="475" y="136">sync · guarantee* · ordering key · backpressure</text>
+<text fill="#4A5560" text-anchor="middle" x="475" y="147">TTL* · contract · <tspan fill="#C21F2C">far side · departure</tspan></text>
+<!-- 3 · across the system boundary -->
+<rect fill="none" height="118" stroke="#C9D2D4" stroke-dasharray="4 3" stroke-width="1" width="340" x="640" y="36"></rect>
+<text fill="#4A5560" x="650" y="50">ACROSS THE SYSTEM BOUNDARY</text>
+<rect fill="none" height="34" stroke="#7C8890" stroke-dasharray="5 3" stroke-width="2" width="92" x="656" y="68"></rect>
+<text fill="#4A5560" font-size="9.5" text-anchor="middle" x="702" y="89">CLIENT</text>
+<rect fill="#FBFCFB" height="38" stroke="#101820" stroke-width="3.5" width="106" x="856" y="66"></rect>
+<text fill="#101820" font-size="9.5" font-weight="600" text-anchor="middle" x="909" y="89">SURFACE</text>
+<line marker-end="url(#arB)" stroke="#101820" stroke-width="2.5" x1="748" x2="852" y1="85" y2="85"></line>
+<line stroke="#C21F2C" stroke-dasharray="3 3" stroke-width="1.5" x1="800" x2="800" y1="66" y2="106"></line>
+<text fill="#C21F2C" font-size="8.5" text-anchor="middle" x="800" y="62">the boundary</text>
+<text fill="#101820" font-weight="600" text-anchor="middle" x="810" y="122">+ four more, and they do not reduce</text>
+<text fill="#4A5560" text-anchor="middle" x="810" y="136">identity originated · quota as policy</text>
+<text fill="#4A5560" text-anchor="middle" x="810" y="147">a contract you cannot deploy · enforcement here</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="182" y2="182"></line>
+<!-- PANEL B -->
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="208">B · A SURFACE, EXPLODED — TWO PRIMITIVES PLUS THE PART THAT IS NOT REDUCIBLE</text>
+<rect fill="#FBFCFB" height="52" stroke="#101820" stroke-width="3.5" width="122" x="20" y="228"></rect>
+<text fill="#101820" font-size="10.5" font-weight="600" text-anchor="middle" x="81" y="250">SURFACE</text>
+<text fill="#4A5560" font-size="9" text-anchor="middle" x="81" y="266">one box on the graph</text>
+<line marker-end="url(#arG)" stroke="#7C8890" stroke-dasharray="4 3" stroke-width="1.5" x1="146" x2="188" y1="254" y2="254"></line>
+<rect fill="none" height="86" stroke="#1B4F8A" stroke-width="2" width="238" x="196" y="222"></rect>
+<text fill="#1B4F8A" font-weight="600" x="206" y="238">CHANNEL PART — the transport</text>
+<g fill="#4A5560"><text x="206" y="254">sync or async · delivery guarantee*</text><text x="206" y="268">ordering key · backpressure · TTL*</text><text x="206" y="282">contract · far side · departure</text><text fill="#7C8890" x="206" y="298">latency budget, inherited</text></g>
+<rect fill="none" height="86" stroke="#1B4F8A" stroke-width="2" width="238" x="446" y="222"></rect>
+<text fill="#1B4F8A" font-weight="600" x="456" y="238">PROCESSOR PART — the enforcement</text>
+<g fill="#4A5560"><text x="456" y="254">validate · authenticate · authorise</text><text x="456" y="268">meter and rate-limit per class</text><text x="456" y="282">paginate · shape · partial flags</text><text fill="#7C8890" x="456" y="298">stateless; idempotency on writes</text></g>
+<rect fill="#F7E6E7" height="86" stroke="#C21F2C" stroke-width="2" width="284" x="696" y="222"></rect>
+<text fill="#C21F2C" font-weight="600" x="706" y="238">WHAT NEITHER CAN EXPRESS</text>
+<g fill="#101820"><text x="706" y="254">identity is <tspan font-weight="600">originated</tspan> here, not carried</text><text x="706" y="268">the contract is owned by someone</text><text x="706" y="282">you cannot deploy</text><text x="706" y="298">quota is a policy · invariants refused here</text></g>
+<text fill="#4A5560" x="20" y="336">Decompose it and the arithmetic still works — but the boundary claim is lost, and the boundary is what the method is organised around.</text>
+<text fill="#7C8890" font-size="9" x="20" y="349">* Sync calls can queue, expire and be retried. State delivery, waiting limits and business expiry separately.</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="360" y2="360"></line>
+<text fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" x="20" y="382">EVERY BOUNDARY CROSSING IS A SURFACE — THE QUESTION IS WHO OWNS IT</text>
+<rect fill="none" height="30" stroke="#101820" stroke-width="2" width="466" x="20" y="394"></rect>
+<text fill="#101820" x="30" y="413"><tspan font-weight="600">YOURS</tspan> — enforce: authn/authz, quota, invariants, contract</text>
+<rect fill="none" height="30" stroke="#7C8890" stroke-dasharray="5 3" stroke-width="2" width="478" x="502" y="394"></rect>
+<text fill="#4A5560" x="512" y="413"><tspan fill="#101820" font-weight="600">THEIRS</tspan> — you comply with it: their limit, their contract, their availability</text>
+</svg>

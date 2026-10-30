@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1000 314" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="10.5">
+  <text x="20" y="20" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">ONE EVENT, TWO CLOCKS</text>
+
+  <rect x="180" y="74" width="150" height="16" fill="#DCE6F0"/>
+  <text x="255" y="66" text-anchor="middle" fill="#1B4F8A" font-weight="600" font-size="10">WINDOW · 10:00–10:15</text>
+
+  <line x1="120" y1="90" x2="930" y2="90" stroke="#101820" stroke-width="1.5"/>
+  <line x1="120" y1="220" x2="930" y2="220" stroke="#101820" stroke-width="1.5"/>
+  <text x="112" y="94" text-anchor="end" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">EVENT TIME</text>
+  <text x="112" y="224" text-anchor="end" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">PROCESSED</text>
+
+  <g stroke="#4A5560" stroke-width="1" fill="#4A5560" font-size="9.5" text-anchor="middle">
+    <line x1="180" y1="90" x2="180" y2="97"/><text x="180" y="110">10:00</text>
+    <line x1="330" y1="90" x2="330" y2="97"/><text x="330" y="110">10:15</text>
+    <line x1="480" y1="90" x2="480" y2="97"/><text x="480" y="110">10:30</text>
+    <line x1="630" y1="90" x2="630" y2="97"/><text x="630" y="110">10:45</text>
+    <line x1="780" y1="90" x2="780" y2="97"/><text x="780" y="110">11:00</text>
+    <line x1="180" y1="213" x2="180" y2="220"/><text x="180" y="238">10:00</text>
+    <line x1="330" y1="213" x2="330" y2="220"/><text x="330" y="238">10:15</text>
+    <line x1="480" y1="213" x2="480" y2="220"/><text x="480" y="238">10:30</text>
+    <line x1="630" y1="213" x2="630" y2="220"/><text x="630" y="238">10:45</text>
+    <line x1="780" y1="213" x2="780" y2="220"/><text x="780" y="238">11:00</text>
+  </g>
+
+  <g stroke="#2E6B4F" stroke-width="2">
+    <line x1="220" y1="90" x2="230" y2="220"/>
+    <line x1="270" y1="90" x2="290" y2="220"/>
+  </g>
+  <g fill="#2E6B4F"><circle cx="220" cy="90" r="4"/><circle cx="230" cy="220" r="4"/><circle cx="270" cy="90" r="4"/><circle cx="290" cy="220" r="4"/></g>
+
+  <line x1="300" y1="90" x2="650" y2="220" stroke="#C21F2C" stroke-width="2.5"/>
+  <g fill="#C21F2C"><circle cx="300" cy="90" r="4.5"/><circle cx="650" cy="220" r="4.5"/></g>
+
+  <line x1="340" y1="200" x2="340" y2="243" stroke="#8C5410" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="348" y="258" fill="#8C5410" font-weight="600" font-size="10">window closed here, 10:16</text>
+
+  <text x="762" y="136" text-anchor="middle" fill="#C21F2C" font-weight="600" font-size="10.5">happened at 10:12 — arrived at 10:47</text>
+  <text x="762" y="151" text-anchor="middle" fill="#C21F2C" font-size="10">it belongs in a window that closed half an hour ago</text>
+
+  <text x="20" y="284" fill="#4A5560" font-size="10.5">Window by processing time and this event lands in the 10:45 bucket, where it is simply wrong.</text>
+  <text x="20" y="299" fill="#4A5560" font-size="10.5">Window by event time and it lands correctly — but now you owe a policy for what to do about it arriving late.</text>
+</svg>

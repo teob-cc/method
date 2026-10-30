@@ -1,0 +1,68 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10" viewbox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arM" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#C21F2C"></path></marker></defs>
+<!-- phase bands -->
+<g>
+<rect fill="#DCE6F0" height="24" stroke="#101820" stroke-width="1.5" width="192" x="20" y="30"></rect>
+<rect fill="#A9C2DE" height="24" stroke="#101820" stroke-width="1.5" width="384" x="212" y="30"></rect>
+<rect fill="#1B4F8A" height="24" stroke="#101820" stroke-width="1.5" width="288" x="596" y="30"></rect>
+<rect fill="#101820" height="24" stroke="#101820" stroke-width="1.5" width="96" x="884" y="30"></rect>
+</g>
+<g font-family="IBM Plex Sans Condensed, sans-serif" font-size="12.5" font-weight="700" text-anchor="middle">
+<text fill="#101820" x="116" y="47">I · OUTSIDE</text>
+<text fill="#101820" x="404" y="47">II · SHAPE</text>
+<text fill="#FBFCFB" x="740" y="47">III · REALITY</text>
+<text fill="#FBFCFB" x="932" y="47">IV · PROOF</text>
+</g>
+<!-- nodes -->
+<g stroke="#101820" stroke-width="2">
+<rect fill="#DCE6F0" height="60" width="66" x="35" y="76"></rect>
+<rect fill="#DCE6F0" height="60" width="66" x="131" y="76"></rect>
+<rect fill="#A9C2DE" height="60" width="66" x="227" y="76"></rect>
+<rect fill="#A9C2DE" height="60" width="66" x="323" y="76"></rect>
+<rect fill="#A9C2DE" height="60" width="66" x="419" y="76"></rect>
+<rect fill="#A9C2DE" height="60" width="66" x="515" y="76"></rect>
+<rect fill="#1B4F8A" height="60" width="66" x="611" y="76"></rect>
+<rect fill="#1B4F8A" height="60" width="66" x="707" y="76"></rect>
+<rect fill="#1B4F8A" height="60" width="66" x="803" y="76"></rect>
+<rect fill="#101820" height="60" width="66" x="899" y="76"></rect>
+</g>
+<g font-family="IBM Plex Mono, monospace" font-size="20" font-weight="600" text-anchor="middle">
+<text fill="#101820" x="68" y="115">01</text>
+<text fill="#101820" x="164" y="115">02</text>
+<text fill="#101820" x="260" y="115">03</text>
+<text fill="#101820" x="356" y="115">04</text>
+<text fill="#101820" x="452" y="115">05</text>
+<text fill="#101820" x="548" y="115">06</text>
+<text fill="#FBFCFB" x="644" y="115">07</text>
+<text fill="#FBFCFB" x="740" y="115">08</text>
+<text fill="#FBFCFB" x="836" y="115">09</text>
+<text fill="#FBFCFB" x="932" y="115">10</text>
+</g>
+<g fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11" font-weight="700" text-anchor="middle">
+<text x="68" y="152">OUTSIDE</text>
+<text x="164" y="152">LOAD</text>
+<text x="260" y="152">DATA</text>
+<text x="356" y="152">STORAGE &amp;</text><text x="356" y="164">TRANSPORT</text><text fill="#C21F2C" font-size="10" x="356" y="177">+ SIZING</text>
+<text x="452" y="152">TRUST</text>
+<text x="548" y="152">DERIVATION</text>
+<text x="644" y="152">FAILURE</text>
+<text x="740" y="152">RUNTIME &amp;</text><text x="740" y="164">PLACEMENT</text>
+<text x="836" y="152">OPERATIONS</text>
+<text x="932" y="152">TRACE</text>
+</g>
+<!-- forward spine -->
+<g fill="none" stroke="#101820" stroke-width="1.5">
+<line x1="101" x2="128" y1="106" y2="106"></line><line x1="197" x2="224" y1="106" y2="106"></line>
+<line x1="293" x2="320" y1="106" y2="106"></line><line x1="389" x2="416" y1="106" y2="106"></line>
+<line x1="485" x2="512" y1="106" y2="106"></line><line x1="581" x2="608" y1="106" y2="106"></line>
+<line x1="677" x2="704" y1="106" y2="106"></line><line x1="773" x2="800" y1="106" y2="106"></line>
+<line x1="869" x2="896" y1="106" y2="106"></line>
+</g>
+<!-- feedback arcs -->
+<path d="M452,176 C452,214 300,214 268,182" fill="none" marker-end="url(#arM)" stroke="#C21F2C" stroke-dasharray="6 4" stroke-width="2"></path>
+<text fill="#C21F2C" font-size="10" font-weight="600" text-anchor="middle" x="360" y="228">residency &amp; erasure rules reshape data classes</text>
+<path d="M644,176 C644,268 380,278 300,190" fill="none" marker-end="url(#arM)" stroke="#C21F2C" stroke-dasharray="6 4" stroke-width="2"></path>
+<text fill="#C21F2C" font-size="10" font-weight="600" text-anchor="middle" x="520" y="288">a guarantee that doesn't survive a partition reopens the data model and the stores</text>
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="20">EACH STEP CONSUMES THE WRITTEN OUTPUT OF THE ONE BEFORE IT — IF A STEP PRODUCED NOTHING WRITTEN, IT DIDN'T HAPPEN</text>
+<text fill="#4A5560" font-size="10" text-anchor="end" x="980" y="312">Phases I–II answer “what is this”. Phase III answers “what happens when it breaks”. Phase IV answers “is any of it justified”.</text>
+</svg>

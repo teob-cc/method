@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1000 336" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="10">
+  <defs><marker id="arT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#101820"/></marker></defs>
+  <text x="20" y="18" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">ONE BROKER — THREE PRIMITIVES, THREE OWNERS, TWELVE DECISIONS</text>
+
+  <rect x="20" y="95" width="115" height="42" fill="#FBFCFB" stroke="#101820" stroke-width="3"/>
+  <text x="77" y="112" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">PRODUCING</text>
+  <text x="77" y="126" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">SERVICE</text>
+
+  <line x1="140" y1="116" x2="292" y2="116" stroke="#101820" stroke-width="4" marker-end="url(#arT)"/>
+  <text x="214" y="104" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">PRODUCER CHANNEL</text>
+
+  <path d="M305,90 a60,8 0 0,0 120,0 a60,8 0 0,0 -120,0 v50 a60,8 0 0,0 120,0 v-50" fill="#1B4F8A" stroke="#101820" stroke-width="2"/>
+  <text x="365" y="116" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11.5" fill="#FBFCFB">STORE</text>
+  <text x="365" y="130" text-anchor="middle" fill="#DCE6F0" font-size="9.5">retained log</text>
+
+  <g stroke="#101820" stroke-width="3.5" fill="none" marker-end="url(#arT)">
+    <path d="M428,104 C480,80 505,60 578,56"/>
+    <line x1="428" y1="116" x2="578" y2="116"/>
+    <path d="M428,128 C480,152 505,172 578,176"/>
+  </g>
+  <text x="503" y="30" text-anchor="middle" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">CONSUMER CHANNELS — ONE PER READER, INDEPENDENT</text>
+
+  <g stroke="#101820" stroke-width="3" fill="#FBFCFB">
+    <rect x="583" y="37" width="185" height="38"/>
+    <rect x="583" y="97" width="185" height="38"/>
+    <rect x="583" y="157" width="185" height="38"/>
+  </g>
+  <g font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11.5" fill="#101820" text-anchor="middle">
+    <text x="675" y="61">PROJECTION</text><text x="675" y="121">SEARCH INDEX</text><text x="675" y="181">BACKFILL READER</text>
+  </g>
+  <g fill="#4A5560" font-size="9.5">
+    <text x="778" y="60">live · dedup on event id</text>
+    <text x="778" y="120">live · dedup on doc key</text>
+    <text x="778" y="180">from offset 0 · added later</text>
+  </g>
+  <text x="20" y="205" fill="#C21F2C" font-weight="600" font-size="10">Three readers, three positions, three deduplication policies — and one store.</text>
+
+  <line x1="20" y1="222" x2="980" y2="222" stroke="#C9D2D4" stroke-width="1"/>
+  <g font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="11" fill="#101820">
+    <text x="20" y="242">PRODUCER CHANNEL</text><text x="350" y="242">STORE, RETAINED</text><text x="670" y="242">CONSUMER CHANNEL</text>
+  </g>
+  <g fill="#4A5560" font-size="9.8">
+    <text x="20" y="260">guarantee = acknowledgements</text>
+    <text x="20" y="275">ordering key = the partition key</text>
+    <text x="20" y="290">backpressure = block or drop</text>
+    <text x="20" y="305" fill="#C21F2C" font-weight="600">schema + compatibility = the API</text>
+    <text x="350" y="260">durability = replicas, min in-sync</text>
+    <text x="350" y="275">retention = time, size, or compaction</text>
+    <text x="350" y="290">ordering scope = one partition</text>
+    <text x="350" y="305">size = throughput × retention</text>
+    <text x="670" y="260">guarantee = at-least-once</text>
+    <text x="670" y="275">commit point = redelivery boundary</text>
+    <text x="670" y="290" fill="#C21F2C" font-weight="600">atomic effect + dedup + result</text>
+    <text x="670" y="305">lag = the backpressure signal</text>
+  </g>
+  <text x="20" y="330" fill="#4A5560" font-size="10">Name the technology once and all twelve of these become defaults. Name the three roles and they become decisions.</text>
+</svg>

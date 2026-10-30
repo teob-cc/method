@@ -1,0 +1,106 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10" viewbox="0 0 1000 664" xmlns="http://www.w3.org/2000/svg">
+<!-- THREAD 1 · SECURITY -->
+<text fill="#C21F2C" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="20">SECURITY &amp; PRIVACY — touches every step; the odd ones own the deliverable</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="60" y2="60"></line>
+<g fill="#C9D2D4">
+<rect height="12" width="12" x="158" y="54"></rect><rect height="12" width="12" x="350" y="54"></rect>
+<rect height="12" width="12" x="542" y="54"></rect><rect height="12" width="12" x="734" y="54"></rect>
+<rect height="12" width="12" x="926" y="54"></rect>
+</g>
+<path d="M68,60 L836,60" fill="none" stroke="#C21F2C" stroke-width="2.5"></path>
+<g fill="#C21F2C">
+<path d="M68,48 l12,12 -12,12 -12,-12 z"></path><path d="M260,48 l12,12 -12,12 -12,-12 z"></path>
+<path d="M452,48 l12,12 -12,12 -12,-12 z"></path><path d="M644,48 l12,12 -12,12 -12,-12 z"></path>
+<path d="M836,48 l12,12 -12,12 -12,-12 z"></path>
+</g>
+<g fill="#101820" font-size="11" font-weight="600" text-anchor="middle">
+<text x="68" y="42">01</text><text x="260" y="42">03</text><text x="452" y="42">05</text><text x="644" y="42">07</text><text x="836" y="42">09</text>
+</g>
+<g fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+<text x="68" y="94">OUTSIDE</text><text x="260" y="94">DATA</text><text x="452" y="94">TRUST</text><text x="644" y="94">FAILURE</text><text x="836" y="94">OPERATIONS</text>
+</g>
+<g fill="#4A5560" text-anchor="middle">
+<text x="68" y="110">trust zone · regime</text><text x="68" y="123">adversary classes</text>
+<text x="260" y="110">sensitivity · residency</text><text x="260" y="123">retention · minimisation</text>
+<text x="452" y="110">identity · authz points</text><text x="452" y="123">keys · audit · erasure</text>
+<text x="644" y="110">abuse &amp; compromise</text><text x="644" y="123">blast radius · containment</text>
+<text x="836" y="110">rotation · recertification</text><text x="836" y="123">audit review · rehearsal</text>
+</g>
+<text fill="#4A5560" font-size="10" x="20" y="141">even steps are touched but silent: 02 volumetric abuse · 04 store isolation · 06 poisoned input · 08 supply chain · 10 provenance</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="150" y2="150"></line>
+<!-- THREAD 2 · ARITHMETIC -->
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="180">ARITHMETIC — runs twice, and the second run may reverse the first</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="220" y2="220"></line>
+<g fill="#C9D2D4">
+<rect height="12" width="12" x="62" y="214"></rect><rect height="12" width="12" x="254" y="214"></rect>
+<rect height="12" width="12" x="446" y="214"></rect><rect height="12" width="12" x="638" y="214"></rect>
+<rect height="12" width="12" x="734" y="214"></rect><rect height="12" width="12" x="926" y="214"></rect>
+</g>
+<path d="M164,220 L836,220" fill="none" stroke="#1B4F8A" stroke-width="2.5"></path>
+<g fill="#1B4F8A">
+<path d="M164,208 l12,12 -12,12 -12,-12 z"></path><path d="M356,208 l12,12 -12,12 -12,-12 z"></path>
+<path d="M836,208 l12,12 -12,12 -12,-12 z"></path>
+</g>
+<g fill="#101820" font-size="11" font-weight="600" text-anchor="middle">
+<text x="164" y="202">02</text><text x="356" y="202">04</text><text x="836" y="202">09</text>
+</g>
+<g fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+<text x="164" y="254">LOAD</text><text x="356" y="254">STORAGE &amp; TRANSPORT</text><text x="836" y="254">OPERATIONS</text>
+</g>
+<g fill="#4A5560" text-anchor="middle">
+<text x="164" y="270">demand — design-independent</text><text x="164" y="283">rate · volume · working set</text><text x="164" y="296">cost envelope</text>
+<text x="356" y="270">capacity — design-dependent</text><text x="356" y="283">amplification · nodes · partitions</text><text x="356" y="296">replication overhead · egress</text>
+<text x="836" y="270">attribution</text><text x="836" y="283">spend per class</text><text x="836" y="296">against the envelope</text>
+</g>
+<path d="M344,232 C300,268 240,262 176,236" fill="none" stroke="#C21F2C" stroke-dasharray="5 3" stroke-width="1.8"></path>
+<text fill="#4A5560" text-anchor="middle" x="600" y="314">Forty nodes for twelve transactions per second is not a capacity plan; it is evidence that the store was chosen wrongly.</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="330" y2="330"></line>
+<!-- THREAD 3 · OPERATING CONTEXT -->
+<text fill="#2E6B4F" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="358">OPERATING CONTEXT — recorded once at 01, spent five times</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="398" y2="398"></line>
+<g fill="#C9D2D4">
+<rect height="12" width="12" x="254" y="392"></rect><rect height="12" width="12" x="542" y="392"></rect>
+<rect height="12" width="12" x="638" y="392"></rect><rect height="12" width="12" x="926" y="392"></rect>
+</g>
+<path d="M68,398 L836,398" fill="none" stroke="#2E6B4F" stroke-width="2.5"></path>
+<circle cx="68" cy="398" fill="#2E6B4F" r="8"></circle>
+<g fill="#2E6B4F">
+<path d="M164,386 l12,12 -12,12 -12,-12 z"></path><path d="M356,386 l12,12 -12,12 -12,-12 z"></path>
+<path d="M452,386 l12,12 -12,12 -12,-12 z"></path><path d="M740,386 l12,12 -12,12 -12,-12 z"></path>
+<path d="M836,386 l12,12 -12,12 -12,-12 z"></path>
+</g>
+<g fill="#101820" font-size="11" font-weight="600" text-anchor="middle">
+<text x="68" y="380">01</text><text x="164" y="380">02</text><text x="356" y="380">04</text>
+<text x="452" y="380">05</text><text x="740" y="380">08</text><text x="836" y="380">09</text>
+</g>
+<text fill="#2E6B4F" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" x="20" y="424">01 · OUTSIDE RECORDS IT<tspan fill="#4A5560" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="400">  — capability · hosting posture · contracts held · cost envelope · team topology · expected lifecycle</tspan></text>
+<g fill="#4A5560" font-size="10">
+<text x="20" y="444"><tspan fill="#101820" font-weight="600">02</tspan> cost ceiling enters the demand figures<tspan fill="#C9D2D4">    ·    </tspan><tspan fill="#101820" font-weight="600">04</tspan> store family, and where the boundaries are cut<tspan fill="#C9D2D4">    ·    </tspan><tspan fill="#101820" font-weight="600">05</tspan> tenancy model and residency posture</text>
+<text x="20" y="460"><tspan fill="#101820" font-weight="600">08</tspan> placement executes the hosting posture<tspan fill="#C9D2D4">    ·    </tspan><tspan fill="#101820" font-weight="600">09</tspan> spend vs envelope · delivery sized by lifecycle · ownership</text>
+</g>
+<text fill="#2E6B4F" font-size="10" text-anchor="middle" x="500" y="482">A capability you already own changes which store is cheapest — and therefore which store is correct.</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="502" y2="502"></line>
+<!-- THREAD 4 · DELIVERY -->
+<text fill="#8A5B00" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="530">DELIVERY — recorded at 01, cut at 04, packaged at 08, released at 09</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="570" y2="570"></line>
+<g fill="#C9D2D4">
+<rect height="12" width="12" x="158" y="564"></rect><rect height="12" width="12" x="254" y="564"></rect>
+<rect height="12" width="12" x="446" y="564"></rect><rect height="12" width="12" x="542" y="564"></rect>
+<rect height="12" width="12" x="638" y="564"></rect><rect height="12" width="12" x="926" y="564"></rect>
+</g>
+<path d="M68,570 L836,570" fill="none" stroke="#8A5B00" stroke-width="2.5"></path>
+<circle cx="68" cy="570" fill="#8A5B00" r="8"></circle>
+<g fill="#8A5B00">
+<path d="M356,558 l12,12 -12,12 -12,-12 z"></path><path d="M740,558 l12,12 -12,12 -12,-12 z"></path>
+<path d="M836,558 l12,12 -12,12 -12,-12 z"></path>
+</g>
+<g fill="#101820" font-size="11" font-weight="600" text-anchor="middle">
+<text x="68" y="552">01</text><text x="356" y="552">04</text><text x="740" y="552">08</text><text x="836" y="552">09</text>
+</g>
+<text fill="#8A5B00" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" x="20" y="596">01 · OUTSIDE RECORDS IT<tspan fill="#4A5560" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="400">  — expected lifecycle · and who holds an artifact you cannot rebuild for them</tspan></text>
+<g fill="#4A5560" font-size="10">
+<text x="20" y="616"><tspan fill="#101820" font-weight="600">04</tspan> repo topology · dependency direction · build system, if the topology bought one<tspan fill="#C9D2D4">    ·    </tspan><tspan fill="#101820" font-weight="600">08</tspan> the artifact, one per runnable unit · environments</text>
+<text x="20" y="632"><tspan fill="#101820" font-weight="600">09</tspan> version scheme · rollout strategy and its abort metric · flags by lifespan · drift as a zero-tolerance count · delivery metrics</text>
+</g>
+<text fill="#8A5B00" font-size="10" text-anchor="middle" x="500" y="654">Nobody proposes a second repository or a fourth environment — so nothing on this thread is ever challenged, only inherited.</text>
+</svg>

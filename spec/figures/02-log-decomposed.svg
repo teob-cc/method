@@ -1,0 +1,50 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10" viewbox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arK" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#101820"></path></marker></defs>
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12.5" font-weight="700" x="20" y="18">ONE TECHNOLOGY, THREE PRIMITIVES, FOUR DECISIONS</text>
+<rect fill="#FBFCFB" height="44" stroke="#101820" stroke-width="3" width="112" x="20" y="92"></rect>
+<text fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="76" y="112">PRODUCING</text>
+<text fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="76" y="126">SERVICE</text>
+<line marker-end="url(#arK)" stroke="#101820" stroke-width="4" x1="137" x2="295" y1="114" y2="114"></line>
+<text fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="212" y="102">PRODUCER CHANNEL</text>
+<path d="M310,90 a55,8 0 0,0 110,0 a55,8 0 0,0 -110,0 v50 a55,8 0 0,0 110,0 v-50" fill="#1B4F8A" stroke="#101820" stroke-width="2"></path>
+<text fill="#FBFCFB" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="365" y="118">STORE · TTL</text>
+<text fill="#DCE6F0" font-size="9.5" text-anchor="middle" x="365" y="132">retained log</text>
+<g fill="none" marker-end="url(#arK)" stroke="#101820" stroke-width="4">
+<path d="M425,105 C480,80 500,58 585,54"></path>
+<line x1="425" x2="585" y1="118" y2="118"></line>
+<path d="M425,131 C480,156 500,178 585,182"></path>
+</g>
+<text fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="505" y="26">CONSUMER CHANNELS — ONE PER READER, INDEPENDENT</text>
+<g fill="#FBFCFB" stroke="#101820" stroke-width="3">
+<rect height="40" width="150" x="590" y="34"></rect>
+<rect height="40" width="150" x="590" y="98"></rect>
+<rect height="40" width="150" x="590" y="162"></rect>
+</g>
+<g fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">
+<text x="665" y="52">PROJECTION</text><text x="665" y="116">SEARCH INDEX</text><text x="665" y="180">BACKFILL READER</text>
+</g>
+<g fill="#4A5560" font-size="9.5" text-anchor="middle">
+<text x="665" y="66">offset live · dedup on event id</text>
+<text x="665" y="130">offset live · dedup on doc key</text>
+<text x="665" y="194">offset 0 · added years later</text>
+</g>
+<text fill="#C21F2C" font-size="10" font-weight="600" text-anchor="middle" x="760" y="228">three readers, three offsets, three dedup policies — one store</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="244" y2="244"></line>
+<g fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11" font-weight="700">
+<text x="20" y="262">PRODUCER CHANNEL</text><text x="350" y="262">STORE WITH TTL</text><text x="660" y="262">CONSUMER CHANNEL</text>
+</g>
+<g fill="#4A5560" font-size="9.8">
+<text x="20" y="278">async, buffered · guarantee = acks</text>
+<text x="20" y="291">ordering key = the partition key</text>
+<text x="20" y="304">backpressure = block or drop</text>
+<text fill="#C21F2C" font-weight="600" x="20" y="317">contract = schema + compatibility = the API</text>
+<text x="350" y="278">durability = replicas, min in-sync</text>
+<text x="350" y="291">retention = time, size, or compaction</text>
+<text x="350" y="304">ordering scope = one partition</text>
+<text x="350" y="317">size = throughput × retention</text>
+<text x="660" y="278">guarantee = at-least-once by default</text>
+<text x="660" y="291">commit point = redelivery boundary</text>
+<text fill="#C21F2C" font-weight="600" x="660" y="304">atomic effect + dedup + saved result</text>
+<text x="660" y="317">lag = the backpressure signal · replay = reset</text>
+</g>
+</svg>

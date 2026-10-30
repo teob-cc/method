@@ -1,0 +1,65 @@
+# Systems, from the outside in — what the pages share.
+# The prose is in index.md and chapters/*.md; the look is in theme/. This file holds the structure:
+# the title, the stamps, and the parts with their chapters in reading order.
+
+title: Systems, from the outside in
+tagline: The Outside-In Method · the book
+
+# The stamp at the foot of the contents page. `spec_version` is also what {{spec_version}} in index.md prints.
+version: V1.8
+version_note: NAMING CONCEPTS AND CONTRACTS, FROM V4.13
+date: 2026-10-12
+extent: all five parts · fourteen pieces · ~49 000 words
+spec_version: V4.13
+
+# The contents table. A chapter is the name of a file in chapters/ (without .md); its number, title and
+# summary come from that file's front matter. `external` is a piece that lives outside the book.
+contents_caption: All five parts are written. Twelve chapters and three systems worked end to end — fourteen pieces in the book, and worked example A next door to it.
+parts:
+  - id: I
+    name: The outside
+    chapters: [01-the-boundary, 02-demand, 03-supply, 04-arithmetic]
+  - id: II
+    name: The inside
+    chapters: [05-stored, 06-processed, 07-transmitted]
+  - id: III
+    name: Keeping the promise
+    chapters: [08-when-it-breaks, 09-watching-it, 10-changing-it]
+  - id: IV
+    name: The discipline
+    chapters: [11-checking-the-work, 12-keeping-it-true]
+  - id: V
+    name: Worked in full
+    chapters:
+      - external:
+          number: A
+          title: Ticket booking
+          href: ../worked-example.html
+          summary: Contention and invariants — a historical failed design, its read–commit gap, and the corrected reservation contract with explicit evidence limits
+      - B-a-read-heavy-feed
+      - C-an-internal-service
+
+# Fixed wording per kind of piece. {n} is the piece's number.
+labels:
+  chapter:
+    opener: CHAPTER {n}
+    nav: Chapter {n}
+    tab: Chapter {n}
+    owes: THIS CHAPTER IS THE READABLE FORM OF
+  worked:
+    opener: WORKED {n}
+    nav: Worked {n}
+    tab: Worked {n}
+    owes: WORKED IN FULL
+  owes_foot: WHERE THE TWO DISAGREE, THE SPECIFICATION GOVERNS.
+  state: written
+
+# Social card of the contents page.
+social:
+  site_name: TEOB · The Outside-In Method
+  description: A book on system design that starts at the system boundary and works in — then inward through how data is stored, processed and transmitted.
+  url: https://teob.cc/method/book/
+  image: https://teob.cc/method/book/og.png
+  image_width: 2400
+  image_height: 1260
+  image_alt: "Systems, from the outside in — the book's five parts: I, the outside, chapters 01 to 04; II, the inside, 05 to 07; III, keeping the promise, 08 to 10; IV, the discipline, 11 and 12; V, worked in full, A to C."

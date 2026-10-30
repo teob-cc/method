@@ -1,0 +1,22 @@
+{
+  "name": "teob-method-site",
+  "version": "1.0.0",
+  "description": "The Outside-In Method: sources of teob.cc/method and the build that makes the site",
+  "main": "index.js",
+  "scripts": {
+    "test": "node build/build.mjs && node build/check.mjs && node build/skills.mjs --check",
+    "build": "node build/build.mjs",
+    "dev": "node build/serve.mjs",
+    "check": "node build/check.mjs",
+    "skills": "node build/skills.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "private": "true",
+  "devDependencies": {
+    "js-yaml": "^5.5.0",
+    "markdown-it": "^15.0.3"
+  }
+}

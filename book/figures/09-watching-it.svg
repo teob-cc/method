@@ -1,0 +1,56 @@
+<svg viewBox="0 0 1000 448" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="11">
+  <text x="20" y="22" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">EVERY NUMBER NAMES THE PROMISE THAT DEMANDED IT</text>
+  <text x="20" y="46" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#6C7780" letter-spacing="1.4">PROMISED AT</text>
+  <text x="520" y="46" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#6C7780" letter-spacing="1.4">PROVED BY</text>
+
+  <g stroke="#C9D2D4" stroke-width="1">
+    <line x1="20" y1="54" x2="980" y2="54"/>
+    <line x1="20" y1="96" x2="980" y2="96"/><line x1="20" y1="138" x2="980" y2="138"/>
+    <line x1="20" y1="180" x2="980" y2="180"/><line x1="20" y1="222" x2="980" y2="222"/>
+    <line x1="20" y1="264" x2="980" y2="264"/><line x1="20" y1="306" x2="980" y2="306"/>
+    <line x1="20" y1="348" x2="980" y2="348"/>
+  </g>
+
+  <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#C21F2C" font-weight="600">
+    <text x="20" y="79">CH 02</text><text x="20" y="121">CH 02</text><text x="20" y="163">CH 02</text>
+    <text x="20" y="205">CH 02</text><text x="20" y="247">CH 05</text><text x="20" y="289">CH 07</text>
+    <text x="20" y="331">CH 03</text><text x="20" y="373">CH 02</text>
+  </g>
+  <g fill="#101820">
+    <text x="76" y="79">&#8220;p99 200 ms at the edge, for this class&#8221;</text>
+    <text x="76" y="121">&#8220;this view may be 60 seconds stale&#8221;</text>
+    <text x="76" y="163">the rungs this class said it accepts</text>
+    <text x="76" y="205">&#8220;counts may drift &#177;2%&#8221;</text>
+    <text x="76" y="247">an invariant &#8212; something that must never be true</text>
+    <text x="76" y="289">a channel: at-least-once, keyed, bounded</text>
+    <text x="76" y="331">&#8220;under half a cent a request&#8221;</text>
+    <text x="76" y="373">why this class calls the system at all</text>
+  </g>
+
+  <g stroke="#1B4F8A" stroke-width="1.4" fill="none">
+    <path d="M470,75 L500,75"/><path d="M470,117 L500,117"/><path d="M470,159 L500,159"/>
+    <path d="M470,201 L500,201"/><path d="M470,243 L500,243"/><path d="M470,285 L500,285"/>
+    <path d="M470,327 L500,327"/><path d="M470,369 L500,369"/>
+  </g>
+  <g fill="#1B4F8A">
+    <path d="M500,71 L508,75 L500,79 z"/><path d="M500,113 L508,117 L500,121 z"/>
+    <path d="M500,155 L508,159 L500,163 z"/><path d="M500,197 L508,201 L500,205 z"/>
+    <path d="M500,239 L508,243 L500,247 z"/><path d="M500,281 L508,285 L500,289 z"/>
+    <path d="M500,323 L508,327 L500,331 z"/><path d="M500,365 L508,369 L500,373 z"/>
+  </g>
+
+  <g fill="#4A5560">
+    <text x="524" y="79">an SLO for that class and operation, with an error budget</text>
+    <text x="524" y="121">projection staleness, alarmed at <tspan fill="#101820" font-weight="600">half</tspan> the promised bound</text>
+    <text x="524" y="163">rung distribution per class, from the markers chapter 08 mandates</text>
+    <text x="524" y="205">the approximation&#8217;s measured error, against the stated bound</text>
+    <text x="524" y="247">a continuous audit, out of band, alarmed at any non-zero</text>
+    <text x="524" y="289">lag &#183; queue depth &#183; retry rate &#183; dead-letter count</text>
+    <text x="524" y="331">spend attributed per class, checked against the ceiling</text>
+    <text x="524" y="373">an outcome KPI &#8212; alerted on <tspan fill="#101820" font-weight="600">change</tspan>, never on a threshold</text>
+  </g>
+
+  <line x1="20" y1="396" x2="980" y2="396" stroke="#101820" stroke-width="2"/>
+  <text x="20" y="418" font-size="11.5" fill="#C21F2C" font-weight="600">A metric that cannot name the promise that demanded it is measuring what was easy to emit.</text>
+  <text x="20" y="436" font-size="11" fill="#4A5560">Which makes this the same traceability rule as everywhere else, pointed at the monitoring stack.</text>
+</svg>

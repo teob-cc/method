@@ -1,0 +1,44 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10.5" viewbox="0 0 1000 306" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arS" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#101820"></path></marker></defs>
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12.5" font-weight="700" x="20" y="20">INVENTORY AUTHORITATIVE INPUTS; DERIVE CONSISTENCY FROM THE PROMISES</text>
+<g fill="#FBFCFB" stroke="#101820" stroke-width="2">
+<rect height="108" width="290" x="20" y="42"></rect>
+<rect height="108" width="270" x="350" y="42"></rect>
+<rect height="108" width="320" x="660" y="42"></rect>
+</g>
+<g fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="13" font-weight="700">
+<text x="34" y="64">1 · VIEWS</text><text x="364" y="64">2 · ACKNOWLEDGEMENTS</text><text x="674" y="64">3 · INVARIANTS</text>
+</g>
+<g fill="#4A5560" font-size="10">
+<text x="34" y="79">what clients read, each with a bound</text>
+<text x="364" y="79">the flow stops until we confirm</text>
+<text x="674" y="79">true regardless of what any view shows</text>
+</g>
+<g fill="#101820" font-size="10.5">
+<text x="34" y="102">listing page</text><text fill="#C21F2C" font-weight="600" text-anchor="end" x="296" y="102">60 s ok</text>
+<text x="34" y="120">search results</text><text fill="#C21F2C" font-weight="600" text-anchor="end" x="296" y="120">minutes ok</text>
+<text x="34" y="138">my own orders</text><text fill="#C21F2C" font-weight="600" text-anchor="end" x="296" y="138">own write</text>
+<text x="364" y="102">payment captured</text>
+<text x="364" y="120">seat reserved</text>
+<text x="364" y="138">username claimed</text>
+<text x="674" y="102">no double booking of a seat</text>
+<text x="674" y="120">balance never negative</text>
+<text x="674" y="138">one active claim per key</text>
+</g>
+<g fill="none" marker-end="url(#arS)" stroke="#101820" stroke-width="2">
+<line x1="165" x2="165" y1="150" y2="197"></line>
+<path d="M485,150 C485,178 545,174 583,196"></path>
+<path d="M820,150 C820,178 748,174 709,196"></path>
+</g>
+<text fill="#4A5560" font-size="10" x="180" y="178">most reads land here</text>
+<g stroke="#101820" stroke-width="2">
+<rect fill="#DCE6F0" height="58" width="290" x="20" y="201"></rect>
+<rect fill="#1B4F8A" height="58" width="250" x="520" y="201"></rect>
+</g>
+<text fill="#101820" font-family="IBM Plex Sans Condensed, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle" x="165" y="226">PROJECTIONS</text>
+<text fill="#4A5560" font-size="10" text-anchor="middle" x="165" y="244">lineage · completeness · age gate</text>
+<text fill="#FBFCFB" font-family="IBM Plex Sans Condensed, sans-serif" font-size="13.5" font-weight="700" text-anchor="middle" x="645" y="226">COORDINATION SCOPE</text>
+<text fill="#DCE6F0" font-size="10" text-anchor="middle" x="645" y="244">atomic holds · invariant checks</text>
+<text fill="#4A5560" font-size="10.5" x="20" y="284">Truth includes every irreducible input: content, ownership, follows, permissions and operation state.</text>
+<text fill="#4A5560" font-size="10.5" x="20" y="299">Projections declare their inputs and freshness contract. Authority alone does not require strict consistency.</text>
+</svg>

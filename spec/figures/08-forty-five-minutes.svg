@@ -1,0 +1,26 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="11" viewbox="0 0 1000 190" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FBFCFB" height="42" stroke="#101820" stroke-width="2" width="980" x="10" y="72"></rect>
+<rect fill="#A9C2DE" height="42" width="261" x="10" y="72"></rect>
+<rect fill="#1B4F8A" height="42" width="610" x="271" y="72"></rect>
+<rect fill="#101820" height="42" width="109" x="881" y="72"></rect>
+<g stroke="#101820" stroke-width="2"><line x1="271" x2="271" y1="72" y2="114"></line><line x1="881" x2="881" y1="72" y2="114"></line></g>
+<g font-family="IBM Plex Sans Condensed, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+<text fill="#101820" x="140" y="98">PASS 1 · STEPS 01–04</text>
+<text fill="#FBFCFB" x="576" y="98">PASS 2 · SELECTIVE DEPTH · 05–09</text>
+<text fill="#FBFCFB" x="935" y="98">CLOSE · 10</text>
+</g>
+<g fill="#4A5560" font-size="10.5" text-anchor="middle">
+<text x="140" y="134">shallow and timeboxed — annotated graph exists</text>
+<text x="576" y="134">the audience steers; if they don't, go to failure</text>
+<text x="935" y="134">the walk</text>
+</g>
+<g fill="#C21F2C" font-size="11" font-weight="600" text-anchor="middle">
+<text x="140" y="60">0:00 – 12:00</text>
+<text x="576" y="60">12:00 – 40:00</text>
+<text x="935" y="60">40:00 – 45:00</text>
+</g>
+<circle cx="271" cy="72" fill="#C21F2C" r="5"></circle>
+<text fill="#4A5560" font-size="10.5" text-anchor="middle" x="271" y="168">● checkpoint — “the graph is on the board; where would you like depth?”</text>
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12.5" font-weight="700" x="10" y="30">THE MAP IS NOT THE ITINERARY</text>
+<text fill="#4A5560" font-size="11" x="10" y="46">Depth is spent where the risk is, not where the comfort is. A deep dive into familiar territory while the graph is still empty reads as avoidance.</text>
+</svg>

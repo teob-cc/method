@@ -1,0 +1,36 @@
+<svg viewBox="0 0 1000 316" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Mono, monospace" font-size="11.5">
+  <text x="20" y="22" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">TWO ARITHMETIC PASSES, AND THE LINE BETWEEN THEM</text>
+
+  <rect x="20" y="44" width="440" height="206" fill="#FBFCFB" stroke="#101820" stroke-width="2"/>
+  <rect x="540" y="44" width="440" height="206" fill="#FBFCFB" stroke="#C9D2D4" stroke-width="1.5"/>
+
+  <text x="40" y="72" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="15" fill="#101820">PASS 1 · DEMAND</text>
+  <text x="40" y="90" fill="#4A5560" font-size="10.5">what the outside generates — computed now</text>
+  <g fill="#101820">
+    <text x="40" y="126">peak request rate, per class</text>
+    <text x="40" y="152">data volume, and its growth rate</text>
+    <text x="40" y="178">working-set size — the hot fraction</text>
+    <text x="40" y="204">cost envelope, carried in from ch 03</text>
+  </g>
+  <text x="40" y="234" fill="#2E6B4F" font-weight="600" font-size="10.5">independent of any design. True whatever you build.</text>
+
+  <text x="560" y="72" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="15" fill="#4A5560">PASS 2 · CAPACITY</text>
+  <text x="560" y="90" fill="#4A5560" font-size="10.5">what your design costs — computed much later</text>
+  <g fill="#6C7780">
+    <text x="560" y="126">write amplification — stores per write</text>
+    <text x="560" y="152">read amplification — hops per read</text>
+    <text x="560" y="178">node and replica counts</text>
+    <text x="560" y="204">headroom, egress, cost per request</text>
+  </g>
+  <text x="560" y="234" fill="#C21F2C" font-weight="600" font-size="10.5">every term is a property of a graph that does not exist yet.</text>
+
+  <line x1="500" y1="34" x2="500" y2="262" stroke="#C21F2C" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="486" y="56" width="28" height="188" fill="#FBFCFB"/>
+  <text x="500" y="150" transform="rotate(-90 500 150)" text-anchor="middle"
+        font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12" fill="#C21F2C">
+    THE FIRST TECHNOLOGY IS NAMED HERE
+  </text>
+
+  <text x="20" y="284" fill="#4A5560" font-size="10.5">A design that names a store before the left panel is complete has not derived it.</text>
+  <text x="20" y="300" fill="#4A5560" font-size="10.5">It has recalled a reference architecture, and is now writing the justification backwards.</text>
+</svg>

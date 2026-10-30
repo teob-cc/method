@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1000 350" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="12">
+<title>Source organisation and release compatibility are separate decisions</title>
+<text x="20" y="24" font-size="15" font-weight="700" fill="#1B4F8A">TWO QUESTIONS, TWO DIFFERENT CONTRACTS</text>
+<rect x="20" y="48" width="460" height="234" fill="#DCE6F0" stroke="#1B4F8A" stroke-width="2"/>
+<rect x="520" y="48" width="460" height="234" fill="#FBFCFB" stroke="#101820" stroke-width="2"/>
+<g fill="#101820">
+<text x="40" y="80" font-size="15" font-weight="700">WHO CAN CHANGE THE SOURCE TOGETHER?</text>
+<text x="40" y="116">Repository topology follows access, ownership,</text>
+<text x="40" y="137">tooling and coordination constraints.</text>
+<text x="40" y="180">One source commit can update several modules.</text>
+<text x="40" y="201">It does not make deployment atomic.</text>
+<text x="40" y="250" font-weight="600">A monorepo can publish a customer-held SDK.</text>
+<text x="540" y="80" font-size="15" font-weight="700">WHICH VERSIONS CAN STILL BE IN USE?</text>
+<text x="540" y="116">Consumers determine compatibility windows,</text>
+<text x="540" y="137">version contracts and deprecation policy.</text>
+<text x="540" y="180">Include owned mobile apps, rolling deploys,</text>
+<text x="540" y="201">stored data and messages awaiting replay.</text>
+<text x="540" y="250" font-weight="600">A source update does not upgrade every device.</text>
+</g>
+<text x="20" y="316" fill="#4A5560">Rollback requires compatible code, schemas, retained data and keys throughout the declared window.</text>
+<text x="20" y="338" fill="#4A5560">Use a build identity everywhere; add a compatibility promise wherever old and new versions must coexist.</text>
+</svg>

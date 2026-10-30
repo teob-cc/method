@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # builds dist/, checks links, anchors, tag balance and SVG text widths, and that the skills' generated
+      # reference matches the specification's step sources
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist

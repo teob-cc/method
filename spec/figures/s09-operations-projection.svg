@@ -1,0 +1,39 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10" viewbox="0 0 1000 376" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arO" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#7C8890"></path></marker></defs>
+<text fill="#1B4F8A" font-family="IBM Plex Sans Condensed, sans-serif" font-size="12" font-weight="700" x="20" y="16">NOTHING HERE IS INVENTED — EVERY DELIVERABLE IS A PROMOTION FROM AN EARLIER STEP</text>
+<g fill="#4A5560" font-family="IBM Plex Sans Condensed, sans-serif" font-size="10.5" font-weight="600" letter-spacing="0.5">
+<text x="24" y="42">SOURCE</text><text x="118" y="42">WHAT THAT STEP WROTE DOWN</text><text x="470" y="42">WHAT 09 TURNS IT INTO</text>
+</g>
+<line stroke="#101820" stroke-width="1.5" x1="20" x2="980" y1="48" y2="48"></line>
+<g fill="#DCE6F0" stroke="#1B4F8A" stroke-width="1.5">
+<rect height="196" width="76" x="20" y="54"></rect><rect height="26" width="76" x="20" y="254"></rect>
+<rect height="26" width="76" x="20" y="284"></rect><rect height="26" width="76" x="20" y="314"></rect>
+</g>
+<g fill="#1B4F8A" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600" text-anchor="middle">
+<text x="58" y="148">01</text><text x="58" y="266">03</text><text x="58" y="296">04</text><text x="58" y="326">07</text>
+</g>
+<g fill="#4A5560" font-size="8.5" text-anchor="middle">
+<text x="58" y="162">OUTSIDE</text><text x="58" y="277">DATA</text><text x="58" y="307">STORAGE</text><text x="58" y="337">FAILURE</text>
+</g>
+<g fill="#4A5560">
+<text fill="#101820" font-weight="600" x="118" y="70">why each class calls at all</text>
+<text x="118" y="94">client tolerances, per class</text><text x="118" y="118">staleness bound per view</text><text x="118" y="142">the degradation ladder</text><text x="118" y="166">every “never wrong”</text>
+<text x="118" y="190">team topology</text><text x="118" y="214">cost envelope</text><text x="118" y="238">expected lifecycle</text>
+<text x="118" y="262">the quasi-static class</text>
+<text x="118" y="292">channel properties</text><text x="118" y="322">deadline propagation</text>
+</g>
+<g marker-end="url(#arO)" stroke="#7C8890" stroke-width="1.2">
+<line x1="428" x2="462" y1="66" y2="66"></line><line x1="428" x2="462" y1="90" y2="90"></line><line x1="428" x2="462" y1="114" y2="114"></line><line x1="428" x2="462" y1="138" y2="138"></line><line x1="428" x2="462" y1="162" y2="162"></line>
+<line x1="428" x2="462" y1="186" y2="186"></line><line x1="428" x2="462" y1="210" y2="210"></line><line x1="428" x2="462" y1="234" y2="234"></line>
+<line x1="428" x2="462" y1="258" y2="258"></line><line x1="428" x2="462" y1="288" y2="288"></line><line x1="428" x2="462" y1="318" y2="318"></line>
+</g>
+<g fill="#101820">
+<text fill="#C21F2C" font-weight="600" x="470" y="70">outcome KPIs — did they actually get what they came for</text>
+<text x="470" y="94">SLOs, one per class × operation, with an error budget</text><text x="470" y="118">projection lag, alarmed at half the promised bound</text><text font-weight="600" x="470" y="142">which rung each class is served, and for how long</text><text font-weight="600" x="470" y="166">a continuous audit that does not trust the system</text>
+<text x="470" y="190">the ownership map and its pager rotations</text><text x="470" y="214">spend attributed per class, checked against it</text><text x="470" y="238">release machinery sized to it — a spike needs a deploy</text>
+<text x="470" y="262">config versioned, diffable, revertible, alarmed on divergence</text>
+<text x="470" y="292">lag · queue depth · retry rate · dead-letter count</text><text x="470" y="322">request-scoped tracing across every hop with a deadline</text>
+</g>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="350" y2="350"></line>
+<text fill="#C21F2C" x="20" y="365">A metric that cannot name the step that demanded it is measuring what was easy.</text>
+</svg>

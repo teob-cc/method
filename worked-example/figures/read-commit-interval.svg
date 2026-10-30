@@ -1,0 +1,43 @@
+<svg font-family="IBM Plex Mono, monospace" font-size="10" viewbox="0 0 1000 236" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arR" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0L10,5L0,10z" fill="#101820"></path></marker></defs>
+<text fill="#C21F2C" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" x="20" y="16">BEFORE — THE INTERVAL IS THE DEFECT</text>
+<g fill="#FBFCFB" stroke="#101820" stroke-width="2">
+<rect height="38" width="176" x="20" y="30"></rect><rect height="38" width="150" x="248" y="30"></rect><rect height="38" width="130" x="600" y="30"></rect>
+</g>
+<rect fill="#F7E6E7" height="38" stroke="#C21F2C" stroke-width="2.5" width="150" x="782" y="30"></rect>
+<g fill="#101820" font-size="9.5" text-anchor="middle">
+<text x="108" y="47">SEAT MAP</text><text fill="#4A5560" font-size="8.5" x="108" y="60">projection · 60 s bound</text>
+<text x="323" y="53">USER PICKS A SEAT</text>
+<text x="665" y="53">CHECKOUT</text>
+<text fill="#C21F2C" font-weight="600" x="857" y="47">REFUSED</text><text fill="#C21F2C" font-size="8.5" x="857" y="60">“that seat is gone”</text>
+</g>
+<g marker-end="url(#arR)" stroke="#101820" stroke-width="2">
+<line x1="196" x2="244" y1="49" y2="49"></line><line x1="556" x2="596" y1="49" y2="49"></line><line x1="730" x2="778" y1="49" y2="49"></line>
+</g>
+<rect fill="none" height="38" stroke="#C21F2C" stroke-dasharray="4 3" stroke-width="1.5" width="146" x="404" y="30"></rect>
+<text fill="#C21F2C" font-weight="600" text-anchor="middle" x="477" y="47">THE INTERVAL</text>
+<text fill="#C21F2C" font-size="8.5" text-anchor="middle" x="477" y="60">seconds · the world moved</text>
+<text fill="#4A5560" x="20" y="86">Told something true a minute ago, and told it was false at the moment of payment. A tighter bound shortens the interval; it never closes it.</text>
+<line stroke="#C9D2D4" stroke-width="1" x1="20" x2="980" y1="100" y2="100"></line>
+<text fill="#2E6B4F" font-family="IBM Plex Sans Condensed, sans-serif" font-size="11.5" font-weight="700" x="20" y="124">AFTER — THE CLICK ATTEMPTS AN ATOMIC RESERVATION</text>
+<g fill="#FBFCFB" stroke="#101820" stroke-width="2">
+<rect height="38" width="176" x="20" y="138"></rect><rect height="38" width="176" x="248" y="138"></rect>
+</g>
+<rect fill="#DCE6F0" height="42" stroke="#1B4F8A" stroke-width="3" width="176" x="476" y="136"></rect>
+<g fill="#101820" font-size="9.5" text-anchor="middle">
+<text x="108" y="155">SEAT MAP</text><text fill="#4A5560" font-size="8.5" x="108" y="168">pushed · sub-second</text>
+<text x="336" y="155">CLICK = HOLD ATTEMPT</text><text fill="#4A5560" font-size="8.5" x="336" y="168">no separate “choose” step</text>
+<text fill="#1B4F8A" font-weight="600" x="564" y="154">HOLD AUTHORITY</text><text fill="#1B4F8A" font-size="8.5" x="564" y="167">atomic · seat–show scope</text>
+</g>
+<g marker-end="url(#arR)" stroke="#101820" stroke-width="2">
+<line x1="196" x2="244" y1="157" y2="157"></line><line x1="424" x2="472" y1="157" y2="157"></line>
+<line x1="652" x2="700" y1="148" y2="148"></line><line x1="652" x2="700" y1="166" y2="166"></line>
+</g>
+<rect fill="none" height="26" stroke="#2E6B4F" stroke-width="2" width="130" x="704" y="134"></rect>
+<text fill="#2E6B4F" font-weight="600" text-anchor="middle" x="769" y="151">HELD · 10 min</text>
+<rect fill="none" height="26" stroke="#4A5560" stroke-dasharray="4 3" stroke-width="1.5" width="176" x="704" y="164"></rect>
+<text fill="#4A5560" text-anchor="middle" x="792" y="181">“just taken — pick another”</text>
+<path d="M196,168 C210,196 700,204 878,190" fill="none" marker-end="url(#arR)" stroke="#1B4F8A" stroke-dasharray="4 3" stroke-width="1.5"></path>
+<text fill="#1B4F8A" font-size="9" text-anchor="middle" x="500" y="212">push improves the display; the atomic hold carries the guarantee</text>
+<text fill="#2E6B4F" x="20" y="230">The refusal still exists — two people can click the same seat — but it now arrives at the moment of choosing, not of paying, and it is true when it arrives.</text>
+</svg>

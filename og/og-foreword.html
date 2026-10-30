@@ -1,0 +1,37 @@
+<html><head><style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@700&family=IBM+Plex+Sans:wght@400;600;700&display=block');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#EFF2F1;color:#101820;font-family:'IBM Plex Sans',sans-serif;position:relative;
+  background-image:linear-gradient(to right,#C9D2D4 1px,transparent 1px),linear-gradient(to bottom,#C9D2D4 1px,transparent 1px);background-size:36px 36px;background-position:-1px -1px}
+.wrap{position:absolute;inset:0;padding:50px 58px}
+.eb{font-family:'IBM Plex Mono';font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:#1B4F8A;display:flex;align-items:center;gap:16px}
+.eb::after{content:"";flex:1;height:1px;background:#C9D2D4}
+h1{font-family:'IBM Plex Sans Condensed';font-weight:700;font-size:78px;line-height:1;text-transform:uppercase;margin-top:34px;letter-spacing:.005em}
+.sub{font-size:22.5px;line-height:1.38;color:#4A5560;margin-top:26px;max-width:800px}
+.sub b{color:#101820;font-weight:600}
+.chips{position:absolute;left:58px;right:58px;bottom:190px;display:flex;flex-wrap:wrap;gap:9px}
+.chip{font-family:'IBM Plex Mono';font-size:14.5px;color:#4A5560;background:#FBFCFB;border:1px solid #C9D2D4;padding:6px 12px}
+.chip span{color:#6C7780}
+.stats{position:absolute;left:58px;right:58px;bottom:82px;display:grid;grid-template-columns:1fr 1fr 1fr;border-top:2px solid #101820;padding-top:14px}
+.st{padding-right:26px}.st+.st{border-left:1px solid #C9D2D4;padding-left:26px}
+.st b{display:block;font-size:30px;font-weight:700;color:#C21F2C;line-height:1}
+.st span{display:block;font-size:15px;color:#4A5560;margin-top:8px;line-height:1.3}
+.foot{position:absolute;left:58px;right:58px;bottom:44px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono';font-size:15px;color:#6C7780}
+.foot b{color:#101820;font-weight:600}
+</style></head><body><div class="wrap">
+<div class="eb">The Outside-In Method &middot; Foreword</div>
+<h1>Where this came from</h1>
+<p class="sub">This is what I kept running into &mdash; and here is where <b>the literature had already been</b>. The habit came first. The reading came afterwards, as a check.</p>
+</div>
+<div class="chips">
+ <div class="chip">Jackson <span>1995</span></div><div class="chip">Gane &amp; Sarson <span>1977</span></div><div class="chip">QFD <span>1972</span></div><div class="chip">TRIZ <span>trimming</span></div><div class="chip">NASA <span>systems engineering</span></div><div class="chip">Kessler &amp; Sweitzer <span>2007</span></div>
+ <div class="chip">Evans <span>2003</span></div><div class="chip">Fowler <span>2003</span></div><div class="chip">Helland <span>2007</span></div><div class="chip">Nygard <span>2018</span></div><div class="chip">Johnson <span>via Fowler</span></div><div class="chip">O&rsquo;Reilly <span>2024</span></div>
+</div>
+<div class="stats">
+ <div class="st"><b>15</b><span>debts, in roughly the order of their size</span></div>
+ <div class="st"><b>3</b><span>devices I looked for and did not find</span></div>
+ <div class="st"><b>6</b><span>arguments against &mdash; one won, one was adopted</span></div>
+</div>
+<div class="foot"><b>teob.cc/method/foreword</b><span>source debts and verification limits</span></div>
+</body></html>

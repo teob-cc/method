@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1000 452" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="11">
+  <text x="20" y="20" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">ONE ARTIFACT, THREE READINGS, THREE DIFFERENT FINDINGS</text>
+
+  <line x1="20" y1="44" x2="640" y2="44" stroke="#2E6B4F" stroke-width="1.5"/>
+  <path d="M640,40 L650,44 L640,48 z" fill="#2E6B4F"/>
+  <text x="20" y="38" font-size="10.5" fill="#2E6B4F" font-weight="600">READ 1 &#183; does every requirement name a mechanism? An empty cell is a gap nobody designed for.</text>
+
+  <rect x="420" y="60" width="280" height="220" fill="#F7E6E7"/>
+  <g stroke="#C9D2D4" stroke-width="1">
+    <line x1="20" y1="88" x2="980" y2="88"/><line x1="20" y1="136" x2="980" y2="136"/>
+    <line x1="20" y1="184" x2="980" y2="184"/><line x1="20" y1="232" x2="980" y2="232"/>
+  </g>
+  <line x1="20" y1="60" x2="980" y2="60" stroke="#101820" stroke-width="2"/>
+  <line x1="20" y1="280" x2="980" y2="280" stroke="#101820" stroke-width="2"/>
+  <g stroke="#C9D2D4"><line x1="420" y1="60" x2="420" y2="280"/><line x1="700" y1="60" x2="700" y2="280"/></g>
+
+  <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#6C7780" letter-spacing="1.2">
+    <text x="30" y="79">REQUIREMENT (TESTABLE)</text><text x="430" y="79">MECHANISM</text><text x="710" y="79">EVIDENCE REQUIRED</text>
+  </g>
+  <g fill="#101820">
+    <text x="30" y="115">Consumer reads, p99 &#8804; 200 ms, three regions</text>
+    <text x="30" y="163">No acknowledged write is ever lost</text>
+    <text x="30" y="211">Search may lag, by no more than 60 s</text>
+    <text x="30" y="259">Erasure completed within 30 days</text>
+  </g>
+  <g fill="#101820">
+    <text x="430" y="115">Derived view replicated per region</text>
+  </g>
+  <g fill="#C21F2C" font-weight="600">
+    <text x="430" y="163">The replicated log</text>
+    <text x="430" y="211">The replicated log</text>
+    <text x="430" y="259">The replicated log</text>
+  </g>
+  <g fill="#4A5560" font-size="10.5">
+    <text x="710" y="115">per-region latency SLO</text>
+    <text x="710" y="163">durability audit vs offsets</text>
+    <text x="710" y="211">age-gate and overload tests</text>
+    <text x="710" y="259">copy inventory + erasure tests</text>
+  </g>
+
+  <line x1="650" y1="300" x2="30" y2="300" stroke="#1B4F8A" stroke-width="1.5"/>
+  <path d="M30,296 L20,300 L30,304 z" fill="#1B4F8A"/>
+  <text x="20" y="320" font-size="10.5" fill="#1B4F8A" font-weight="600">READ 2 &#183; does every mechanism name a requirement? Investigate a missing rationale.</text>
+
+  <path d="M560,306 L560,344" stroke="#C21F2C" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M556,340 L560,352 L564,340 z" fill="#C21F2C"/>
+  <text x="20" y="372" font-size="10.5" fill="#C21F2C" font-weight="600">READ 3 &#183; how many rows name the same mechanism? Three do.</text>
+  <text x="20" y="390" font-size="10.5" fill="#4A5560">These rows name a shared dependency. A log alone does not enforce freshness or erase plaintext copies.</text>
+  <text x="20" y="406" font-size="10.5" fill="#4A5560">Review each failure mode and its fallbacks before asserting which promises fail together.</text>
+
+  <line x1="20" y1="424" x2="980" y2="424" stroke="#C9D2D4"/>
+  <text x="20" y="442" font-size="10.5" fill="#4A5560">Status: declared obligations. No passing tests shown. A filled cell is not proof; a coupling count is not severity.</text>
+</svg>

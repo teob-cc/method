@@ -1,0 +1,39 @@
+<svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, sans-serif" font-size="11">
+  <text x="20" y="20" font-family="IBM Plex Sans Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#1B4F8A">THE MATRIX, READ MECHANICALLY — FIVE ROWS ARE ENOUGH TO SHOW ALL THREE READINGS</text>
+
+  <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#6C7780">
+    <text x="330" y="52">edge</text><text x="420" y="52">store</text><text x="510" y="52">proc</text><text x="600" y="52">timer</text><text x="690" y="52">pay</text>
+    <text x="770" y="52">&#931;</text>
+  </g>
+  <line x1="20" y1="60" x2="810" y2="60" stroke="#101820" stroke-width="1.5"/>
+  <g fill="#101820">
+    <text x="20" y="82">show cancelled</text>
+    <text x="20" y="122">clock skews</text>
+    <text x="20" y="162">payment down</text>
+    <text x="20" y="202">viral spike</text>
+    <text x="20" y="242">new price law</text>
+  </g>
+  <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#101820" text-anchor="middle">
+    <text x="345" y="82">&#183;</text><text x="435" y="82" font-weight="600">1</text><text x="525" y="82" font-weight="600">1</text><text x="615" y="82">&#183;</text><text x="705" y="82" font-weight="600">1</text>
+    <text x="345" y="122">&#183;</text><text x="435" y="122" font-weight="600" fill="#C21F2C">1</text><text x="525" y="122">&#183;</text><text x="615" y="122" font-weight="600" fill="#C21F2C">1</text><text x="705" y="122">&#183;</text>
+    <text x="345" y="162">&#183;</text><text x="435" y="162">&#183;</text><text x="525" y="162">&#183;</text><text x="615" y="162" font-weight="600">1</text><text x="705" y="162" font-weight="600">1</text>
+    <text x="345" y="202" font-weight="600">1</text><text x="435" y="202" font-weight="600">1</text><text x="525" y="202" font-weight="600">1</text><text x="615" y="202">&#183;</text><text x="705" y="202">&#183;</text>
+    <text x="345" y="242" font-weight="600">1</text><text x="435" y="242">&#183;</text><text x="525" y="242" font-weight="600">1</text><text x="615" y="242">&#183;</text><text x="705" y="242">&#183;</text>
+  </g>
+  <g font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle" fill="#4A5560">
+    <text x="775" y="82" font-weight="600" fill="#C21F2C">3</text><text x="775" y="122">2</text><text x="775" y="162">2</text><text x="775" y="202" font-weight="600" fill="#C21F2C">3</text><text x="775" y="242">2</text>
+  </g>
+
+  <rect x="308" y="66" width="480" height="26" fill="none" stroke="#C21F2C" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="820" y="82" font-size="10.5" fill="#C21F2C" font-weight="600">high row total &#8212; a dangerous</text>
+  <text x="820" y="96" font-size="10.5" fill="#C21F2C" font-weight="600">attractor, unresiduated</text>
+
+  <rect x="405" y="106" width="240" height="26" fill="none" stroke="#8C5410" stroke-width="1.5"/>
+  <text x="820" y="122" font-size="10.5" fill="#8C5410" font-weight="600">two 1s in one row &#8212;</text>
+  <text x="820" y="136" font-size="10.5" fill="#8C5410" font-weight="600">these fail together</text>
+
+  <line x1="20" y1="262" x2="810" y2="262" stroke="#C9D2D4"/>
+  <text x="20" y="286" font-size="10.5" fill="#4A5560">And read the <tspan font-weight="600" fill="#101820">columns</tspan>: the edge's 1s &#8212; rows four and five &#8212; are a <tspan font-weight="600" fill="#101820">subset</tspan> of the processor's, and where one column's rows sit inside another's,</text>
+  <text x="20" y="302" font-size="10.5" fill="#4A5560">they can live in the same component. A high column total is a component absorbing capability classes it was never given. A zero column is under-stressed, not safe.</text>
+  <text x="20" y="328" font-size="10.5" fill="#C21F2C" font-weight="600">The show-cancelled row is the reading that matters most: its 1s land on components that must run backwards &#8212; and if no reversal flow exists anywhere, no cell can hold it.</text>
+</svg>
