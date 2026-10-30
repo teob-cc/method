@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The projection and its contract"
-stamp: "DERIVATION 06 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 06 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 short: "The projection"
 number: "06"
 subtitle: "**An autocomplete service, a content delivery network, a ranking dashboard.** Three systems at wildly different scales, and all three are the same system: something derived from something else, owing a staleness bound, an invalidation contract and — if it approximates — an error bound."
@@ -98,8 +98,8 @@ Record “derived from” as a lineage relation, not as equivalence or a kind-of
 :::
 
 ::: footer
-DERIVATION 06 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
-Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 11, pp. 245–265, and ch. 17, pp. 374–394. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
+DERIVATION 06 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
+Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 11, pp. 245–265 (autocomplete), ch. 13 (the CDN, Evidence B) and ch. 17, pp. 374–394 (the ranking board). Locators and descriptions are inherited from the original reading notes, except ch. 13's, which is taken from the published table of contents with its pages not re-checked; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§6.2.2 and 8.3–8.4. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

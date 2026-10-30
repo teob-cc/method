@@ -1,10 +1,10 @@
 ---
 kind: "derivation"
 title: "The acknowledgement, and where the code runs"
-stamp: "DERIVATION 05 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 05 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 short: "The acknowledgement"
 number: "05"
-subtitle: "**A photo-sharing service.** Ask of every write: if this call returned \"probably\", would the next screen be a lie? That answer alone sizes the expensive store. And then comes a second question, one the arithmetic cannot answer at all — whether code belongs on the client — and it turns out to be about release cadence, not throughput."
+subtitle: "**A photo-sharing service.** Ask of every write: if this call returned \"probably\", would the next screen be a lie? That answer, with the invariants and view contracts, scopes the strict coordination. And then comes a second question, one the arithmetic cannot answer at all — whether code belongs on the client — and it turns out to be about release cadence, not throughput."
 html_title: "The acknowledgement, and where the code runs · Outside-In Derivations"
 meta:
 ---
@@ -25,7 +25,7 @@ Ingress systems are decided by bytes, not requests. Their arithmetic is bandwidt
 :::
 
 ::: rule
-Every write returns one of three things. A **receipt**: recorded, will converge, you may leave. A **reservation**: held against a contended resource, and the hold has an expiry. A **completion**: the final state is reached at the moment of the response. Choosing the weakest one the client can live with is what decides whether you need the expensive store — and most designs promise a completion by accident, because nobody said which of the three the acknowledgement was.
+Every write returns one of three things. A **receipt**: recorded, will converge, you may leave. A **reservation**: held against a contended resource, and the hold has an expiry. A **completion**: the final state is reached at the moment of the response. Choosing the weakest one the client can live with, together with the invariants and view contracts, is what scopes the strict coordination; which data is authoritative is decided separately — and most designs promise a completion by accident, because nobody said which of the three the acknowledgement was.
 :::
 
 ### The arithmetic, which the treatment gets an order of magnitude wrong
@@ -107,8 +107,8 @@ Some APIs need fewer states; preserve only distinctions that change behaviour. `
 :::
 
 ::: footer
-DERIVATION 05 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATION 05 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 12, pp. 266–287. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§6.2.2, 8.2.3–8.2.4 and 11.2. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

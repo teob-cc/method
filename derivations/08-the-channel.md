@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The channel, and what it may be trusted with"
-stamp: "DERIVATION 08 · V1.5 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 08 · V1.6 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 short: "The channel"
 number: "08"
 subtitle: "**A messaging app.** Every arrow on the diagram is a decision with eight properties, two of which are the failure mode. Draw one without answering them, and you have published an API by accident — and if the payload is end-to-end encrypted, you have also just decided that your own servers are couriers, not participants."
@@ -115,14 +115,14 @@ If a published `Delivered` event previously meant broker acceptance, changing it
 - **Answer eight questions per arrow, in writing.** An arrow with unstated properties is a promise nobody made and everybody will assume.
 - **A brokered channel is specified more than once** — once for the producer, and once for *each* consumer. Their guarantees genuinely differ, and only the consumer can deduplicate. A store is brokered too: the session registry has a write path and a reader, each of them a channel owing the eight — and the staleness tolerance is the reader's to take.
 - **Timeouts come from the caller's budget**, sliced across the hops. A locally invented timeout is a number with no owner.
-- **Blocking answers two of the eight for you.** Nothing is queued to expire, so there is no TTL, and the delivery guarantee collapses to "it returned or it did not". Saying so explicitly is the point — and note that backpressure is *not* the third, however often it is counted as one: a blocking call waits in a connection pool, and the pool is a queue with a bound and an overflow policy.
+- **Blocking thins two of the eight.** No transport queue is left to expire, but the payload still has a business expiry and the caller a deadline, stated separately — a client timing out does not roll back the server's effects. And the delivery guarantee becomes three answers, not two: accepted, refused, or outcome unknown, which needs the operation handle the sync row above gives it. Saying so explicitly is the point — and note that backpressure is *not* the third, however often it is counted as one: a blocking call waits in a connection pool, and the pool is a queue with a bound and an overflow policy.
 - **The far side is a set, and it changes while you are talking to it.** Name what resolves it and the staleness bound of that answer — then derive the drain interval from the bound rather than choosing a round number. A drain shorter than the bound is a crash that files a ticket.
 - **Decide the trust boundary before the mechanisms.** What the server may read determines what the server may do, and retrofitting that decision deletes work rather than adding it.
 :::
 
 ::: footer
-DERIVATION 08 · V1.5 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATION 08 · V1.6 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 14, pp. 309–328. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§6.2.2–6.2.3, 6.6.3 and 11.3. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

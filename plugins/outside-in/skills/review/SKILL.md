@@ -81,7 +81,7 @@ For each component: *what promises become unsupported if this is removed, includ
 
 | Posture | The artifact is | The test is | Report an uncited mechanism as |
 |---|---|---|---|
-| **Greenfield** | A design not yet built | A razor | Take the first disposition that applies: **delete** · **surface a missing requirement** (the common case) · **declare self-derived, naming the parent** — which puts the parent under the same test |
+| **Greenfield** | A design not yet built | A razor, once the search has found nothing above it | A finding to investigate. Take the first disposition that applies, in this order: **surface a missing requirement** (the common case) · **declare self-derived, naming the parent** — which puts the parent under the same test · **delete**, only when no obligation is found after both searches |
 | **Brownfield** | A running system | Chesterton's fence — the reason may exist undocumented, or have expired | *"No recorded reason — confirm before removing."* Recommend an incremental cutover, never a deletion |
 | **Didactic** | A worked example whose purpose is to demonstrate the mechanism | Inverted | *"The stated requirement cannot discriminate this mechanism."* The finding is against the requirement, not the mechanism |
 
@@ -99,7 +99,7 @@ The second is the instructive shape: two properly derived links, then an unquant
 
 **The Root kind column takes one of four values: `demand` · `supply` · `self-derived` · `unrecorded`.** A yes/no column here is a trap — it has no cell for the state a reviewer is most often in, so the cell gets filled with a guess.
 
-**Never resolve an unrecorded root by inference, and know which way you would guess.** Design documents are demand-shaped by habit, so an inferred root drifts toward demand: the reviewer invents a client who wanted this, and the finding lands against a mechanism that was in fact answering a cost ceiling or a contract. Getting it backwards is not a labelling error — it inverts the disposition, because a demand-rooted mechanism with no matching requirement is *delete or surface the requirement*, while a supply-rooted one is *keep, and record the second citation*. When the root is unrecorded, write `unrecorded`, name the owner who can settle it, and let the table carry the question into the review.
+**Never resolve an unrecorded root by inference, and know which way you would guess.** Design documents are demand-shaped by habit, so an inferred root drifts toward demand: the reviewer invents a client who wanted this, and the finding lands against a mechanism that was in fact answering a cost ceiling or a contract. Getting it backwards is not a labelling error — it inverts the disposition, because a demand-rooted mechanism with no matching requirement is *surface the requirement, or delete*, while a supply-rooted one is *keep, and record the second citation*. When the root is unrecorded, write `unrecorded`, name the owner who can settle it, and let the table carry the question into the review.
 
 Record root, depth, weakest link, root kind and where the root is stated. **Whether a given chain is acceptable is the human's call, not this skill's** — do not write a rule for when a self-derived chain is allowed.
 
@@ -121,7 +121,7 @@ If the division cannot be done because the mechanism's capacity is nowhere state
 
 ### 5 · Build the traceability map
 
-| Requirement (testable) | Mechanism | Evidence and status |
+| Requirement (testable) | Mechanism | Evidence required |
 |---|---|---|
 | Consumer reads, p99 ≤ 200 ms, from three regions | Derived view replicated per region | Per-region latency SLO with error budget |
 
@@ -191,7 +191,7 @@ Escrow is valid only for decomposable invariants with conserved rights, atomic l
 
 By name, and separately from everything above: which promises have an acceptable failure count of **zero** rather than a percentile? Consent honoured. Data not lost. A prohibited item never served. Money never taken twice.
 
-For each — the promise, the mechanism carrying it, that mechanism's failure mode, and the audit that detects observed violations. Four things to look for, none of which the earlier steps will surface on their own:
+For each — the promise, the mechanism carrying it, that mechanism's failure mode, and the audit that detects observed violations. Five things to look for, none of which the earlier steps will surface on their own:
 
 - **A percentile attached to a zero-tolerance promise is already a finding.** "99.9% of opt-outs honoured" is a commitment to violate consent a thousand times per million.
 - **A single unguarded mechanism.** One filter, one flag check, one callback. Ask what happens when it is down, skipped, or raced. A consent check that runs *before* a queue and never again does not survive an opt-out during the retry window; a status flipped by a callback that never arrives stays pending forever.
@@ -264,7 +264,7 @@ and which findings would change if a figure contradicted the prose.
 | Requirement | Stated where | No mechanism found for |
 
 ## Traceability map
-| Requirement (testable) | Mechanism | Coupling count | Evidence and status |
+| Requirement (testable) | Mechanism | Evidence required | Coupling count |
 
 ## Zero-tolerance promises
 | Promise | Carrying mechanism | Failure mode | Audit and evidence status |

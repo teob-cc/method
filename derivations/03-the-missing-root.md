@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The missing root"
-stamp: "DERIVATION 03 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 03 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 number: "03"
 subtitle: "**A key-value store and a social feed.** One derives eight mechanisms from an adjective. The other asks exactly the right two questions, writes the answers down — and then never divides by either. Both are failures of the same joint."
 html_title: "The missing root · Outside-In Derivations"
@@ -24,11 +24,11 @@ Every mechanism must cite a requirement. The rule has an obvious hole, and most 
 :::
 
 ::: rule
-A mechanism that cites no client constraint takes the first disposition that applies — a **search**, not a menu. ① **Delete**: nothing sits above it. ② **Surface a missing requirement**: tracing it lands on a client constraint that was always true and never written down. ③ **Declare it self-derived, naming the parent decision** — and the parent now faces the same test. Citations chain; the recursion ends at a client constraint, or the finding sits at the root. And at the other end of the same joint: every figure you elicit must name the step that will consume it.
+A mechanism that cites no constraint from outside — a client's, or a row of the operating envelope — is a finding to investigate, and it takes the first disposition that applies: a **search**, not a menu. ① **Surface a missing requirement**: tracing it lands on a constraint from outside that was always true and never written down. ② **Declare it self-derived, naming the parent decision** — and the parent now faces the same test. ③ **Delete**: nothing sits above it once both searches have failed; in a running system, report *no recorded reason, confirm before removing*. Citations chain; the recursion ends at a constraint from outside, or the finding sits at the root — and a root nobody recorded is *unrecorded*, not uncited. And at the other end of the same joint: every figure you elicit must name the step that will consume it.
 :::
 
 ::: note {data-l="WHY THIS IS NOT A LOOPHOLE"}
-At first sight disposition ③ is an escape hatch — justify anything by saying the thing above it needed it. It is not, because nothing partitions itself: a partitioned store was bought by a volume that did not fit one machine, a leader with elections was bought by clients who tolerate no maintenance window. Naming the parent does not discharge the obligation — it moves the obligation up one level, where it gets asked again. **The chain terminates at a sentence about a client, or the finding sits at the root — and it is one finding, not one per link.**
+At first sight disposition ② is an escape hatch — justify anything by saying the thing above it needed it. It is not, because nothing partitions itself: a partitioned store was bought by a volume that did not fit one machine, a leader with elections was bought by clients who tolerate no maintenance window. Naming the parent does not discharge the obligation — it moves the obligation up one level, where it gets asked again. **The chain terminates at a sentence about somebody outside the system — a client, or the organisation that has to run it — or the finding sits at the root, and it is one finding, not one per link.**
 :::
 
 ### Evidence A · the store with no caller
@@ -48,7 +48,7 @@ At first sight disposition ③ is an escape hatch — justify anything by saying
 | Consistent hashing | {.ok} keep | {.ok} keep | {.ok} keep |
 | Replication over N | {.ok} keep | {.ok} keep | {.num} delete |
 | Quorum | {.ok} keep, strict | {.ok} keep, W=1 | {.num} delete |
-| Version vectors | {.num} delete | {.ok} keep | {.num} delete |
+| Version vectors | {.num} delete → single writer per key, or LWW on a stated clock | {.ok} keep | {.num} delete |
 | Relaxed quorum | {.num} delete | {.ok} keep | {.num} delete |
 | Hand-back on recovery | {.num} delete | {.ok} keep | {.num} delete |
 | Anti-entropy repair | {.ok} keep, smaller | {.ok} keep | {.num} delete |
@@ -81,10 +81,10 @@ Fan-out cost is posts multiplied by *mean* friends — and the treatment elicite
 | 2.0 | 231 | 500 | {.num} 115 700 |
 :::
 
-Reads, for comparison, are around [1 160/s]{.num} at ten feed loads per user per day — one percent of the write volume in the busiest row. This is a write system that occasionally serves reads, and the workload is a list append: no joins, no transactions, one ordered list per user. Even the busiest row is a handful of nodes.
+Reads, for comparison, are around [1 160/s]{.num} at ten feed loads per user per day — one percent of the write volume in the busiest row. This is a write system that occasionally serves reads, and the workload is a list append: no joins, no transactions, one ordered list per user. Even the busiest row is a handful of nodes on in-memory lists — two or three at the specification's anchor of [~100k ops/s]{.num} a node, run at half utilisation. An LSM store, at its [10–15k]{.num} writes/s on the same terms, would need sixteen to twenty-four.
 
 ::: warn {data-l="THE CONSTRAINT NOBODY USED"}
-A five-thousand-friend cap is a statement that the tail is bounded. The hybrid push-and-pull apparatus exists to handle an *un*bounded tail — users with millions of followers. Under the treatment's own answer, the worst post in the system produces five thousand list appends — a few milliseconds, once, for the most connected user who exists. **There are no celebrities, there is no hot key, and there is nothing for the pull path to relieve.** And the threshold at which the design would switch modes is never given, so the mechanism could not even be implemented as written, were it needed.
+A five-thousand-friend cap is a statement that the tail is bounded. The hybrid push-and-pull apparatus exists to handle an *un*bounded tail — users with millions of followers. Under the treatment's own answer, the worst post in the system produces five thousand list appends — tens of milliseconds on one node at that anchor, once, for the most connected user who exists. **There are no celebrities, there is no hot key, and there is nothing for the pull path to relieve.** And the threshold at which the design would switch modes is never given, so the mechanism could not even be implemented as written, were it needed.
 :::
 
 #### And two of five cache layers serve nothing
@@ -101,15 +101,15 @@ Record aliases only where the concepts coincide. A friend relationship, a follow
 ### The general form
 
 - **Follow every chain to its root and write the root down.** If the root is an adjective, the chain is unanchored — not wrong, unanchored — and anchored again the moment somebody says a sentence about a caller. Report it once, at the root: filing eight findings against eight correctly-derived mechanisms is how a review gets itself ignored.
-- **Disposition ② is the one to hope for.** Most self-derived requirements, traced far enough, land on a client constraint the design already had and never connected — and quite often a *different* one from the constraint that bought the parent. A fencing token traces to the invariant the leader protects, not to the availability figure that bought the leader — and finding that is worth more than deleting anything.
+- **Disposition ① is the one to hope for.** Most self-derived requirements, traced far enough, land on a constraint from outside the design already had and never connected — and quite often a *different* one from the constraint that bought the parent. A fencing token traces to the invariant the leader protects, not to the availability figure that bought the leader — and finding that is worth more than deleting anything.
 - **The weakest link governs.** A chain whose first two links are properly derived and whose third smuggles in an unquantified premise is an unanchored chain — everything after that link inherits the gap.
 - **Ask for the mean, not only the maximum.** A cap tells you the tail is bounded — useful, and it often deletes an entire subsystem. The mean tells you the bill.
 - **Consumption is sometimes subtractive.** A figure that deletes a mechanism has been consumed just as surely as one that sizes a component — and usually more cheaply.
 :::
 
 ::: footer
-DERIVATION 03 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATION 03 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 Source locator: Xu, *System Design Interview — An Insider’s Guide*, 2nd ed., ch. 6, pp. 86–108, and ch. 11, pp. 165–176. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§6.2.2, 8.2 and 8.3–8.4. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

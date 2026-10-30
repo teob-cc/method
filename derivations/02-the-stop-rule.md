@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The stop rule"
-stamp: "DERIVATION 02 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 02 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 number: "02"
 subtitle: "**A classifieds marketplace and a social feed.** Two systems, two published treatments, one shared defect: a cluster designed for a workload that fits comfortably on a single machine. And in both cases the treatment itself supplies the sentence that would have stopped it."
 html_title: "The stop rule · Outside-In Derivations"
@@ -59,7 +59,7 @@ A write buffer in front of the database, for 116 writes a second. A per-city sha
 - **12 /s** · average writes — a million posts a day
 - **12 rps** · average reads — a million a day
 - **1–4 GB** · serving working set — a hundred tags by a thousand items
-- **10–40 GB/day** · archive growth, everything retained. Four to fourteen terabytes a year. Cheap
+- **10–40 GB/day** · archive growth, everything retained. Four to fifteen terabytes a year. Cheap
 :::
 
 **Ratio: 24 requests per second on average — twelve writes, twelve reads — against a single relational node rated at five to twenty thousand simple transactions a second. Between 200× and 800×, and still 80× to 330× at the ~60 of the peak.** Hundreds — and this time that reading *is* the verdict. The requirement cannot discriminate the architecture that was drawn, so the node count is chosen for failover — and the honest design says exactly that, rather than dressing redundancy up as throughput.
@@ -92,8 +92,8 @@ Keep a domain compound when both words matter: `ListingExpiry` narrows the respo
 :::
 
 ::: footer
-DERIVATION 02 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATION 02 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 7, pp. 147–170, and ch. 16, pp. 354–373. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§5.3.5, 6.6.1, 7.4–7.5 and 7.8. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::

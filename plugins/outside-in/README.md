@@ -9,9 +9,11 @@ does, each illustrated on selected systems: **<https://teob.cc/method>**
 ## Install (Claude Code)
 
 ```bash
-/plugin marketplace add teob-cc/teob-method
-/plugin install outside-in@teob-method
+/plugin marketplace add teob-cc/method
+/plugin install outside-in@method
 ```
+
+Existing installs from `teob-cc/teob-method` keep working and update from there.
 
 Then, in any repository:
 
@@ -72,9 +74,10 @@ exist, the skill names it, shows the sensitivity and continues: `review` marks
 it missing and proposes nothing, `derive` proposes a value labelled assumed.
 
 **The verdict depends on what the artifact is.** In a design not yet built the
-deletion test is a razor. In a **running system** it is Chesterton's fence: an
-uncited mechanism is reported as *"no recorded reason — confirm before removing"*,
-never as an instruction to delete, and the recommendation is an incremental
+deletion test is a razor, once the search — a missing requirement first, then a
+parent decision — has found nothing above the mechanism. In a **running system**
+it is Chesterton's fence: an uncited mechanism is reported as *"no recorded
+reason — confirm before removing"*, never as an instruction to delete, and the recommendation is an incremental
 cutover. In a **worked example** whose purpose is to demonstrate the mechanism the
 test inverts — the finding becomes *"the stated requirement cannot discriminate
 this mechanism"*, and it lands against the requirement rather than the mechanism.

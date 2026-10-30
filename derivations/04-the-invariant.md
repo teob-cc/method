@@ -1,7 +1,7 @@
 ---
 kind: "derivation"
 title: "The invariant, and the organisation behind it"
-stamp: "DERIVATION 04 · V1.4 · 2026-10-12 · THE OUTSIDE-IN METHOD V4.13"
+stamp: "DERIVATION 04 · V1.5 · 2026-10-30 · THE OUTSIDE-IN METHOD V4.14"
 short: "The invariant"
 number: "04"
 subtitle: "**A booking system.** One rule that may never break decides the whole shape — and the ten thousand people employed to clean up when it breaks anyway are part of the design, not an operational afterthought."
@@ -42,7 +42,7 @@ The first is contended per room-night, the second per guest-night. Those are dif
 
 Listings are localised — a search runs against one city at a time — so the contended set partitions naturally by city. That gives one leader per city, a transaction that reads availability and writes it in the same breath, and a short-lived hold placed while a guest is deciding. The treatment states the consequences honestly, and they are the right ones: a search result may show a room that is already gone — the booking attempt then fails — and holds mean losing some bookings a more permissive system would have taken. Losing a booking is the price of never taking two. Hotels make the opposite trade for a reason that does not apply here: a hotel can upgrade an overbooked guest, a room host cannot.
 
-**Booking is a reservation acknowledgement**, not a completion and not a receipt. The distinction is load-bearing: a receipt would let the write be absorbed asynchronously and reconciled later — which is exactly what the invariant forbids.
+**Booking is a reservation acknowledgement**, not a completion and not a receipt. The distinction is load-bearing for the guest, who needs to know now. It does not by itself decide enforcement: a booking accepted by receipt and serialised before anything is promised would still never double-book. What the invariant forbids is absorbing the write and reconciling it after the fact — rungs E3 and E4 of the [enforcement ladder](../method.html#s03).
 
 ::: kpi
 - **~1.2k /s** · booking attempts at the headline figure
@@ -102,8 +102,8 @@ Use an operation name such as `RequestRoomHold` for a request that may be refuse
 :::
 
 ::: footer
-DERIVATION 04 · V1.4 · 2026-10-12 · APPLIES THE OUTSIDE-IN METHOD V4.13.
+DERIVATION 04 · V1.5 · 2026-10-30 · APPLIES THE OUTSIDE-IN METHOD V4.14.
 Source locator: Tan, *Acing the System Design Interview* (Manning, 2024), ch. 15, pp. 329–353. Locators and descriptions are inherited from the original reading notes; the full books were unavailable for independent re-verification in this revision. Treat claims about omissions or contradictions as provisional source readings. The conditional arithmetic and method arguments stand on the inputs reproduced here, not on a claim to have audited the complete books.
 Naming reference: [ANSI/NISO Z39.19-2005 (R2010)](https://www.niso.org/publications/ansiniso-z3919-2005-r2010), *Guidelines for the Construction, Format, and Management of Monolingual Controlled Vocabularies*, §§6.2.2, 7.4–7.5 and 8.3. The naming examples are TEOB adaptations for contracts, not further source-book findings or a claim of conformance to an API standard. See [the naming discipline](../method.html#naming).
-Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE).
+Full method: [The Outside-In Method](../method.html) · [Worked example](../worked-example.html) · [Foreword](../foreword.html) · [MIT licence](../LICENSE) · source: [github.com/teob-cc/method](https://github.com/teob-cc/method).
 :::
