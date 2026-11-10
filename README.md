@@ -45,7 +45,8 @@ Every piece carries its own stamp in its front matter (the specification's `vers
 the book's in `book/book.yaml`; the foreword's, the worked example's and each derivation's in their `stamp`; the evidence note's in its first line). Bump the
 stamp of what changed, and the "applies V4.x" lines of the pieces that track it.
 
-A git tag of the form `2026.10.30` (a date, no `v`) makes a GitHub release carrying the built site,
+A release is made by hand: push a git tag of the form `2026.10.30` (a date, no `v`), then dispatch the `Release`
+workflow with that tag (`gh workflow run release.yml -f tag=2026.10.30`). It makes a GitHub release carrying the built site,
 `method-dist-<tag>.tar.gz` with `SHA256SUMS`. teob's `website/` build fetches the release named in its lock file and
 checks the digest, so teob.cc/method shows a release, never a working tree.
 
