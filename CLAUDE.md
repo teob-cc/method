@@ -32,4 +32,4 @@ read it first.
 
 teob.cc/method is served by teob's showcase image. teob's `website/` build downloads the release named in
 `website/method.lock.json` from this repository's GitHub releases and places it under `public/method/`; a new release
-reaches the site when that lock file is bumped in teob. Tag a release only from a green `main`.
+reaches the site when that lock file is bumped in teob. Tag a release only from a green `main`; the tag alone publishes nothing, the `Release` workflow is dispatched by hand with it.
